@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ChallengeScene from "@/components/ChallengeScene";
 import Footer from "@/components/Footer";
 import IndustryAccordion from "@/components/IndustryAccordion";
 import IndustryHero from "@/components/IndustryHero";
@@ -50,33 +51,13 @@ export default async function IndustryPage({
 
       {/* — everything below the sheet — */}
       <div className="relative bg-ink">
-      {/* — the challenge — */}
-      <section className="flex flex-col items-center overflow-hidden py-10">
-        <EyebrowPill>The challenge</EyebrowPill>
-        <h2 className="heading max-w-[720px] px-5 text-center text-foam">
-          {content.challengeTitle}
-        </h2>
-        {/* tick ruler */}
-        <div className="relative mt-10 flex w-full flex-col items-center">
-          <Sphere from={industry.sphere.from} to={industry.sphere.to} size={40} />
-          <div className="relative mt-0 h-[265px] w-full">
-            <div className="ticks fade-bottom absolute inset-x-0 top-[85px] h-[180px]" />
-            <div className="absolute left-1/2 top-0 h-[265px] w-px bg-alert" />
-          </div>
-        </div>
-        <div className="flex max-w-[720px] flex-col gap-3 px-5 pt-3 text-center">
-          <p className="text-base font-medium leading-relaxed text-alert">
-            {content.challengePoints.map((p) => (
-              <span key={p} className="block">
-                {p}
-              </span>
-            ))}
-          </p>
-          <p className="text-base font-medium leading-relaxed text-mist">
-            {content.challengeNote}
-          </p>
-        </div>
-      </section>
+      {/* — the challenge (pinned canvas story) — */}
+      <ChallengeScene
+        industry={industry}
+        title={content.challengeTitle}
+        points={content.challengePoints}
+        note={content.challengeNote}
+      />
 
       {/* — where we contribute — */}
       <section className="flex flex-col items-center px-5 py-[120px]">
