@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
 import IndustryAccordion from "@/components/IndustryAccordion";
+import IndustryHero from "@/components/IndustryHero";
 import { DotChevron, EyebrowPill, FilledButton, Sphere } from "@/components/ui";
 import { industries } from "@/lib/industries";
 import { industryContent } from "@/lib/industry-content";
@@ -40,66 +40,12 @@ export default async function IndustryPage({
   const next = industries[(idx + 1) % industries.length];
 
   return (
-    <>
-      {/* — hero — */}
-      <section className="relative h-screen min-h-[640px] overflow-hidden">
-        <Image
-          src={industry.hero}
-          alt={industry.name}
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/20" />
-        {/* sheet frame with top rounded corners */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 top-5 rounded-t-[40px] border border-white/30" />
-        {/* grabber */}
-        <div className="absolute left-1/2 top-7 h-1 w-10 -translate-x-1/2 rounded-full bg-foam" aria-hidden />
-        <Header floating />
-        {/* centre title pill */}
-        <div className="glass-dark absolute inset-x-5 top-1/2 flex -translate-y-1/2 items-center justify-center rounded-full p-2.5 sm:p-10">
-          <h1 className="display text-center text-foam">
-            Codistica for {industry.label}
-          </h1>
-        </div>
-        {/* industry dots */}
-        <div className="absolute bottom-5 left-1/2 z-10 flex -translate-x-1/2">
-          {industries.map((ind) => (
-            <Link
-              key={ind.slug}
-              href={`/industries/${ind.slug}`}
-              aria-label={ind.name}
-              className={`relative flex size-10 items-center justify-center rounded-full bg-white transition-opacity ${
-                ind.slug === slug ? "" : "opacity-25 hover:opacity-60"
-              }`}
-            >
-              <Sphere from={ind.sphere.from} to={ind.sphere.to} size={26} />
-              {ind.slug === slug && (
-                <span className="absolute inset-1 rounded-full border border-mint" />
-              )}
-            </Link>
-          ))}
-        </div>
-      </section>
+    <div className="bg-black">
+      {/* — hero (bottom sheet, pinned scroll-transform) — */}
+      <IndustryHero industry={industry} statement={content.statement} />
 
-      {/* — statement — */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <Image
-          src={industry.hero}
-          alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="glass-dark relative m-5 max-w-[960px] rounded-[40px] p-7 sm:p-10">
-          <p className="text-center text-[clamp(22px,2.5vw,48px)] font-medium leading-[1.3] tracking-[-0.02em] text-foam">
-            {content.statement}
-          </p>
-        </div>
-      </section>
-
+      {/* — everything below the sheet — */}
+      <div className="relative bg-ink">
       {/* — context: image + two columns — */}
       <section className="mx-auto max-w-[960px] px-5 py-24">
         <div className="overflow-hidden rounded-[20px]">
@@ -201,8 +147,9 @@ export default async function IndustryPage({
           </span>
         </Link>
       </section>
+      </div>
 
       <Footer />
-    </>
+    </div>
   );
 }

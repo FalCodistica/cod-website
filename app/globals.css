@@ -72,7 +72,6 @@ body {
 .glass-pill {
   background: rgba(221, 228, 227, 0.08);
   backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
   border-radius: 999px;
 }
 
@@ -80,7 +79,6 @@ body {
 .glass-dark {
   background: rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
 }
 
 /* hero image inner glow (steel from above, teal from below) */
