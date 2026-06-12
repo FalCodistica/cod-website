@@ -1,0 +1,61 @@
+FRAME "Frame 143" [800x415 @2720,1017]  {flex-col cross=CENTER fill=#1a2120 r=40 background_blur(100)}
+  FRAME "Frame 140" [800x56 @2720,1017]
+    GROUP "Group 20" [20x20 @3110,1035]
+      ELLIPSE "Ellipse 159" [4x4 @3118,1043]  {fill=#dde4e3}
+      ELLIPSE "Ellipse 162" [4x4 @3118,1035]  {fill=#dde4e3/0.08}
+      ELLIPSE "Ellipse 165" [4x4 @3118,1051]  {fill=#dde4e3/0.08}
+      ELLIPSE "Ellipse 160" [4x4 @3126,1043]  {fill=#dde4e3/0.08}
+      ELLIPSE "Ellipse 163" [4x4 @3126,1035]  {fill=#dde4e3}
+      ELLIPSE "Ellipse 166" [4x4 @3126,1051]  {fill=#dde4e3}
+      ELLIPSE "Ellipse 161" [4x4 @3110,1043]  {fill=#dde4e3/0.08}
+      ELLIPSE "Ellipse 164" [4x4 @3110,1035]  {fill=#dde4e3}
+      ELLIPSE "Ellipse 167" [4x4 @3110,1051]  {fill=#dde4e3}
+  FRAME "Frame 142" [800x359 @2720,1073]  {flex-row pad=12/40/40/40}
+    FRAME "Frame 132" [360x307 @2760,1085]  {flex-col}
+      FRAME "Frame 144" [360x27 @2760,1085]  {flex-row gap=10 pad=0/0/12/0 main=CENTER cross=CENTER}
+        TEXT "industries" [360x15 @2760,1085]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 ls=0.50 case=UPPER}
+          ▸ "industries"
+      FRAME "Frame 133" [360x40 @2760,1112]  {flex-row gap=10 main=CENTER cross=CENTER}
+        TEXT "Vertical mobility" [360x18 @2760,1123]  {fill=#dde4e3 font=Inter/500/18px lh=18}
+          ▸ "Vertical mobility"
+      FRAME "Frame 134" [144x40 @2760,1152]  {flex-row gap=10 main=CENTER cross=CENTER}
+        TEXT "Waste treatment" [144x18 @2760,1163]  {fill=#dde4e3 font=Inter/500/18px lh=18}
+          ▸ "Waste treatment"
+      FRAME "Frame 135" [178x40 @2760,1192]  {flex-row gap=8 main=CENTER cross=CENTER}
+        TEXT "Telecommunications" [178x18 @2760,1203]  {fill=#dde4e3 font=Inter/500/18px lh=18}
+          ▸ "Telecommunications"
+      FRAME "Frame 136" [68x40 @2760,1232]  {flex-row gap=10 main=CENTER cross=CENTER}
+        TEXT "Fashion" [68x18 @2760,1243]  {fill=#dde4e3 font=Inter/500/18px lh=18}
+          ▸ "Fashion"
+      FRAME "Frame 137" [145x40 @2760,1272]  {flex-row gap=10 main=CENTER cross=CENTER}
+        TEXT "Food & beverage" [145x18 @2760,1283]  {fill=#dde4e3 font=Inter/500/18px lh=18}
+          ▸ "Food & beverage"
+      FRAME "Frame 138" [191x40 @2760,1312]  {flex-row gap=10 main=CENTER cross=CENTER}
+        TEXT "Household appliances" [191x18 @2760,1323]  {fill=#dde4e3 font=Inter/500/18px lh=18}
+          ▸ "Household appliances"
+      FRAME "Frame 139" [172x40 @2760,1352]  {flex-row gap=10 main=CENTER cross=CENTER}
+        TEXT "Building automation" [172x18 @2760,1363]  {fill=#dde4e3 font=Inter/500/18px lh=18}
+          ▸ "Building automation"
+    FRAME "Frame 141" [360x307 @3120,1085]  {flex-col}
+      FRAME "Frame 174" [360x267 @3120,1085]  {flex-col}
+        FRAME "Frame 175" [360x223 @3120,1085]  {flex-col}
+          FRAME "Menu" [360x183 @3120,1085]  {fill=img(6175657e8614…,FILL) r=16/16/0/0}
+            TEXT "Systems worth building. Together." [360x183 @3121,1085]  {fill=#dde4e3 font=Inter/500/18px lh=19.8 ls=-0.54 align=CENTER}
+              ▸ "Systems worth building.\nTogether."
+          FRAME "Home heading" [360x40 @3120,1268]  {flex-row gap=8 pad=0/16/0/16 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=0/0/16/16 background_blur(100)}
+            TEXT "About us" [314x14 @3136,1281]  {fill=#ecf2f1 font=Inter/500/14px lh=14}
+              ▸ "About us"
+            GROUP "Group 20" [6x10 @3458,1283]
+              ELLIPSE "Ellipse 159" [2x2 @3462,1287]  {fill=#dde4e3}
+              ELLIPSE "Ellipse 164" [2x2 @3458,1283]  {fill=#dde4e3}
+              ELLIPSE "Ellipse 167" [2x2 @3458,1291]  {fill=#dde4e3}
+      FRAME "Frame 173" [360x40 @3120,1352]  {flex-row gap=4 main=SPACE_BETWEEN cross=CENTER}
+        FRAME "Frame 162" [191x40 @3120,1352]  {flex-row gap=10 pad=0/16/0/16 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+          TEXT "info@codistica.com" [133x14 @3136,1365]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+            ▸ "info@codistica.com"
+          INSTANCE "16/Copy" [16x16 @3280,1364]  {comp=209:9}
+            VECTOR "Vector 22" [9x11 @3284,1365]  {fill=#bec9c7 r=1}
+            VECTOR "Vector 23" [8x10 @3282,1369]  {stroke=#bec9c7 w=2 r=0/0/0/0}
+        FRAME "Frame 73" [40x40 @3440,1352]  {flex-row gap=10 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+          FRAME "linkedin-svgrepo-com 1" [24x24 @3448,1360]
+            VECTOR "Vector" [19x19 @3451,1363]  {fill=#dde4e3}

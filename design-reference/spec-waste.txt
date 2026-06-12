@@ -1,0 +1,325 @@
+FRAME "Waste treatment" [1920x3344 @0,20142]  {flex-col}
+  INSTANCE "Industry-2" [1920x945 @0,20142]  {fill=#0e1514 comp=233:577}
+    FRAME "Frame 123" [960x674 @480,20278]  {flex-col gap=1}
+      RECTANGLE "Rectangle 1408" [960x472 @480,20278]  {fill=img(1e31657573b7…,FILL) r=20}
+      FRAME "Frame 38" [960x200 @480,20751]  {flex-row gap=40 pad=40/0/40/0}
+        TEXT "Behind every elevator ride lies an invisible network of controllers, sensors, and mechanical systems working in quiet coordination. Every day, thousands of micro-decisions take place across buildings and cities — guiding movement, ensuring safety, and sustaining the rhythm of modern life." [460x120 @480,20791]  {fill=#bec9c7 font=Inter/500/16px lh=24}
+          ▸ "Behind every elevator ride lies an invisible network of controllers, sensors, and mechanical systems working in quiet coordination. Every day, thousands of micro-decisions take place across buildings and cities — guiding movement, ensuring safety, and sustaining the rhythm of modern life."
+        TEXT "Much of this infrastructure was designed decades ago, in a time when connectivity and intelligent monitoring were not yet part of the equation. Understanding these hidden systems is the first step toward evolving them." [460x96 @980,20791]  {fill=#bec9c7 font=Inter/500/16px lh=24}
+          ▸ "Much of this infrastructure was designed decades ago, in a time when connectivity and intelligent monitoring were not yet part of the equation. Understanding these hidden systems is the first step toward evolving them."
+    INSTANCE "Industry progress" [104x56 @908,21023]  {flex-row gap=8 pad=8/8/8/8 cross=CENTER fill=#0e1514/0.08 r=999 background_blur(100) comp=348:13370 HIDDEN}
+      INSTANCE "Industry sphere" [40x40 @916,21031]  {fill=gradient_linear(#b2c8e8@0.00,#334863@1.00) r=181.636 inner_shadow(0,0,9.09091,#334863) inner_shadow(-2,-2,10,#b2c8e8) inner_shadow(0,0,13.3333,#ffffff/0.50) inner_shadow(0,0,5,#ffffff/0.50) comp=346:11092}
+      FRAME "Frame 145" [186x40 @964,21031]  {flex-row gap=8 pad=4/12/4/4 cross=CENTER fill=#dde4e3/0.08 r=999 background_blur(200) HIDDEN}
+        INSTANCE "Industry sphere" [32x32 @968,21035]  {fill=gradient_linear(#c9b2e8@0.00,#463363@1.00) r=145.309 inner_shadow(0,0,7.27273,#463363) inner_shadow(-1.6,-1.6,8,#c9b2e8) inner_shadow(0,0,10.6667,#ffffff/0.50) inner_shadow(0,0,4,#ffffff/0.50) comp=348:14054}
+        FRAME "Frame 132" [116x32 @1008,21035]  {flex-col gap=2 pad=0/4/0/0}
+          FRAME "Frame 144" [112x10 @1008,21035]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Next" [112x10 @1008,21035]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=10 ls=0.50 case=UPPER}
+              ▸ "Next"
+          FRAME "Frame 134" [112x20 @1008,21047]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Waste treatment" [112x14 @1008,21050]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Waste treatment"
+        GROUP "Group 20" [6x10 @1132,21046]
+          ELLIPSE "Ellipse 159" [2x2 @1136,21050]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @1132,21054]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @1132,21046]  {fill=#dde4e3}
+      FRAME "Menu" [40x40 @964,21031]  {fill=#dde4e3/0.08 r=999 background_blur(100)}
+        GROUP "Group 20" [10x10 @979,21046]
+          ELLIPSE "Ellipse 159" [2x2 @983,21054]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 168" [2x2 @983,21046]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @979,21050]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @987,21050]  {fill=#dde4e3}
+      FRAME "32/Countdown" [46x46 @913,21028]
+        ELLIPSE "Border" [46x46 @913,21028]  {stroke=#3a3b41 w=2 op=0.00}
+        ELLIPSE "Timer" [46x46 @913,21028]  {stroke=#dde4e3 w=2}
+        GROUP "Group 20" [10x10 @931,21046]
+          ELLIPSE "Ellipse 159" [2x2 @935,21054]  {fill=#dde4e3 op=0.00}
+          ELLIPSE "Ellipse 168" [2x2 @935,21046]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @931,21050]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @939,21050]  {fill=#dde4e3}
+  INSTANCE "Industry-3" [1920x945 @0,21087]  {fill=#0e1514 comp=238:953}
+    FRAME "Frame 85" [720x187 @600,21127]  {flex-col gap=1 cross=CENTER}
+      INSTANCE "Eyebrow" [134x72 @893,21127]  {flex-col gap=2 cross=CENTER comp=238:931}
+        FRAME "Frame 41" [134x32 @893,21127]  {flex-row gap=4 pad=16/20/16/20 main=MAX cross=CENTER fill=#1a2120 r=20 background_blur(50)}
+          TEXT "Eyebrow" [94x18 @913,21134]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+            ▸ "The challenge"
+        ELLIPSE "Ellipse 119" [2x2 @959,21161]  {fill=#3f4948}
+        ELLIPSE "Ellipse 120" [2x2 @959,21165]  {fill=#3f4948}
+        ELLIPSE "Ellipse 121" [2x2 @959,21169]  {fill=#3f4948}
+        ELLIPSE "Ellipse 122" [2x2 @959,21173]  {fill=#3f4948}
+        ELLIPSE "Ellipse 123" [2x2 @959,21177]  {fill=#3f4948}
+        ELLIPSE "Ellipse 124" [2x2 @959,21181]  {fill=#3f4948}
+        ELLIPSE "Ellipse 125" [2x2 @959,21185]  {fill=#3f4948}
+        ELLIPSE "Ellipse 126" [2x2 @959,21189]  {fill=#3f4948}
+        ELLIPSE "Ellipse 127" [2x2 @959,21193]  {fill=#3f4948}
+        ELLIPSE "Ellipse 128" [2x2 @959,21197]  {fill=#3f4948}
+      TEXT "Despite their critical role in modern infrastructure, many vertical transportation systems still operate as isolated machines." [720x114 @600,21200]  {fill=#dde4e3 font=Inter/500/32px lh=38.4 ls=-0.64 align=CENTER}
+        ▸ "Despite their critical role in modern infrastructure, many vertical transportation systems still operate as isolated machines."
+    RECTANGLE "image 11" [1289x736 @315,21316]  {fill=img(81f9b805a45b…,FILL) HIDDEN}
+    FRAME "Frame 132" [1920x305 @0,21407]  {flex-col gap=-60 cross=CENTER}
+      FRAME "Frame 131" [1920x305 @0,21407]  {flex-col cross=CENTER}
+        INSTANCE "Industry sphere" [40x40 @940,21407]  {fill=gradient_linear(#b2c8e8@0.00,#334863@1.00) r=181.636 inner_shadow(0,0,9.09091,#334863) inner_shadow(-2,-2,10,#b2c8e8) inner_shadow(0,0,13.3333,#ffffff/0.50) inner_shadow(0,0,5,#ffffff/0.50) comp=346:11092}
+        FRAME "Frame 124" [1920x265 @0,21447]  {flex-row gap=20 pad=0/4/0/5 main=CENTER cross=MAX}
+          RECTANGLE "Rectangle 1403" [1x180 @15,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1402" [1x180 @36,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1401" [1x180 @57,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1400" [1x180 @78,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1399" [1x180 @99,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1398" [1x180 @120,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1397" [1x180 @141,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1396" [1x180 @162,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1395" [1x180 @183,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1394" [1x180 @204,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1393" [1x180 @225,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1392" [1x180 @246,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1391" [1x180 @267,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1390" [1x180 @288,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1389" [1x180 @309,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1388" [1x180 @330,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1387" [1x180 @351,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1386" [1x180 @372,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1385" [1x180 @393,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1384" [1x180 @414,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1383" [1x180 @435,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1382" [1x180 @456,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1381" [1x180 @477,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1380" [1x180 @498,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1379" [1x180 @519,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1378" [1x180 @540,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1377" [1x180 @561,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1376" [1x180 @582,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1375" [1x180 @603,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1374" [1x180 @624,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1373" [1x180 @645,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1372" [1x180 @666,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1371" [1x180 @687,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1370" [1x180 @708,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1369" [1x180 @729,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1368" [1x180 @750,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1367" [1x180 @771,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1366" [1x180 @792,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1365" [1x180 @813,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1364" [1x180 @834,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1363" [1x180 @855,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1362" [1x180 @876,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1361" [1x180 @897,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1268" [1x180 @918,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1269" [1x180 @939,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1270" [1x265 @960,21447]  {fill=#ffb4ab}
+          RECTANGLE "Rectangle 1271" [1x180 @981,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1272" [1x180 @1002,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1273" [1x180 @1023,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1274" [1x180 @1044,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1275" [1x180 @1065,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1276" [1x180 @1086,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1277" [1x180 @1107,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1278" [1x180 @1128,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1279" [1x180 @1149,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1280" [1x180 @1170,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1281" [1x180 @1191,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1331" [1x180 @1212,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1332" [1x180 @1233,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1333" [1x180 @1254,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1334" [1x180 @1275,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1335" [1x180 @1296,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1336" [1x180 @1317,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1337" [1x180 @1338,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1338" [1x180 @1359,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1339" [1x180 @1380,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1340" [1x180 @1401,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1341" [1x180 @1422,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1342" [1x180 @1443,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1343" [1x180 @1464,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1344" [1x180 @1485,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1345" [1x180 @1506,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1346" [1x180 @1527,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1347" [1x180 @1548,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1348" [1x180 @1569,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1349" [1x180 @1590,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1350" [1x180 @1611,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1351" [1x180 @1632,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1352" [1x180 @1653,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1353" [1x180 @1674,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1354" [1x180 @1695,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1355" [1x180 @1716,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1356" [1x180 @1737,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1357" [1x180 @1758,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1358" [1x180 @1779,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1359" [1x180 @1800,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1360" [1x180 @1821,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1404" [1x180 @1842,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1405" [1x180 @1863,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1406" [1x180 @1884,21532]  {fill=#889392}
+          RECTANGLE "Rectangle 1407" [1x180 @1905,21532]  {fill=#889392}
+          RECTANGLE "Overlay" [1920x180 @0,21532]  {fill=gradient_linear(#0e1514/0.00@0.00,#0e1514@1.00)}
+    FRAME "Frame 125" [720x132 @600,21646]  {flex-col gap=12}
+      TEXT "Limited visibility into real-time performance. Maintenance that reacts instead of anticipates. Operational data fragmented across systems and vendors." [720x72 @600,21646]  {fill=#ffb4ab font=Inter/500/16px lh=24 align=CENTER}
+        ▸ "Limited visibility into real-time performance.\nMaintenance that reacts instead of anticipates.\nOperational data fragmented across systems and vendors."
+      TEXT "In a world where buildings are becoming smarter, vertical mobility often remains disconnected." [720x48 @600,21730]  {fill=#bec9c7 font=Inter/500/16px lh=24 align=CENTER}
+        ▸ "In a world where buildings are becoming smarter, vertical mobility often remains disconnected."
+    INSTANCE "Industry progress" [104x56 @908,21968]  {flex-row gap=8 pad=8/8/8/8 cross=CENTER fill=#0e1514/0.08 r=999 background_blur(100) comp=348:13370 HIDDEN}
+      INSTANCE "Industry sphere" [40x40 @916,21976]  {fill=gradient_linear(#b2c8e8@0.00,#334863@1.00) r=181.636 inner_shadow(0,0,9.09091,#334863) inner_shadow(-2,-2,10,#b2c8e8) inner_shadow(0,0,13.3333,#ffffff/0.50) inner_shadow(0,0,5,#ffffff/0.50) comp=346:11092}
+      FRAME "Frame 145" [186x40 @964,21976]  {flex-row gap=8 pad=4/12/4/4 cross=CENTER fill=#dde4e3/0.08 r=999 background_blur(200) HIDDEN}
+        INSTANCE "Industry sphere" [32x32 @968,21980]  {fill=gradient_linear(#c9b2e8@0.00,#463363@1.00) r=145.309 inner_shadow(0,0,7.27273,#463363) inner_shadow(-1.6,-1.6,8,#c9b2e8) inner_shadow(0,0,10.6667,#ffffff/0.50) inner_shadow(0,0,4,#ffffff/0.50) comp=348:14054}
+        FRAME "Frame 132" [116x32 @1008,21980]  {flex-col gap=2 pad=0/4/0/0}
+          FRAME "Frame 144" [112x10 @1008,21980]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Next" [112x10 @1008,21980]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=10 ls=0.50 case=UPPER}
+              ▸ "Next"
+          FRAME "Frame 134" [112x20 @1008,21992]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Waste treatment" [112x14 @1008,21995]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Waste treatment"
+        GROUP "Group 20" [6x10 @1132,21991]
+          ELLIPSE "Ellipse 159" [2x2 @1136,21995]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @1132,21999]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @1132,21991]  {fill=#dde4e3}
+      FRAME "Menu" [40x40 @964,21976]  {fill=#dde4e3/0.08 r=999 background_blur(100)}
+        GROUP "Group 20" [10x10 @979,21991]
+          ELLIPSE "Ellipse 159" [2x2 @983,21999]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 168" [2x2 @983,21991]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @979,21995]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @987,21995]  {fill=#dde4e3}
+      FRAME "32/Countdown" [46x46 @913,21973]
+        ELLIPSE "Border" [46x46 @913,21973]  {stroke=#3a3b41 w=2 op=0.00}
+        ELLIPSE "Timer" [46x46 @913,21973]  {stroke=#dde4e3 w=2}
+        GROUP "Group 20" [10x10 @931,21991]
+          ELLIPSE "Ellipse 159" [2x2 @935,21999]  {fill=#dde4e3 op=0.00}
+          ELLIPSE "Ellipse 168" [2x2 @935,21991]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @931,21995]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @939,21995]  {fill=#dde4e3}
+  INSTANCE "Industry-4" [1920x1004 @0,22032]  {flex-col gap=10 pad=120/0/120/0 cross=CENTER fill=#0e1514 comp=238:1362}
+    FRAME "Frame 126" [640x764 @640,22152]  {flex-col cross=CENTER}
+      INSTANCE "Eyebrow" [177x72 @872,22152]  {flex-col gap=2 cross=CENTER comp=238:931}
+        FRAME "Frame 41" [177x32 @872,22152]  {flex-row gap=4 pad=16/20/16/20 main=MAX cross=CENTER fill=#1a2120 r=20 background_blur(50)}
+          TEXT "Eyebrow" [137x18 @892,22159]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+            ▸ "Where we contribute"
+        ELLIPSE "Ellipse 119" [2x2 @959,22186]  {fill=#3f4948}
+        ELLIPSE "Ellipse 120" [2x2 @959,22190]  {fill=#3f4948}
+        ELLIPSE "Ellipse 121" [2x2 @959,22194]  {fill=#3f4948}
+        ELLIPSE "Ellipse 122" [2x2 @959,22198]  {fill=#3f4948}
+        ELLIPSE "Ellipse 123" [2x2 @959,22202]  {fill=#3f4948}
+        ELLIPSE "Ellipse 124" [2x2 @959,22206]  {fill=#3f4948}
+        ELLIPSE "Ellipse 125" [2x2 @959,22210]  {fill=#3f4948}
+        ELLIPSE "Ellipse 126" [2x2 @959,22214]  {fill=#3f4948}
+        ELLIPSE "Ellipse 127" [2x2 @959,22218]  {fill=#3f4948}
+        ELLIPSE "Ellipse 128" [2x2 @959,22222]  {fill=#3f4948}
+      FRAME "Frame 127" [640x692 @640,22224]  {flex-col cross=CENTER}
+        FRAME "Frame 88" [640x334 @640,22224]  {flex-col gap=40 pad=40/40/20/40 cross=CENTER stroke=#3f4948 w=1 r=40/40/0/0}
+          FRAME "Frame 129" [560x80 @680,22264]  {flex-col gap=4 main=CENTER cross=CENTER}
+            TEXT "Not machines." [212x38 @854,22264]  {fill=#dde4e3 font=Inter/500/32px lh=38.4 ls=-0.64 align=CENTER}
+              ▸ "Not machines."
+            TEXT "An ecosystem." [219x38 @850,22306]  {fill=#80d5d2 font=Inter/500/32px lh=38.4 ls=-0.64 align=CENTER}
+              ▸ "An ecosystem."
+          TEXT "We see vertical transportation as an interconnected system. By introducing digital intelligence across controllers, sensors, and infrastructure layers, mobility systems become more visible,responsive, and resilient." [560x96 @680,22384]  {fill=#bec9c7 font=Inter/500/16px lh=24 align=CENTER}
+            ▸ " We see vertical transportation as an interconnected system.\nBy introducing digital intelligence across controllers, sensors,\nand infrastructure layers, mobility systems become more visible,responsive, and resilient."
+          TEXT "Here's where it applies" [166x18 @877,22520]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+            ▸ "Here's where it applies"
+        FRAME "Frame 89" [640x41 @640,22558]  {flex-row gap=16 cross=CENTER}
+          ELLIPSE "Ellipse 129" [5x5 @640,22576]  {fill=#dde4e3}
+          TEXT "Passenger lifts" [584x16 @661,22570]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "Passenger lifts"
+          BOOLEAN_OPERATION "Union" [19x1 @1261,22578]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22578]  {fill=#323230}
+        FRAME "Frame 95" [640x72 @640,22599]  {flex-row gap=16 pad=12/0/12/0 cross=CENTER}
+          ELLIPSE "Ellipse 129" [5x5 @640,22632]  {fill=#dde4e3 op=0.00}
+          TEXT "The systems that quietly move people through offices, hospitals, airports, and towers every day." [584x48 @661,22611]  {fill=#bec9c7 font=Inter/500/16px lh=24}
+            ▸ "The systems that quietly move people through offices, hospitals, airports, and towers every day."
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22626]  {fill=#dde4e3 op=0.00}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22626]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22634]  {fill=#323230}
+        FRAME "Frame 90" [640x41 @640,22671]  {flex-row gap=16 cross=CENTER}
+          ELLIPSE "Ellipse 129" [5x5 @640,22689]  {fill=#dde4e3}
+          TEXT "Cargo lifts" [584x16 @661,22684]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "Cargo lifts"
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22682]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22682]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22691]  {fill=#323230}
+        FRAME "Frame 91" [640x41 @640,22712]  {flex-row gap=16 cross=CENTER}
+          ELLIPSE "Ellipse 129" [5x5 @640,22730]  {fill=#dde4e3}
+          TEXT "High-speed lifts" [584x16 @661,22724]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "High-speed lifts"
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22723]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22723]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22732]  {fill=#323230}
+        FRAME "Frame 92" [640x41 @640,22753]  {flex-row gap=16 cross=CENTER}
+          ELLIPSE "Ellipse 129" [5x5 @640,22771]  {fill=#dde4e3}
+          TEXT "Escalators and travelators" [584x16 @661,22766]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "Escalators and travelators"
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22764]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22764]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22773]  {fill=#323230}
+        FRAME "Frame 93" [640x41 @640,22794]  {flex-row gap=16 cross=CENTER}
+          ELLIPSE "Ellipse 129" [5x5 @640,22812]  {fill=#dde4e3}
+          TEXT "Controllers and smart components" [584x16 @661,22806]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "Controllers and smart components"
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22805]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22805]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22814]  {fill=#323230}
+        FRAME "Frame 94" [640x41 @640,22835]  {flex-row gap=16 cross=CENTER}
+          ELLIPSE "Ellipse 129" [5x5 @640,22853]  {fill=#dde4e3}
+          TEXT "Sensors and peripherals" [584x16 @661,22848]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "Sensors and peripherals"
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22846]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22846]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22855]  {fill=#323230}
+        FRAME "Frame 96" [640x41 @640,22814]  {flex-row gap=16 cross=CENTER HIDDEN}
+          ELLIPSE "Ellipse 129" [5x5 @640,22832]  {fill=#dde4e3}
+          TEXT "Sensors and peripherals" [584x16 @661,22826]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "Sensors and peripherals"
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22825]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22825]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22834]  {fill=#323230}
+        FRAME "Frame 97" [640x41 @640,22855]  {flex-row gap=16 cross=CENTER HIDDEN}
+          ELLIPSE "Ellipse 129" [5x5 @640,22873]  {fill=#dde4e3}
+          TEXT "Sensors and peripherals" [584x16 @661,22868]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "Sensors and peripherals"
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22866]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22866]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22875]  {fill=#323230}
+        FRAME "Frame 98" [640x41 @640,22896]  {flex-row gap=16 cross=CENTER HIDDEN}
+          ELLIPSE "Ellipse 129" [5x5 @640,22914]  {fill=#dde4e3}
+          TEXT "Sensors and peripherals" [584x16 @661,22908]  {fill=#dde4e3 font=Inter/600/16px lh=16}
+            ▸ "Sensors and peripherals"
+          BOOLEAN_OPERATION "Union" [19x19 @1261,22907]  {fill=#dde4e3}
+            RECTANGLE "Rectangle 1404" [1x19 @1270,22907]  {fill=#323230}
+            RECTANGLE "Rectangle 1405" [19x1 @1261,22916]  {fill=#323230}
+        FRAME "Frame 92" [640x40 @640,22876]  {flex-col gap=40 pad=0/40/0/40 cross=CENTER stroke=#3f4948 w=1 r=0/0/40/40}
+    RECTANGLE "image 11" [1289x736 @315,22261]  {fill=img(81f9b805a45b…,FILL) HIDDEN}
+  INSTANCE "Industry-5" [1920x450 @0,23036]  {flex-col gap=80 pad=120/0/8/0 cross=CENTER fill=#0e1514 comp=238:1562}
+    RECTANGLE "Rectangle 1257" [1920x360 @0,23126]  {fill=img(e423f3f5d663…,STRETCH)|gradient_linear(#0e1514@0.00,#0e1514/0.00@1.00)|gradient_linear(#0e1514@0.00,#0e1514/0.00@0.50,#0e1514@1.00)}
+    FRAME "Frame 146" [1920x186 @0,23156]  {flex-col gap=60 cross=CENTER}
+      FRAME "Frame 128" [1920x84 @0,23156]  {flex-col gap=8}
+        TEXT "The future of vertical mobility won't be defined by speed alone." [1920x38 @0,23156]  {fill=#dde4e3 font=Inter/500/32px lh=38.4 ls=-0.64 align=CENTER}
+          ▸ "The future of vertical mobility won't be defined by speed alone. "
+        TEXT "It will be defined by intelligence." [1920x38 @0,23202]  {fill=#80d5d2 font=Inter/500/32px lh=38.4 ls=-0.64 align=CENTER}
+          ▸ "It will be defined by intelligence."
+      FRAME "Frame 73" [109x42 @906,23300]  {flex-row gap=10 pad=0/20/0/20 main=CENTER cross=CENTER fill=#dde4e3 r=999}
+        TEXT "Talk to us" [69x15 @926,23314]  {fill=#2b3231 font=Inter/500/15px lh=15}
+          ▸ "Talk to us"
+    INSTANCE "Industry progress" [298x56 @811,23422]  {flex-row gap=8 pad=8/8/8/8 cross=CENTER fill=#0e1514/0.08 r=999 background_blur(100) comp=348:13370}
+      INSTANCE "Industry sphere" [40x40 @819,23430]  {fill=gradient_linear(#b2c8e8@0.00,#334863@1.00) r=181.636 inner_shadow(0,0,9.09091,#334863) inner_shadow(-2,-2,10,#b2c8e8) inner_shadow(0,0,13.3333,#ffffff/0.50) inner_shadow(0,0,5,#ffffff/0.50) comp=346:11092}
+      FRAME "Frame 145" [186x40 @867,23430]  {flex-row gap=8 pad=4/12/4/4 cross=CENTER fill=#dde4e3/0.08 r=999 background_blur(200)}
+        INSTANCE "Industry sphere" [32x32 @871,23434]  {fill=gradient_linear(#c9b2e8@0.00,#463363@1.00) r=145.309 inner_shadow(0,0,7.27273,#463363) inner_shadow(-1.6,-1.6,8,#c9b2e8) inner_shadow(0,0,10.6667,#ffffff/0.50) inner_shadow(0,0,4,#ffffff/0.50) comp=348:14054}
+        FRAME "Frame 132" [116x32 @911,23434]  {flex-col gap=2 pad=0/4/0/0}
+          FRAME "Frame 144" [112x10 @911,23434]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Next" [112x10 @911,23434]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=10 ls=0.50 case=UPPER}
+              ▸ "Next"
+          FRAME "Frame 134" [112x20 @911,23446]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Waste treatment" [112x14 @911,23449]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Waste treatment"
+        GROUP "Group 20" [6x10 @1035,23445]
+          ELLIPSE "Ellipse 159" [2x2 @1039,23449]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @1035,23453]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @1035,23445]  {fill=#dde4e3}
+      FRAME "Menu" [40x40 @1061,23430]  {fill=#dde4e3/0.08 r=999 background_blur(100)}
+        GROUP "Group 20" [10x10 @1076,23445]
+          ELLIPSE "Ellipse 159" [2x2 @1080,23453]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 168" [2x2 @1080,23445]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @1076,23449]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @1084,23449]  {fill=#dde4e3}
+      FRAME "32/Countdown" [46x46 @816,23427]
+        ELLIPSE "Border" [46x46 @816,23427]  {stroke=#3a3b41 w=2 op=0.00}
+        ELLIPSE "Timer" [46x46 @816,23427]  {stroke=#dde4e3 w=2}
+        GROUP "Group 20" [10x10 @834,23445]
+          ELLIPSE "Ellipse 159" [2x2 @838,23453]  {fill=#dde4e3 op=0.00}
+          ELLIPSE "Ellipse 168" [2x2 @838,23445]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 164" [2x2 @834,23449]  {fill=#dde4e3}
+          ELLIPSE "Ellipse 167" [2x2 @842,23449]  {fill=#dde4e3}

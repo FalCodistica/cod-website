@@ -1,0 +1,1034 @@
+FRAME "Company" [1920x6272 @2222,839]  {flex-col fill=#0e1514}
+  INSTANCE "Header" [1920x80 @2222,839]  {flex-row cross=CENTER comp=297:2791}
+    FRAME "Leading" [932x80 @2222,839]  {flex-col gap=10 pad=11/0/11/20 main=CENTER}
+      GROUP "Group 23" [166x20 @2242,869]
+        VECTOR "Vector" [20x19 @2314,869]  {fill=#dde4e3}
+        VECTOR "Vector" [4x19 @2306,869]  {fill=#dde4e3}
+        VECTOR "Vector" [4x19 @2359,869]  {fill=#dde4e3}
+        VECTOR "Vector" [22x19 @2335,869]  {fill=#dde4e3}
+        VECTOR "Vector" [19x19 @2242,869]  {fill=#dde4e3}
+        VECTOR "Vector" [19x19 @2284,869]  {fill=#dde4e3}
+        VECTOR "Vector" [19x19 @2366,869]  {fill=#dde4e3}
+        VECTOR "Vector" [21x19 @2387,869]  {fill=#dde4e3}
+        VECTOR "Vector" [20x20 @2262,869]  {fill=#dde4e3}
+    FRAME "Menu" [56x56 @3154,851]  {fill=#dde4e3/0.08 r=999 background_blur(50)}
+      GROUP "Group 20" [20x20 @3172,869]
+        ELLIPSE "Ellipse 159" [4x4 @3180,877]  {fill=#dde4e3}
+        ELLIPSE "Ellipse 162" [4x4 @3180,869]  {fill=#dde4e3}
+        ELLIPSE "Ellipse 165" [4x4 @3180,885]  {fill=#dde4e3}
+        ELLIPSE "Ellipse 160" [4x4 @3188,877]  {fill=#dde4e3}
+        ELLIPSE "Ellipse 163" [4x4 @3188,869]  {fill=#dde4e3}
+        ELLIPSE "Ellipse 166" [4x4 @3188,885]  {fill=#dde4e3}
+        ELLIPSE "Ellipse 161" [4x4 @3172,877]  {fill=#dde4e3}
+        ELLIPSE "Ellipse 164" [4x4 @3172,869]  {fill=#dde4e3}
+        ELLIPSE "Ellipse 167" [4x4 @3172,885]  {fill=#dde4e3}
+    FRAME "Trailing" [932x80 @3210,839]  {flex-col gap=10 pad=0/20/0/0 main=CENTER cross=MAX}
+      INSTANCE "Button - filled" [97x40 @4025,859]  {flex-row main=CENTER cross=CENTER comp=297:2440}
+        FRAME "Content" [97x40 @4025,859]  {flex-row main=CENTER cross=CENTER fill=#dde4e3 r=1000}
+          FRAME "State-layer" [97x40 @4025,859]  {flex-row gap=8 pad=0/16/0/16 main=CENTER cross=CENTER}
+            INSTANCE "IconBuildingBlock" [20x20 @4041,869]  {comp=297:2408 HIDDEN}
+              GROUP "Mask group" [20x20 @4041,869]
+                GROUP "Mask group" [20x20 @4041,869]
+                  FRAME "Frame 2" [20x20 @4041,869]
+                    INSTANCE "24/Placeholder" [20x20 @4041,869]  {comp=297:2403}
+                      VECTOR "Vector" [17x17 @4042,870]  {fill=#c6c6d0}
+                  RECTANGLE "Rectangle 1009" [20x20 @4041,869]  {fill=#2b3231}
+            TEXT "Label" [65x16 @4041,871]  {fill=#2b3231 font=Inter/500/14px lh=16 align=CENTER}
+              ▸ "Talk to us"
+            INSTANCE "IconBuildingBlock" [20x20 @4114,869]  {comp=297:2408 HIDDEN}
+              GROUP "Mask group" [20x20 @4114,869]
+                GROUP "Mask group" [20x20 @4114,869]
+                  FRAME "Frame 2" [20x20 @4114,869]
+                    INSTANCE "24/Placeholder" [20x20 @4114,869]  {comp=297:2403}
+                      VECTOR "Vector" [17x17 @4115,870]  {fill=#c6c6d0}
+                  RECTANGLE "Rectangle 1009" [20x20 @4114,869]  {fill=#2b3231}
+  FRAME "Frame 108" [1920x5536 @2222,919]  {flex-row gap=60 pad=40/0/120/20 main=SPACE_BETWEEN}
+    FRAME "Frame 105" [360x914 @2242,959]
+      FRAME "Frame 107" [298x1020 @2242,959]  {flex-col gap=32}
+        FRAME "Frame 106" [191x15 @2242,959]  {flex-row gap=8 cross=CENTER}
+          ELLIPSE "Ellipse 168" [8x8 @2242,962]  {fill=#dde4e3}
+          TEXT "Partnership & collaboration" [175x15 @2258,959]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 ls=0.50 case=UPPER}
+            ▸ "Partnership & collaboration"
+        TEXT "Systems worth building.Together." [298x22 @2242,1006]  {fill=#dde4e3 font=Inter/400/20px lh=22 ls=-0.60}
+          ▸ "Systems worth building.Together."
+        FRAME "Frame 111" [298x137 @2242,1060]  {flex-col gap=16}
+          TEXT "01. Strategic development" [150x15 @2242,1060]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER align=CENTER}
+            ▸ "01. Strategic development"
+          TEXT "Some collaborations begin with a shared idea. Others begin with a complex challenge." [298x54 @2242,1091]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "Some collaborations begin with a shared idea. Others begin with a complex challenge."
+          TEXT "At Codistica, strategic development focuses on [...]" [298x36 @2242,1161]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "At Codistica, strategic development focuses on [...]"
+        FRAME "Frame 112" [298x153 @2242,1229]  {flex-col gap=16}
+          TEXT "02. Team & talent" [102x15 @2242,1229]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 case=UPPER align=CENTER}
+            ▸ "02. Team & talent"
+          TEXT "The strength of Codistica comes from the people behind the systems we build" [298x54 @2242,1260]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "The strength of Codistica comes \nfrom the people behind the systems we build"
+          TEXT "└── how we work" [298x18 @2242,1330]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "└── how we work"
+          TEXT "└── what drives the team" [298x18 @2242,1364]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "└── what drives the team"
+        FRAME "Frame 113" [298x135 @2242,1414]  {flex-col gap=16}
+          TEXT "03. INVESTMENT PARTNERSHIPS" [162x15 @2242,1414]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 case=UPPER align=CENTER}
+            ▸ "03. INVESTMENT PARTNERSHIPS"
+          TEXT "Building intelligent infrastructure requires patience" [298x36 @2242,1445]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "Building intelligent infrastructure requires patience"
+          TEXT "└── Investment Philosophy" [298x18 @2242,1497]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "└── Investment Philosophy"
+          TEXT "└── Shared Strategic Horizon" [298x18 @2242,1531]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "└── Shared Strategic Horizon"
+        FRAME "Frame 114" [298x93 @2242,1581]  {flex-col gap=16}
+          FRAME "Frame 107" [94x15 @2242,1581]  {flex-row gap=8 cross=CENTER}
+            ELLIPSE "Ellipse 168" [8x8 @2242,1584]  {fill=#bec9c7}
+            TEXT "HOW WE THINK" [78x15 @2258,1581]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 ls=0.50 case=UPPER}
+              ▸ "HOW WE THINK"
+          FRAME "Frame 109" [298x62 @2242,1612]  {flex-row}
+            TEXT "└──" [149x18 @2242,1612]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+              ▸ "└──"
+            FRAME "Frame 110" [149x62 @2391,1612]  {flex-col gap=4 main=CENTER}
+              TEXT "Why" [149x18 @2391,1612]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                ▸ "Why"
+              TEXT "how" [149x18 @2391,1634]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                ▸ "how"
+              TEXT "What" [149x18 @2391,1656]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                ▸ "What"
+        FRAME "Frame 115" [298x67 @2242,1706]  {flex-col gap=16}
+          TEXT "01. FOUNDER’S BELIEF" [120x15 @2242,1706]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 case=UPPER align=CENTER}
+            ▸ "01. FOUNDER’S BELIEF"
+          TEXT "Every meaningful system begins with the way we choose to think about the world." [298x36 @2242,1737]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "Every meaningful system begins with the way we choose to think about the world."
+        FRAME "Frame 116" [298x75 @2242,1805]  {flex-col gap=16}
+          TEXT "02. A PRINCIPLE THAT GUIDES US" [180x15 @2242,1805]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 case=UPPER align=CENTER}
+            ▸ "02. A PRINCIPLE THAT GUIDES US"
+          TEXT "Find what you are passionate about and passionate even more." [298x44 @2242,1836]  {fill=#889392 font=Inter/400/20px lh=22 ls=-0.60}
+            ▸ "Find what you are passionate\nabout and passionate even more."
+        FRAME "Frame 117" [298x67 @2242,1912]  {flex-col gap=16}
+          TEXT "01. POWERING THE INVISIBLE" [156x15 @2242,1912]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 case=UPPER align=CENTER}
+            ▸ "01. POWERING THE INVISIBLE"
+          TEXT "Many of the systems that sustain modern life are never seen." [298x36 @2242,1943]  {fill=#889392 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "Many of the systems that sustain modern life are never seen."
+    FRAME "Frame 118" [1540x5376 @2602,959]  {flex-col gap=20 cross=CENTER}
+      FRAME "Frame 119" [1060x540 @2842,959]  {fill=img(6175657e8614…,FILL) r=40}
+        TEXT "Systems worth building. Together." [523x106 @3111,1176]  {fill=#dde4e3 font=Inter/500/48px lh=52.8 ls=-1.44 align=CENTER}
+          ▸ "Systems worth building.\nTogether."
+        FRAME "Frame 176" [1060x159 @2842,1340]  {flex-col pad=40/40/40/40}
+          INSTANCE "Stats item" [313x79 @2882,1380]  {flex-col gap=8 cross=CENTER comp=405:7289}
+            TEXT "35" [60x53 @3009,1380]  {fill=#ecf2f1 font=Inter/500/48px lh=52.8 ls=-1.44 align=CENTER}
+              ▸ "35"
+            TEXT "Clients" [51x18 @3013,1441]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+              ▸ "Clients"
+          INSTANCE "Stats item" [313x79 @3215,1380]  {flex-col gap=8 cross=CENTER comp=405:7289}
+            TEXT "35" [52x53 @3346,1380]  {fill=#ecf2f1 font=Inter/500/48px lh=52.8 ls=-1.44 align=CENTER}
+              ▸ "51"
+            TEXT "Clients" [58x18 @3343,1441]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+              ▸ "Projects"
+          INSTANCE "Stats item" [313x79 @3549,1380]  {flex-col gap=8 cross=CENTER comp=405:7289}
+            TEXT "35" [31x53 @3690,1380]  {fill=#ecf2f1 font=Inter/500/48px lh=52.8 ls=-1.44 align=CENTER}
+              ▸ "6"
+            TEXT "Clients" [65x18 @3673,1441]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+              ▸ "Countires"
+      FRAME "Frame 120" [1060x905 @2842,1519]  {flex-col gap=40 pad=60/60/60/60 fill=#1a2120 r=40}
+        TEXT "Some collaborations begin with a shared idea. Others begin with a complex challenge." [940x76 @2902,1579]  {fill=#dde4e3 font=Inter/500/32px lh=38.4 ls=-0.64}
+          ▸ "Some collaborations begin with a shared idea.\nOthers begin with a complex challenge."
+        TEXT "At Codistica, strategic development focuses on initiatives where technology, infrastructure, and thoughtful execution can create meaningful and lasting impact. We collaborate with organizations, industry experts, and partners who bring deep domain knowledge and the same commitment to building systems that truly work." [940x81 @2902,1695]  {fill=#bec9c7 font=Inter/500/18px lh=27}
+          ▸ "At Codistica, strategic development focuses on initiatives where technology, infrastructure, and thoughtful execution can create meaningful and lasting impact. We collaborate with organizations, industry experts, and partners who bring deep domain knowledge and the same commitment to building systems that truly work."
+        FRAME "Frame 128" [940x260 @2902,1816]  {flex-col gap=32 pad=20/20/20/20 fill=gradient_linear(#0e1514@0.00,#334863@1.00)|img(80fe5af328e2…,TILE,op=0.20) r=999}
+          FRAME "Frame 130" [900x220 @2922,1836]  {flex-row gap=80 main=CENTER cross=CENTER}
+            FRAME "Frame 74" [220x220 @2922,1836]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=img(c4bf4d3775cf…,STRETCH) r=999}
+              TEXT "Complex challenge" [123x18 @2970,1937]  {fill=#d2e4ff font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                ▸ "Complex challenge"
+            FRAME "Frame 126" [300x184 @3222,1854]  {flex-col gap=32}
+              FRAME "Frame 66" [300x40 @3222,1854]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=#dde4e3/0.01 r=999 background_blur(100) inner_shadow(1,1,0,#b2c8e8/0.10) inner_shadow(-1,-1,0,#b2c8e8/0.05)}
+                TEXT "Systems thinking" [116x18 @3314,1865]  {fill=#bec9c7 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                  ▸ "Systems thinking"
+              FRAME "Frame 74" [300x40 @3222,1926]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=#dde4e3/0.01 r=999 background_blur(100) inner_shadow(1,1,0,#b2c8e8/0.10) inner_shadow(-1,-1,0,#b2c8e8/0.05)}
+                TEXT "Technical expertise" [137x18 @3304,1937]  {fill=#bec9c7 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                  ▸ "Technical expertise"
+              FRAME "Frame 75" [300x40 @3222,1998]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=#dde4e3/0.01 r=999 background_blur(100) inner_shadow(1,1,0,#b2c8e8/0.10) inner_shadow(-1,-1,0,#b2c8e8/0.05)}
+                TEXT "Disciplined execution" [152x18 @3296,2009]  {fill=#bec9c7 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                  ▸ "Disciplined execution"
+            FRAME "Frame 127" [220x220 @3602,1836]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=gradient_linear(#b2c8e8@0.00,#334863@1.00) r=999 inner_shadow(0,0,50,#b2c8e8)}
+              TEXT "Meaningful infrastructure" [180x18 @3622,1937]  {fill=#1b324b font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                ▸ "Meaningful infrastructure"
+            VECTOR "Vector 16" [80x70 @3142,1946]  {stroke=#334863 w=1}
+            VECTOR "Vector 18" [80x70 @3522,1946]  {stroke=#334863 w=1}
+            VECTOR "Vector 17" [80x71 @3142,1875]  {stroke=#334863 w=1}
+            VECTOR "Vector 19" [80x71 @3522,1875]  {stroke=#334863 w=1}
+        FRAME "Frame 72" [940x168 @2902,2116]  {flex-col gap=24}
+          TEXT "Collaboration model" [940x18 @2902,2116]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+            ▸ "Collaboration model"
+          FRAME "Frame 131" [940x126 @2902,2158]  {flex-row gap=24}
+            TEXT "The strongest collaborations begin with understanding. At Codistica, every strategic collaboration starts with careful listening and thoughtful exploration of the challenge at hand." [297x105 @2902,2158]  {fill=#bec9c7 font=Inter/500/14px lh=21}
+              ▸ "The strongest collaborations begin with understanding. At Codistica, every strategic collaboration starts with careful listening and thoughtful exploration of the challenge at hand."
+            TEXT "We take the time to understand the context, the systems involved, and the long-term objectives behind each initiative. From there, ideas evolve into structured strategies, and strategies into carefully designed solutions." [297x126 @3223,2158]  {fill=#bec9c7 font=Inter/500/14px lh=21}
+              ▸ "We take the time to understand the context, the systems involved, and the long-term objectives behind each initiative. From there, ideas evolve into structured strategies, and strategies into carefully designed solutions."
+            TEXT "Our approach combines systems thinking, technical expertise, and disciplined execution to transform complex challenges into meaningful infrastructure." [297x84 @3545,2158]  {fill=#bec9c7 font=Inter/500/14px lh=21}
+              ▸ "Our approach combines systems thinking, technical expertise, and disciplined execution to transform complex challenges into meaningful infrastructure."
+        FRAME "Frame 73" [230x40 @2902,2324]  {flex-row gap=10 pad=0/24/0/24 main=CENTER cross=CENTER fill=#dde4e3 r=999}
+          TEXT "Tell us what you're building" [182x14 @2926,2337]  {fill=#2b3231 font=Inter/500/14px lh=14}
+            ▸ "Tell us what you're building"
+      FRAME "Frame 140" [1060x600 @2842,2444]  {flex-row gap=40 pad=60/60/360/60 main=CENTER fill=gradient_linear(#090f0f@0.00,#334863@1.00)|img(c66e11eb201b…,STRETCH) r=40}
+        FRAME "Frame 142" [450x248 @2902,2504]  {flex-col gap=24}
+          TEXT "Discipline gets systems right. Passion makes them matter." [450x76 @2902,2504]  {fill=#dde4e3 font=Inter/500/32px lh=38.4 ls=-0.64}
+            ▸ "Discipline gets systems right. \nPassion makes them matter."
+          TEXT "We look for precision, curiosity, and pride in thoughtful work. People who care deeply about what they create and thrive in an environment built around discipline, ownership, and the freedom to think." [450x84 @2902,2604]  {fill=#dde4e3 font=Inter/500/14px lh=21}
+            ▸ "We look for precision, curiosity, and pride in thoughtful work. People who care deeply about what they create and thrive in \nan environment built around discipline, ownership, and \nthe freedom to think."
+          FRAME "Frame 73" [148x40 @2902,2712]  {flex-row gap=10 pad=0/24/0/24 main=CENTER cross=CENTER fill=#dde4e3 r=999}
+            TEXT "See open roles" [100x14 @2926,2725]  {fill=#2b3231 font=Inter/500/14px lh=14}
+              ▸ "See open roles"
+        FRAME "Frame 148" [450x248 @3392,2504]
+          FRAME "Frame 150" [40x415 @3802,2444]  {flex-col gap=1}
+            FRAME "Frame 151" [40x308 @3802,2444]  {flex-col gap=1}
+              VECTOR "Vector 24" [40x95 @3802,2444]  {fill=#334863 r=0/0/0/0}
+              FRAME "Frame 66" [40x155 @3802,2540]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=#334863 r=4}
+              FRAME "Frame 77" [40x18 @3802,2696]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=#334863 r=4}
+              FRAME "Frame 74" [40x18 @3802,2715]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=#334863 r=4}
+              FRAME "Frame 75" [40x18 @3802,2734]  {flex-row gap=10 pad=10/10/10/10 main=CENTER cross=CENTER fill=#334863 r=4}
+            FRAME "Frame 76" [40x106 @3802,2753]  {flex-row gap=10 pad=10/10/10/10 main=CENTER stroke=gradient_linear(#334863@0.00,#334863/0.00@1.00) w=1}
+          RECTANGLE "Rectangle 1274" [4x18 @3742,2696]  {stroke=#334863 w=1 r=0/4/4/0}
+          RECTANGLE "Rectangle 1275" [4x18 @3670,2715]  {stroke=#334863 w=1 r=0/4/4/0}
+          RECTANGLE "Rectangle 1276" [4x18 @3728,2734]  {stroke=#334863 w=1 r=0/4/4/0}
+          TEXT "What Drives the Team" [120x15 @3504,2680]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+            ▸ "What Drives the Team"
+          TEXT "Shared commitment to excellence" [224x18 @3504,2734]  {fill=#d2e4ff font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+            ▸ "Shared commitment to excellence"
+          TEXT "Respect for engineering" [166x18 @3504,2715]  {fill=#d2e4ff font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+            ▸ "Respect for engineering"
+          TEXT "genuine passion for what we build" [238x18 @3504,2696]  {fill=#d2e4ff font=JetBrains Mono/500/12px lh=18 case=UPPER align=CENTER}
+            ▸ "genuine passion for what we build"
+          VECTOR "Vector 22" [54x0 @3747,2706]  {stroke=#334863 w=1}
+          VECTOR "Vector 23" [126x0 @3675,2724]  {stroke=#334863 w=1}
+          VECTOR "Vector 24" [68x0 @3733,2744]  {stroke=#334863 w=1}
+      FRAME "Frame 141" [1060x619 @2842,3064]  {flex-col gap=40 pad=60/60/60/60 fill=#1a2120 r=40}
+        FRAME "Frame" [940x217 @2902,3124]  {r=999}
+          RECTANGLE "Rectangle 1270" [940x1 @2902,3124]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1271" [940x1 @2902,3133]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1272" [940x1 @2902,3142]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1273" [940x1 @2902,3151]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1274" [940x1 @2902,3160]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1275" [940x1 @2902,3169]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1276" [940x1 @2902,3178]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1277" [940x1 @2902,3187]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1278" [940x1 @2902,3196]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1279" [940x1 @2902,3205]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1280" [940x1 @2902,3214]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1281" [940x1 @2902,3223]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1282" [940x1 @2902,3232]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1283" [940x1 @2902,3241]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1284" [940x1 @2902,3250]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1285" [940x1 @2902,3259]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1286" [940x1 @2902,3268]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1287" [940x1 @2902,3277]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1288" [940x1 @2902,3286]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1289" [940x1 @2902,3295]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1290" [940x1 @2902,3304]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1291" [940x1 @2902,3313]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1292" [940x1 @2902,3322]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1293" [940x1 @2902,3331]  {fill=#3f4948}
+          RECTANGLE "Rectangle 1294" [940x1 @2902,3340]  {fill=#3f4948}
+        FRAME "Frame 159" [940x242 @2902,3381]  {flex-row gap=60}
+          FRAME "Frame 158" [470x242 @2902,3381]  {flex-col gap=40}
+            TEXT "We collaborate with investors who share both strategic perspective and a genuine belief in the value of meaningful systems. Our approach is not transactional. We seek partners grounded in long-term thinking, disciplined execution, and the patience to build something that lasts." [470x162 @2902,3381]  {fill=#bec9c7 font=Inter/500/18px lh=27}
+              ▸ "We collaborate with investors who share both strategic perspective and a genuine belief in the value of meaningful systems. Our approach is not transactional. We seek partners grounded in long-term thinking, disciplined execution, and the patience to build something that lasts."
+            FRAME "Frame 73" [113x40 @2902,3583]  {flex-row gap=10 pad=0/24/0/24 main=CENTER cross=CENTER fill=#dde4e3 r=999}
+              TEXT "Talk to us" [65x14 @2926,3596]  {fill=#2b3231 font=Inter/500/14px lh=14}
+                ▸ "Talk to us"
+        FRAME "Frame" [217x217 @3264,3124]  {r=999}
+          RECTANGLE "Rectangle 1270" [940x1 @2903,3124]  {fill=#889392}
+          RECTANGLE "Rectangle 1271" [940x1 @2903,3133]  {fill=#889392}
+          RECTANGLE "Rectangle 1272" [940x1 @2903,3142]  {fill=#889392}
+          RECTANGLE "Rectangle 1273" [940x1 @2903,3151]  {fill=#889392}
+          RECTANGLE "Rectangle 1274" [940x1 @2903,3160]  {fill=#889392}
+          RECTANGLE "Rectangle 1275" [940x1 @2903,3169]  {fill=#889392}
+          RECTANGLE "Rectangle 1276" [940x1 @2903,3178]  {fill=#889392}
+          RECTANGLE "Rectangle 1277" [940x1 @2903,3187]  {fill=#889392}
+          RECTANGLE "Rectangle 1278" [940x1 @2903,3196]  {fill=#889392}
+          RECTANGLE "Rectangle 1279" [940x1 @2903,3205]  {fill=#889392}
+          RECTANGLE "Rectangle 1280" [940x1 @2903,3214]  {fill=#889392}
+          RECTANGLE "Rectangle 1281" [940x1 @2903,3223]  {fill=#889392}
+          RECTANGLE "Rectangle 1282" [940x1 @2903,3232]  {fill=#889392}
+          RECTANGLE "Rectangle 1283" [940x1 @2903,3241]  {fill=#889392}
+          RECTANGLE "Rectangle 1284" [940x1 @2903,3250]  {fill=#889392}
+          RECTANGLE "Rectangle 1285" [940x1 @2903,3259]  {fill=#889392}
+          RECTANGLE "Rectangle 1286" [940x1 @2903,3268]  {fill=#889392}
+          RECTANGLE "Rectangle 1287" [940x1 @2903,3277]  {fill=#889392}
+          RECTANGLE "Rectangle 1288" [940x1 @2903,3286]  {fill=#889392}
+          RECTANGLE "Rectangle 1289" [940x1 @2903,3295]  {fill=#889392}
+          RECTANGLE "Rectangle 1290" [940x1 @2903,3304]  {fill=#889392}
+          RECTANGLE "Rectangle 1291" [940x1 @2903,3313]  {fill=#889392}
+          RECTANGLE "Rectangle 1292" [940x1 @2903,3322]  {fill=#889392}
+          RECTANGLE "Rectangle 1293" [940x1 @2903,3331]  {fill=#889392}
+          RECTANGLE "Rectangle 1294" [940x1 @2903,3340]  {fill=#889392}
+      FRAME "Frame 144" [1060x540 @2842,3703]  {fill=img(6175657e8614…,FILL) r=40}
+        TEXT "What moves the world is rarely seen" [782x53 @2981,3947]  {fill=#dde4e3 font=Inter/500/48px lh=52.8 ls=-1.44 align=CENTER}
+          ▸ "What moves the world is rarely seen"
+      FRAME "Frame 145" [1060x572 @2842,4263]  {flex-col fill=#090f0f r=40}
+        FRAME "Frame 174" [1060x370 @2842,4263]  {flex-col gap=40 pad=60/60/60/60 fill=#1a2120 r=40}
+          FRAME "Frame 154" [470x102 @2902,4323]  {flex-col gap=40}
+            FRAME "Frame 164" [470x102 @2902,4323]  {flex-col gap=8}
+              TEXT "The invisible layer" [470x18 @2902,4323]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                ▸ "The invisible layer"
+              TEXT "Every day, the world runs on systems no one thinks about." [470x76 @2902,4349]  {fill=#dde4e3 font=Inter/500/32px lh=38.4 ls=-0.64}
+                ▸ "Every day, the world runs on systems no one thinks about."
+          TEXT "Across cities, industries, and infrastructures, countless systems operate quietly behind the scenes. They move people, enable communication, power buildings, and process resources. Controllers. Sensors. Data. Software. Quiet layers of intelligence shaping how the world functions, yet are rarely seen." [940x108 @2902,4465]  {fill=#bec9c7 font=Inter/500/18px lh=27}
+            ▸ "Across cities, industries, and infrastructures, countless systems operate quietly behind the scenes. They move people, enable communication, power buildings, and process resources. \nControllers. Sensors. Data. Software. Quiet layers of intelligence shaping how the world functions, yet are rarely seen."
+        FRAME "Frame 172" [1060x202 @2842,4633]  {flex-col pad=0/0/60/0}
+          FRAME "Frame 169" [1060x58 @2842,4633]  {flex-row gap=60 pad=16/60/16/60 cross=CENTER fill=img(e423f3f5d663…,STRETCH)|gradient_linear(#090f0f@0.00,#090f0f/0.00@1.00)|gradient_linear(#090f0f@0.00,#090f0f/0.00@0.50,#090f0f@1.00)}
+            FRAME "Frame 165" [440x58 @2902,4633]  {flex-row pad=16/32/16/0 cross=CENTER}
+              TEXT "Connected with purpose" [408x18 @2902,4653]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                ▸ "Connected with purpose"
+            FRAME "Frame 168" [440x58 @3402,4633]  {flex-row pad=16/32/16/0 cross=CENTER}
+              TEXT "Where we work" [408x18 @3402,4653]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+                ▸ "Where we work"
+          FRAME "Frame 171" [1060x84 @2842,4691]  {flex-row gap=60 pad=0/60/0/60}
+            FRAME "Frame 167" [440x84 @2902,4691]  {flex-row gap=10 main=CENTER cross=CENTER}
+              TEXT "When connected with purpose, these elements transform machines into living systems. Isolated components become ecosystems. Static infrastructure becomes responsive, observable, aware." [440x84 @2902,4691]  {fill=#bec9c7 font=Inter/500/14px lh=21}
+                ▸ "When connected with purpose, these elements transform machines into living systems. Isolated components become ecosystems. Static infrastructure becomes responsive, observable, aware."
+            FRAME "Frame 170" [440x84 @3402,4691]  {flex-row gap=10 main=CENTER cross=CENTER}
+              TEXT "Codistica was built around curiosity, discipline, and a deep respect for this invisible layer. Our work focuses precisely there. In the intelligence that allows complex systems to operate with greater clarity, reliability, and awareness." [440x84 @3402,4691]  {fill=#bec9c7 font=Inter/500/14px lh=21}
+                ▸ "Codistica was built around curiosity, discipline, and a deep respect for this invisible layer. Our work focuses precisely there. In the intelligence that allows complex systems to operate with greater clarity, reliability, and awareness."
+      FRAME "Frame 128" [1060x480 @2842,4855]  {flex-col pad=0/60/0/60 fill=img(e423f3f5d663…,STRETCH)|gradient_linear(#090f0f/0.00@0.00,#090f0f@1.00) r=40}
+        FRAME "Frame 163" [940x240 @2902,4855]  {flex-col gap=10 pad=60/0/0/0}
+          FRAME "Frame 130" [940x76 @2902,4915]  {flex-row gap=80}
+            TEXT ""Find what you are passionate about and passionate even more"" [940x76 @2902,4915]  {fill=#dde4e3 font=Inter/500/32px lh=38.4 ls=-0.64}
+              ▸ ""Find what you are passionate about \nand passionate even more""
+        FRAME "Frame 160" [940x240 @2902,5095]  {flex-row gap=10 pad=20/0/60/0 stroke=#003736 w=1 background_blur(100)}
+          FRAME "Frame 156" [770x160 @2902,5115]  {flex-col main=SPACE_BETWEEN}
+            FRAME "Frame 161" [147x54 @2902,5115]  {flex-col}
+              TEXT "Ernesto Stifano" [132x27 @2902,5115]  {fill=#dde4e3 font=Inter/500/18px lh=27}
+                ▸ "Ernesto Stifano "
+              TEXT "Co-founder, CEO" [147x27 @2902,5142]  {fill=#bec9c7 font=Inter/500/18px lh=27}
+                ▸ "Co-founder, CEO"
+            FRAME "Frame 173" [311x40 @2902,5235]  {flex-row gap=4 cross=CENTER}
+              FRAME "Frame 162" [267x40 @2902,5235]  {flex-row gap=10 pad=0/16/0/16 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+                TEXT "ernesto.stifano@codistica.com" [209x14 @2918,5248]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+                  ▸ "ernesto.stifano@codistica.com"
+                INSTANCE "16/Copy" [16x16 @3137,5247]  {comp=209:9}
+                  VECTOR "Vector 22" [9x11 @3142,5248]  {fill=#dde4e3 r=1}
+                  VECTOR "Vector 23" [8x10 @3139,5252]  {stroke=#dde4e3 w=2 r=0/0/0/0}
+              FRAME "Frame 73" [40x40 @3173,5235]  {flex-row gap=10 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+                FRAME "linkedin-svgrepo-com 1" [24x24 @3181,5243]
+                  VECTOR "Vector" [19x19 @3184,5246]  {fill=#dde4e3}
+          RECTANGLE "image 1" [160x160 @3682,5115]  {fill=img(50fc48b89dbe…,FILL) r=8}
+      FRAME "What we do" [1060x980 @2842,5355]  {flex-col gap=40 pad=60/60/60/60 cross=CENTER fill=#1a2120 r=40}
+        RECTANGLE "Rectangle 1295" [940x316 @2902,5573]  {fill=gradient_linear(#0e1514@0.00,#1a2120@0.40,#1a2120@0.60,#0e1514@1.00) r=999}
+        GROUP "Group 21" [632x632 @3056,5415]
+          INSTANCE "Circle row" [15x316 @3364,5415]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [15x150 @3364,5415]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Vertical Mobility"
+            FRAME "Frame 178" [15x316 @3364,5573]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [15x48 @3364,5573]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•• •• ••"
+              TEXT "••••••••" [15x48 @3364,5841]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [15x150 @3364,5897]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [52x316 @3365,5416]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [32x151 @3384,5416]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+            FRAME "Frame 178" [50x304 @3348,5573]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [19x37 @3379,5573]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••• ••   "
+              TEXT "••••••••" [20x49 @3348,5827]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [32x151 @3329,5883]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [88x311 @3365,5422]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [49x149 @3403,5422]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Remote Access"
+            FRAME "Frame 178" [79x276 @3337,5576]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [17x15 @3398,5576]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••      "
+              TEXT "••••••••" [26x50 @3337,5801]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [49x149 @3300,5856]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [122x302 @3365,5432]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [65x146 @3422,5432]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Dashboard"
+            FRAME "Frame 178" [116x285 @3317,5580]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [24x33 @3409,5580]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•   •  "
+              TEXT "••••••••" [31x50 @3317,5815]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [65x146 @3263,5867]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [155x289 @3365,5445]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [81x141 @3440,5445]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Resource Optimization"
+            FRAME "Frame 178" [155x289 @3294,5586]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [35x50 @3415,5586]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•••  •••"
+              TEXT "••••••••" [35x50 @3294,5826]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [81x141 @3223,5876]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [186x272 @3366,5463]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [95x134 @3457,5463]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Plant Modeling"
+            FRAME "Frame 178" [163x237 @3302,5595]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [16x13 @3449,5595]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•      "
+              TEXT "••••••••" [39x48 @3302,5784]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [95x134 @3215,5830]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [215x252 @3366,5484]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [108x125 @3473,5484]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Traceability"
+            FRAME "Frame 178" [203x238 @3276,5605]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [31x33 @3449,5605]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•• ••   "
+              TEXT "••••••••" [42x46 @3276,5797]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [108x125 @3175,5840]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [240x228 @3367,5509]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [119x114 @3488,5509]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Processing Lines"
+            FRAME "Frame 178" [236x224 @3256,5617]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [41x40 @3451,5617]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  •  • "
+              TEXT "••••••••" [45x44 @3256,5797]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [119x114 @3141,5835]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [263x201 @3368,5536]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [129x102 @3501,5536]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Inventory Systems"
+            FRAME "Frame 178" [234x179 @3270,5631]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [19x19 @3485,5631]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••     "
+              TEXT "••••••••" [47x41 @3270,5769]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [129x102 @3143,5803]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [281x171 @3368,5567]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [137x88 @3512,5567]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Product Lifecycle"
+            FRAME "Frame 178" [266x162 @3247,5646]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [33x28 @3479,5646]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•   •   "
+              TEXT "••••••••" [49x37 @3247,5770]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [137x88 @3110,5798]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [296x139 @3369,5599]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [144x73 @3521,5599]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Supply Chain"
+            FRAME "Frame 178" [296x139 @3224,5662]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [50x33 @3470,5662]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•••  •••"
+              TEXT "••••••••" [50x33 @3224,5768]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [144x73 @3079,5790]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [307x105 @3370,5633]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [148x57 @3529,5633]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Networks"
+            FRAME "Frame 178" [267x93 @3259,5679]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [10x16 @3515,5679]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•        "
+              TEXT "••••••••" [50x28 @3259,5743]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [148x57 @3107,5759]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [314x69 @3371,5669]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [150x41 @3534,5669]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Connectivity"
+            FRAME "Frame 178" [290x65 @3239,5696]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [26x19 @3503,5696]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  •    "
+              TEXT "••••••••" [50x23 @3239,5738]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [150x41 @3083,5748]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [316x33 @3372,5705]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [151x24 @3537,5705]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Integration"
+            FRAME "Frame 178" [298x32 @3232,5714]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [31x17 @3499,5714]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•• ••  "
+              TEXT "••••••••" [49x18 @3232,5729]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [151x24 @3074,5732]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [316x34 @3372,5724]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [151x24 @3537,5733]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Infrastructure"
+            FRAME "Frame 178" [310x33 @3220,5715]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [43x17 @3487,5730]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••• ••• "
+              TEXT "••••••••" [49x18 @3220,5715]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [151x24 @3062,5705]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [314x70 @3371,5724]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [150x41 @3534,5753]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Digital Twin"
+            FRAME "Frame 178" [284x65 @3245,5701]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [20x18 @3509,5748]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "• •     "
+              TEXT "••••••••" [50x23 @3245,5701]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [150x41 @3089,5674]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [307x105 @3370,5724]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [148x58 @3529,5772]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Machine Learning"
+            FRAME "Frame 178" [301x104 @3224,5680]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [45x26 @3481,5757]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  • ••  "
+              TEXT "••••••••" [50x28 @3224,5680]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [148x58 @3073,5635]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [296x139 @3369,5724]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [144x73 @3521,5790]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Systems Integration"
+            FRAME "Frame 178" [290x137 @3230,5664]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [45x30 @3475,5770]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  •  • "
+              TEXT "••••••••" [50x33 @3230,5664]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [144x73 @3084,5601]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [281x171 @3368,5725]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [137x88 @3512,5808]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Digital Networks"
+            FRAME "Frame 178" [281x171 @3231,5645]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [49x37 @3463,5780]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••  •• •"
+              TEXT "••••••••" [49x37 @3231,5645]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [137x88 @3095,5566]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [262x201 @3368,5725]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [129x102 @3501,5824]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Access Control"
+            FRAME "Frame 178" [253x194 @3251,5638]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [38x34 @3465,5798]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•••  •  "
+              TEXT "••••••••" [47x41 @3251,5638]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [129x102 @3124,5543]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [240x228 @3367,5726]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [119x114 @3487,5840]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Security Systems"
+            FRAME "Frame 178" [205x195 @3287,5650]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [10x11 @3482,5834]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "        "
+              TEXT "••••••••" [45x44 @3287,5650]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [119x114 @3172,5541]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [214x252 @3366,5726]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [108x125 @3473,5853]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Lighting Control"
+            FRAME "Frame 178" [218x257 @3261,5600]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [46x51 @3433,5806]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•   •   •"
+              TEXT "••••••••" [42x46 @3261,5600]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [108x125 @3160,5479]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [186x272 @3366,5727]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [95x134 @3457,5866]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Energy Management"
+            FRAME "Frame 178" [166x242 @3299,5625]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [19x18 @3446,5849]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••       "
+              TEXT "••••••••" [39x48 @3299,5625]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [95x134 @3212,5493]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [155x289 @3365,5728]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [81x141 @3440,5876]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Climate Systems"
+            FRAME "Frame 178" [152x284 @3297,5592]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [32x44 @3417,5831]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•   • • "
+              TEXT "••••••••" [35x50 @3297,5592]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [81x141 @3227,5450]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [122x302 @3365,5728]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [65x146 @3422,5885]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Systems Thinking"
+            FRAME "Frame 178" [122x302 @3311,5580]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [30x50 @3402,5832]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••• • ••"
+              TEXT "••••••••" [30x50 @3311,5580]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [65x146 @3257,5431]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [87x311 @3365,5729]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [49x149 @3403,5891]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Food & Beverage"
+            FRAME "Frame 178" [83x294 @3333,5593]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [21x33 @3394,5854]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••  •   "
+              TEXT "••••••••" [26x50 @3333,5593]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [49x149 @3296,5439]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [51x316 @3365,5730]  {flex-row gap=8 cross=CENTER comp=418:8666}
+            TEXT "Concept to Implementation" [32x151 @3384,5895]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Telecommunications"
+            FRAME "Frame 178" [51x316 @3346,5573]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [20x49 @3377,5839]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "• ••   •"
+              TEXT "••••••••" [20x49 @3346,5573]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [32x151 @3328,5416]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [52x316 @3328,5416]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [32x151 @3328,5416]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Waste Treatment"
+            FRAME "Frame 178" [52x316 @3346,5573]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [20x49 @3346,5573]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•••   ••"
+              TEXT "••••••••" [20x49 @3377,5839]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [32x151 @3384,5895]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [88x311 @3292,5422]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [49x149 @3292,5422]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Fashion"
+            FRAME "Frame 178" [78x270 @3328,5576]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [16x9 @3328,5576]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•       "
+              TEXT "••••••••" [26x50 @3380,5795]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [49x149 @3393,5850]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [122x302 @3257,5432]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [65x146 @3257,5432]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Household Appliances"
+            FRAME "Frame 178" [114x280 @3311,5580]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [22x28 @3311,5580]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  •    "
+              TEXT "••••••••" [31x50 @3394,5809]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [65x146 @3414,5862]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [155x289 @3223,5445]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [81x141 @3223,5445]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Passenger Lifts"
+            FRAME "Frame 178" [155x289 @3294,5586]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [35x50 @3294,5586]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••• •  •"
+              TEXT "••••••••" [35x50 @3415,5826]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [81x141 @3440,5876]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [186x272 @3192,5463]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [95x134 @3192,5463]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Cargo Lifts"
+            FRAME "Frame 178" [186x272 @3279,5595]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [39x48 @3279,5595]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••   •••"
+              TEXT "••••••••" [39x48 @3426,5819]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [95x134 @3457,5866]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [215x252 @3163,5484]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [108x125 @3163,5484]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "High-Speed Lifts"
+            FRAME "Frame 178" [203x238 @3265,5605]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [31x33 @3265,5605]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  ••   "
+              TEXT "••••••••" [42x46 @3425,5797]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [108x125 @3461,5840]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [240x228 @3137,5509]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [119x114 @3137,5509]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Escalators"
+            FRAME "Frame 178" [223x211 @3252,5617]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [28x27 @3252,5617]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•• •    "
+              TEXT "••••••••" [45x44 @3429,5785]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [119x114 @3470,5823]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [263x201 @3114,5536]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [129x102 @3114,5536]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Travelators"
+            FRAME "Frame 178" [258x197 @3241,5631]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [43x37 @3241,5631]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "      • "
+              TEXT "••••••••" [47x41 @3451,5787]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [129x102 @3496,5820]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [281x171 @3095,5567]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [137x88 @3095,5567]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Controllers"
+            FRAME "Frame 178" [281x171 @3231,5646]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [49x37 @3231,5646]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•••• •••"
+              TEXT "••••••••" [49x37 @3464,5779]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [137x88 @3512,5807]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [296x139 @3079,5599]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [144x73 @3079,5599]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Smart Components"
+            FRAME "Frame 178" [285x134 @3224,5662]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [39x28 @3224,5662]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••   •  "
+              TEXT "••••••••" [50x33 @3459,5763]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [144x73 @3510,5785]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [307x105 @3067,5633]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [148x57 @3067,5633]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Data Analytics"
+            FRAME "Frame 178" [290x100 @3218,5679]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [33x23 @3218,5679]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••• •  "
+              TEXT "••••••••" [50x28 @3458,5750]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [148x57 @3512,5766]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [314x69 @3059,5669]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [150x41 @3059,5669]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Lifecycle Management"
+            FRAME "Frame 178" [308x68 @3215,5696]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [44x22 @3215,5696]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•• •  • "
+              TEXT "••••••••" [50x23 @3473,5742]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [150x41 @3528,5751]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [316x33 @3056,5705]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [151x24 @3056,5705]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Software"
+            FRAME "Frame 178" [310x33 @3214,5714]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [43x17 @3214,5714]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•   • •  "
+              TEXT "••••••••" [49x18 @3475,5729]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [151x24 @3531,5733]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [316x34 @3056,5724]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [151x24 @3056,5733]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Automation"
+            FRAME "Frame 178" [316x34 @3214,5714]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [49x18 @3214,5730]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•• •• ••"
+              TEXT "••••••••" [49x18 @3481,5714]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [151x24 @3537,5705]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [314x70 @3060,5724]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [150x41 @3060,5753]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Monitoring"
+            FRAME "Frame 178" [308x69 @3215,5697]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [44x22 @3215,5744]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•••   • "
+              TEXT "••••••••" [50x23 @3473,5697]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [150x41 @3528,5670]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [307x105 @3067,5724]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [148x58 @3067,5772]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "IoT"
+            FRAME "Frame 178" [261x91 @3219,5692]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [4x14 @3219,5769]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "          "
+              TEXT "••••••••" [50x28 @3429,5692]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [148x58 @3483,5647]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [296x139 @3079,5724]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [144x73 @3079,5790]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Waste-to-Hydrocarbon"
+            FRAME "Frame 178" [285x134 @3224,5666]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [39x28 @3224,5773]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  • • "
+              TEXT "••••••••" [50x33 @3459,5666]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [144x73 @3510,5603]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [281x171 @3095,5725]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [137x88 @3095,5808]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Process Automation"
+            FRAME "Frame 178" [271x165 @3231,5651]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [39x31 @3231,5786]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••• ••  "
+              TEXT "••••••••" [49x37 @3453,5651]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [137x88 @3502,5572]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [262x201 @3114,5725]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [129x102 @3114,5824]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Plant Integration"
+            FRAME "Frame 178" [253x194 @3241,5638]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [38x34 @3241,5798]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  ••• "
+              TEXT "••••••••" [47x41 @3446,5638]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [129x102 @3491,5543]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [240x228 @3137,5726]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [119x114 @3137,5840]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Customer Experience"
+            FRAME "Frame 178" [222x212 @3252,5633]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [28x27 @3252,5818]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  •    "
+              TEXT "••••••••" [45x44 @3429,5633]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [119x114 @3470,5525]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [214x252 @3163,5726]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [108x125 @3163,5853]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Quality Monitoring"
+            FRAME "Frame 178" [191x224 @3265,5633]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [19x19 @3265,5838]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "••      "
+              TEXT "••••••••" [42x46 @3414,5633]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [108x125 @3450,5511]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [186x272 @3192,5727]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [95x134 @3192,5866]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Packaging Systems"
+            FRAME "Frame 178" [179x262 @3279,5605]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [32x38 @3279,5829]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "• •  • "
+              TEXT "••••••••" [39x48 @3419,5605]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [95x134 @3450,5473]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [155x289 @3224,5728]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [81x141 @3224,5876]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Energy Recovery"
+            FRAME "Frame 178" [147x273 @3295,5602]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [27x34 @3295,5842]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•  ••   "
+              TEXT "••••••••" [35x50 @3406,5602]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [81x141 @3432,5461]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [122x302 @3257,5728]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [65x146 @3257,5885]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Fire Protection "
+            FRAME "Frame 178" [107x263 @3311,5619]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [16x11 @3311,5871]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•     "
+              TEXT "••••••••" [30x50 @3388,5619]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [65x146 @3407,5471]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [87x311 @3292,5729]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [49x149 @3292,5891]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Commissioning"
+            FRAME "Frame 178" [88x317 @3328,5570]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [27x56 @3328,5831]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•   •   • "
+              TEXT "••••••••" [26x50 @3391,5570]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [49x149 @3404,5416]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [51x316 @3328,5730]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [32x151 @3328,5895]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "End to End"
+            FRAME "Frame 178" [49x298 @3346,5591]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [18x32 @3346,5857]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•   •   "
+              TEXT "••••••••" [20x49 @3375,5591]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [32x151 @3382,5434]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+          INSTANCE "Circle row" [15x316 @3364,5731]  {flex-row gap=8 cross=CENTER comp=418:8052}
+            TEXT "Concept to Implementation" [15x150 @3365,5897]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 align=RIGHT}
+              ▸ "Building Automation"
+            FRAME "Frame 178" [15x316 @3364,5573]  {flex-row gap=220 cross=CENTER}
+              TEXT "••••••••" [15x48 @3365,5841]  {fill=#dde4e3 font=JetBrains Mono/500/10px lh=15 case=UPPER}
+                ▸ "•••  •••"
+              TEXT "••••••••" [15x48 @3364,5573]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15 case=UPPER align=RIGHT}
+                ▸ "••••••••"
+            TEXT "Concept to Implementation" [15x150 @3364,5415]  {fill=#dde4e3 op=0.00 font=JetBrains Mono/500/10px lh=15}
+              ▸ "Concept to Implementation"
+        FRAME "Frame 179" [940x188 @2902,6087]  {flex-row gap=60}
+          TEXT "Every system. One conviction." [440x76 @2902,6087]  {fill=#dde4e3 font=Inter/500/32px lh=38.4 ls=-0.64}
+            ▸ "Every system. \nOne conviction."
+          FRAME "Frame 180" [440x188 @3402,6087]  {flex-col gap=40}
+            TEXT "Connect physical infrastructure with digital intelligence. Turn the invisible into something observable, responsive, and aware. Concept to implementation. In-house. End to end." [440x108 @3402,6087]  {fill=#bec9c7 font=Inter/500/18px lh=27}
+              ▸ "Connect physical infrastructure with digital intelligence. Turn the invisible into something observable, responsive, and aware. \nConcept to implementation. In-house. End to end."
+            INSTANCE "Button - filled" [97x40 @3402,6235]  {flex-row main=CENTER cross=CENTER comp=297:2440}
+              FRAME "Content" [97x40 @3402,6235]  {flex-row main=CENTER cross=CENTER fill=#dde4e3 r=1000}
+                FRAME "State-layer" [97x40 @3402,6235]  {flex-row gap=8 pad=0/16/0/16 main=CENTER cross=CENTER}
+                  INSTANCE "IconBuildingBlock" [20x20 @3418,6245]  {comp=297:2408 HIDDEN}
+                    GROUP "Mask group" [20x20 @3418,6245]
+                      GROUP "Mask group" [20x20 @3418,6245]
+                        FRAME "Frame 2" [20x20 @3418,6245]
+                          INSTANCE "24/Placeholder" [20x20 @3418,6245]  {comp=297:2403}
+                            VECTOR "Vector" [17x17 @3419,6246]  {fill=#c6c6d0}
+                        RECTANGLE "Rectangle 1009" [20x20 @3418,6245]  {fill=#2b3231}
+                  TEXT "Label" [65x16 @3418,6247]  {fill=#2b3231 font=Inter/500/14px lh=16 align=CENTER}
+                    ▸ "Talk to us"
+                  INSTANCE "IconBuildingBlock" [20x20 @3491,6245]  {comp=297:2408 HIDDEN}
+                    GROUP "Mask group" [20x20 @3491,6245]
+                      GROUP "Mask group" [20x20 @3491,6245]
+                        FRAME "Frame 2" [20x20 @3491,6245]
+                          INSTANCE "24/Placeholder" [20x20 @3491,6245]  {comp=297:2403}
+                            VECTOR "Vector" [17x17 @3492,6246]  {fill=#c6c6d0}
+                        RECTANGLE "Rectangle 1009" [20x20 @3491,6245]  {fill=#2b3231}
+        TEXT "What we do" [72x18 @2902,5415]  {fill=#dde4e3 font=JetBrains Mono/500/12px lh=18 case=UPPER}
+          ▸ "What we do"
+  VECTOR "Vector 22" [80x0 @3142,1946]  {stroke=#334863 w=1}
+  VECTOR "Vector 23" [80x0 @3522,1946]  {stroke=#334863 w=1}
+  INSTANCE "Footer" [1920x656 @2222,6455]  {flex-col gap=40 pad=40/40/40/40 main=CENTER comp=359:17081}
+    FRAME "Frame 181" [1840x319 @2262,6495]  {flex-row cross=CENTER}
+      FRAME "Frame 180" [1120x319 @2262,6495]  {flex-col}
+        FRAME "Frame 179" [1120x287 @2262,6495]  {flex-col gap=40}
+          TEXT "Powering the invisible" [1120x53 @2262,6495]  {fill=#ecf2f1 font=Inter/500/48px lh=52.8 ls=-1.44}
+            ▸ "Powering the invisible"
+          FRAME "Frame 173" [1120x40 @2262,6588]  {flex-row gap=4 cross=CENTER}
+            FRAME "Content" [97x40 @2262,6588]  {flex-row main=CENTER cross=CENTER fill=#dde4e3 r=1000}
+              FRAME "State-layer" [97x40 @2262,6588]  {flex-row gap=8 pad=0/16/0/16 main=CENTER cross=CENTER}
+                INSTANCE "IconBuildingBlock" [20x20 @2278,6598]  {comp=297:2408 HIDDEN}
+                  GROUP "Mask group" [20x20 @2278,6598]
+                    GROUP "Mask group" [20x20 @2278,6598]
+                      FRAME "Frame 2" [20x20 @2278,6598]
+                        INSTANCE "24/Placeholder" [20x20 @2278,6598]  {comp=297:2403}
+                          VECTOR "Vector" [17x17 @2279,6599]  {fill=#c6c6d0}
+                      RECTANGLE "Rectangle 1009" [20x20 @2278,6598]  {fill=#2b3231}
+                TEXT "Label" [65x16 @2278,6600]  {fill=#2b3231 font=Inter/500/14px lh=16 align=CENTER}
+                  ▸ "Talk to us"
+                INSTANCE "IconBuildingBlock" [20x20 @2351,6598]  {comp=297:2408 HIDDEN}
+                  GROUP "Mask group" [20x20 @2351,6598]
+                    GROUP "Mask group" [20x20 @2351,6598]
+                      FRAME "Frame 2" [20x20 @2351,6598]
+                        INSTANCE "24/Placeholder" [20x20 @2351,6598]  {comp=297:2403}
+                          VECTOR "Vector" [17x17 @2352,6599]  {fill=#c6c6d0}
+                      RECTANGLE "Rectangle 1009" [20x20 @2351,6598]  {fill=#2b3231}
+            FRAME "Frame 162" [191x40 @2363,6588]  {flex-row gap=10 pad=0/16/0/16 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+              TEXT "info@codistica.com" [133x14 @2379,6601]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+                ▸ "info@codistica.com"
+              INSTANCE "16/Copy" [16x16 @2522,6600]  {comp=209:9}
+                VECTOR "Vector 22" [9x11 @2527,6601]  {fill=#bec9c7 r=1}
+                VECTOR "Vector 23" [8x10 @2524,6605]  {stroke=#bec9c7 w=2 r=0/0/0/0}
+        FRAME "Frame 143" [366x32 @2262,6782]  {flex-row gap=10 main=CENTER cross=CENTER}
+          FRAME "Frame 143" [43x32 @2262,6782]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Privacy" [43x12 @2262,6792]  {fill=#bec9c7 font=Inter/500/12px lh=12}
+              ▸ "Privacy"
+          FRAME "Frame 144" [75x32 @2315,6782]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Terms of use" [75x12 @2315,6792]  {fill=#bec9c7 font=Inter/500/12px lh=12}
+              ▸ "Terms of use"
+          FRAME "Frame 182" [228x32 @2400,6782]  {flex-row gap=10 cross=CENTER}
+            TEXT "2026 © CODISTICA All Rights Reserved" [228x12 @2400,6792]  {fill=#bec9c7 font=Inter/500/12px lh=12}
+              ▸ "2026 © CODISTICA All Rights Reserved"
+      FRAME "Frame 142" [720x319 @3382,6495]  {flex-row pad=12/0/0/0}
+        FRAME "Frame 132" [360x307 @3382,6507]  {flex-col}
+          FRAME "Frame 144" [360x27 @3382,6507]  {flex-row gap=10 pad=0/0/12/0 main=CENTER cross=CENTER}
+            TEXT "industries" [360x15 @3382,6507]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 ls=0.50 case=UPPER}
+              ▸ "industries"
+          FRAME "Frame 133" [360x40 @3382,6534]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Vertical mobility" [360x14 @3382,6547]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Vertical mobility"
+          FRAME "Frame 134" [112x40 @3382,6574]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Waste treatment" [112x14 @3382,6587]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Waste treatment"
+          FRAME "Frame 135" [139x40 @3382,6614]  {flex-row gap=8 main=CENTER cross=CENTER}
+            TEXT "Telecommunications" [139x14 @3382,6627]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Telecommunications"
+          FRAME "Frame 136" [53x40 @3382,6654]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Fashion" [53x14 @3382,6667]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Fashion"
+          FRAME "Frame 137" [113x40 @3382,6694]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Food & beverage" [113x14 @3382,6707]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Food & beverage"
+          FRAME "Frame 138" [148x40 @3382,6734]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Household appliances" [148x14 @3382,6747]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Household appliances"
+          FRAME "Frame 139" [134x40 @3382,6774]  {flex-row gap=10 main=CENTER cross=CENTER}
+            TEXT "Building automation" [134x14 @3382,6787]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+              ▸ "Building automation"
+        FRAME "Frame 177" [360x307 @3742,6507]  {flex-col}
+          FRAME "Frame 142" [360x267 @3742,6507]  {flex-col}
+            FRAME "Frame 144" [360x27 @3742,6507]  {flex-row gap=10 pad=0/0/12/0 main=CENTER cross=CENTER}
+              TEXT "Company" [360x15 @3742,6507]  {fill=#bec9c7 font=JetBrains Mono/500/10px lh=15 ls=0.50 case=UPPER}
+                ▸ "Company"
+            FRAME "Frame 133" [360x40 @3742,6534]  {flex-row gap=10 main=CENTER cross=CENTER}
+              TEXT "Partnership & collaboration" [360x14 @3742,6547]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+                ▸ "Partnership & collaboration"
+            FRAME "Frame 134" [61x40 @3742,6574]  {flex-row gap=10 main=CENTER cross=CENTER}
+              TEXT "About us" [61x14 @3742,6587]  {fill=#dde4e3 font=Inter/500/14px lh=14}
+                ▸ "About us"
+          FRAME "Frame 183" [216x40 @3742,6774]  {flex-row gap=4}
+            FRAME "Frame 178" [40x40 @3742,6774]  {flex-row gap=20}
+              FRAME "Frame 73" [40x40 @3742,6774]  {flex-row gap=10 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+                FRAME "linkedin-svgrepo-com 1" [24x24 @3750,6782]
+                  VECTOR "Vector" [19x19 @3753,6785]  {fill=#dde4e3}
+            FRAME "Frame 179" [40x40 @3786,6774]  {flex-row gap=20}
+              FRAME "Frame 73" [40x40 @3786,6774]  {flex-row gap=10 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+                FRAME "linkedin-svgrepo-com 1" [24x24 @3794,6782]
+                  VECTOR "Vector" [19x19 @3797,6785]  {fill=#dde4e3}
+            FRAME "Frame 180" [40x40 @3830,6774]  {flex-row gap=20}
+              FRAME "Frame 73" [40x40 @3830,6774]  {flex-row gap=10 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+                FRAME "linkedin-svgrepo-com 1" [24x24 @3838,6782]
+                  VECTOR "Vector" [19x19 @3841,6785]  {fill=#dde4e3}
+            FRAME "Frame 181" [40x40 @3874,6774]  {flex-row gap=20}
+              FRAME "Frame 73" [40x40 @3874,6774]  {flex-row gap=10 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+                FRAME "linkedin-svgrepo-com 1" [24x24 @3882,6782]
+                  VECTOR "Vector" [19x19 @3885,6785]  {fill=#dde4e3}
+            FRAME "Frame 182" [40x40 @3918,6774]  {flex-row gap=20}
+              FRAME "Frame 73" [40x40 @3918,6774]  {flex-row gap=10 main=CENTER cross=CENTER fill=#dde4e3/0.08 r=999}
+                FRAME "linkedin-svgrepo-com 1" [24x24 @3926,6782]
+                  VECTOR "Vector" [19x19 @3929,6785]  {fill=#dde4e3}
+    FRAME "Frame" [1840x217 @2262,6854]  {r=999}
+      RECTANGLE "Rectangle 1270" [1920x1 @2222,6854]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1271" [1920x1 @2222,6863]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1272" [1920x1 @2222,6872]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1273" [1920x1 @2222,6881]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1274" [1920x1 @2222,6890]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1275" [1920x1 @2222,6899]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1276" [1920x1 @2222,6908]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1277" [1920x1 @2222,6917]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1278" [1920x1 @2222,6926]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1279" [1920x1 @2222,6935]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1280" [1920x1 @2222,6944]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1281" [1920x1 @2222,6953]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1282" [1920x1 @2222,6962]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1283" [1920x1 @2222,6971]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1284" [1920x1 @2222,6980]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1285" [1920x1 @2222,6989]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1286" [1920x1 @2222,6998]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1287" [1920x1 @2222,7007]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1288" [1920x1 @2222,7016]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1289" [1920x1 @2222,7025]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1290" [1920x1 @2222,7034]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1291" [1920x1 @2222,7043]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1292" [1920x1 @2222,7052]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1293" [1920x1 @2222,7061]  {fill=#3f4948}
+      RECTANGLE "Rectangle 1294" [1920x1 @2222,7070]  {fill=#3f4948}
+      FRAME "Frame" [217x217 @3074,6854]  {r=999}
+        RECTANGLE "Rectangle 1270" [940x1 @2713,6854]  {fill=#889392}
+        RECTANGLE "Rectangle 1271" [940x1 @2713,6863]  {fill=#889392}
+        RECTANGLE "Rectangle 1272" [940x1 @2713,6872]  {fill=#889392}
+        RECTANGLE "Rectangle 1273" [940x1 @2713,6881]  {fill=#889392}
+        RECTANGLE "Rectangle 1274" [940x1 @2713,6890]  {fill=#889392}
+        RECTANGLE "Rectangle 1275" [940x1 @2713,6899]  {fill=#889392}
+        RECTANGLE "Rectangle 1276" [940x1 @2713,6908]  {fill=#889392}
+        RECTANGLE "Rectangle 1277" [940x1 @2713,6917]  {fill=#889392}
+        RECTANGLE "Rectangle 1278" [940x1 @2713,6926]  {fill=#889392}
+        RECTANGLE "Rectangle 1279" [940x1 @2713,6935]  {fill=#889392}
+        RECTANGLE "Rectangle 1280" [940x1 @2713,6944]  {fill=#889392}
+        RECTANGLE "Rectangle 1281" [940x1 @2713,6953]  {fill=#889392}
+        RECTANGLE "Rectangle 1282" [940x1 @2713,6962]  {fill=#889392}
+        RECTANGLE "Rectangle 1283" [940x1 @2713,6971]  {fill=#889392}
+        RECTANGLE "Rectangle 1284" [940x1 @2713,6980]  {fill=#889392}
+        RECTANGLE "Rectangle 1285" [940x1 @2713,6989]  {fill=#889392}
+        RECTANGLE "Rectangle 1286" [940x1 @2713,6998]  {fill=#889392}
+        RECTANGLE "Rectangle 1287" [940x1 @2713,7007]  {fill=#889392}
+        RECTANGLE "Rectangle 1288" [940x1 @2713,7016]  {fill=#889392}
+        RECTANGLE "Rectangle 1289" [940x1 @2713,7025]  {fill=#889392}
+        RECTANGLE "Rectangle 1290" [940x1 @2713,7034]  {fill=#889392}
+        RECTANGLE "Rectangle 1291" [940x1 @2713,7043]  {fill=#889392}
+        RECTANGLE "Rectangle 1292" [940x1 @2713,7052]  {fill=#889392}
+        RECTANGLE "Rectangle 1293" [940x1 @2713,7061]  {fill=#889392}
+        RECTANGLE "Rectangle 1294" [940x1 @2713,7070]  {fill=#889392}
