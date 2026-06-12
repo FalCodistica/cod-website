@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "@/components/Footer";
@@ -41,32 +40,16 @@ export default async function IndustryPage({
 
   return (
     <div className="bg-black">
-      {/* — hero (bottom sheet, pinned scroll-transform) — */}
-      <IndustryHero industry={industry} statement={content.statement} />
+      {/* — hero (bottom sheet → fullscreen → image card + word reveal) — */}
+      <IndustryHero
+        industry={industry}
+        statement={content.statement}
+        detailA={content.detailA}
+        detailB={content.detailB}
+      />
 
       {/* — everything below the sheet — */}
       <div className="relative bg-ink">
-      {/* — context: image + two columns — */}
-      <section className="mx-auto max-w-[960px] px-5 py-24">
-        <div className="overflow-hidden rounded-[20px]">
-          <Image
-            src={industry.hero}
-            alt=""
-            width={1920}
-            height={944}
-            className="h-[472px] w-full object-cover"
-          />
-        </div>
-        <div className="grid gap-10 py-10 sm:grid-cols-2">
-          <p className="text-base font-medium leading-relaxed text-mist">
-            {content.detailA}
-          </p>
-          <p className="text-base font-medium leading-relaxed text-mist">
-            {content.detailB}
-          </p>
-        </div>
-      </section>
-
       {/* — the challenge — */}
       <section className="flex flex-col items-center overflow-hidden py-10">
         <EyebrowPill>The challenge</EyebrowPill>
