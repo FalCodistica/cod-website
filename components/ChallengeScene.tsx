@@ -30,7 +30,6 @@ const rgba = (c: RGB, a: number) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 const ASH: RGB = [136, 147, 146]; // neutral ruler (#889392)
 const ALERT: RGB = [255, 180, 171]; // the challenge (#ffb4ab)
 
-const LINE_COUNT = 27;
 const LINE_W = 1;
 const LINE_H = 180;
 
@@ -84,15 +83,16 @@ export default function ChallengeScene({
     const draw = (p: number) => {
       ctx.clearRect(0, 0, W, H);
 
-      const gap = Math.min(
-        21,
-        (Math.min(573, W - 32) - LINE_COUNT * LINE_W) / (LINE_COUNT - 1),
-      );
-      const rowW = LINE_COUNT * LINE_W + (LINE_COUNT - 1) * gap;
+      // full-width ruler (matches Figma): tile lines edge-to-edge,
+      // odd count so there's a true centre line
+      const pitch = LINE_W + 21;
+      let count = Math.floor((W - 16) / pitch) + 1;
+      if (count % 2 === 0) count -= 1;
+      const rowW = (count - 1) * pitch;
       const rowX = (W - rowW) / 2;
       const rowY = H / 2 - LINE_H / 2;
-      const centerIdx = Math.floor(LINE_COUNT / 2);
-      const centerLineX = rowX + centerIdx * (LINE_W + gap);
+      const centerIdx = (count - 1) / 2;
+      const centerLineX = rowX + centerIdx * pitch;
       const R = W < 640 ? 8 : 10;
 
       // phase progressions
@@ -104,20 +104,19 @@ export default function ChallengeScene({
       const centralRise = 60 * riseEased * (1 - settleEased);
 
       // ── ruler lines ──
-      for (let i = 0; i < LINE_COUNT; i++) {
-        const x = rowX + i * (LINE_W + gap);
-        const proximity =
-          1 - Math.min(Math.abs(i - centerIdx) / (LINE_COUNT / 2), 1);
+      for (let i = 0; i < count; i++) {
+        const x = rowX + i * pitch;
         const bell = bellCurve(i, centerIdx, bellWidth, bellHeight);
+        const bellNorm = bellHeight > 0 ? bell / bellHeight : 0; // 0..1, peaks at centre
         const extraRise = i === centerIdx ? centralRise : 0;
         const offset = bell + extraRise;
 
         let col = ASH;
         let alpha = 0.22;
         if (bellEased > 0) {
-          const m = proximity * bellEased;
+          const m = bellNorm * bellEased;
           col = mix(ASH, accent, m);
-          alpha = lerp(0.22, 0.55, m);
+          alpha = lerp(0.22, 0.6, m);
         }
         if (i === centerIdx) {
           const m = riseEased * (1 - settleEased);
@@ -134,6 +133,13 @@ export default function ChallengeScene({
         ctx.lineWidth = LINE_W;
         ctx.stroke();
       }
+
+      // fade the line bottoms into the background (Figma)
+      const fade = ctx.createLinearGradient(0, rowY + LINE_H - 90, 0, rowY + LINE_H);
+      fade.addColorStop(0, "rgba(14,21,20,0)");
+      fade.addColorStop(1, "rgba(14,21,20,1)");
+      ctx.fillStyle = fade;
+      ctx.fillRect(0, rowY + LINE_H - 90, W, 92);
 
       // ── sphere 1 — rides the row, then the bell ──
       const c1X = lerp(
