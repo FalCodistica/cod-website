@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from "react";
+
 /*
- * "What we do" word wheel — 54 keywords as radial spokes, each sitting at
- * the rim with a small dot cluster just inside it (data + angles taken
- * verbatim from the Figma "Circle row" instances). A horizontal gradient
- * band lights the equator so the wheel reads as a sphere. No rotation —
- * each word simply brightens on hover, as in Figma.
+ * "What we do" word wheel — 54 keywords as radial spokes (data + angles
+ * taken verbatim from the Figma "Circle row" instances). Each word is
+ * anchored on the centre side (inner edge at a fixed radius) and reads
+ * outward, with a small dot cluster just inside it; the empty middle shows
+ * the word currently being hovered. A horizontal gradient band lights the
+ * equator so the wheel reads as a sphere. No rotation — words only
+ * brighten on hover, as in Figma.
  */
 
 const SPOKES: { label: string; angle: number; dots: string }[] = [
@@ -64,6 +70,7 @@ const SPOKES: { label: string; angle: number; dots: string }[] = [
 ];
 
 export default function WordSphere() {
+  const [hovered, setHovered] = useState<string | null>(null);
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[632px] text-[10px]">
       {/* gradient equator band — lights the middle so the wheel reads as a sphere */}
@@ -76,16 +83,30 @@ export default function WordSphere() {
         aria-hidden
       />
 
-      {/* radial spokes */}
+      {/* hovered word, shown in the centre */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex w-[150px] -translate-x-1/2 -translate-y-1/2 justify-center">
+        <span
+          className="text-center text-lg font-medium leading-tight tracking-tight text-foam transition-opacity duration-200"
+          style={{ opacity: hovered ? 1 : 0 }}
+        >
+          {hovered}
+        </span>
+      </div>
+
+      {/* radial spokes — word anchored on the centre side, reading outward */}
       {SPOKES.map(({ label, angle, dots }) => (
         <div
           key={label}
           className="absolute left-1/2 top-1/2 h-0 w-1/2 origin-left"
           style={{ transform: `rotate(${-angle}deg)` }}
         >
-          <div className="group absolute right-2 flex -translate-y-1/2 cursor-default items-center gap-2 whitespace-nowrap">
+          <div
+            onMouseEnter={() => setHovered(label)}
+            onMouseLeave={() => setHovered((h) => (h === label ? null : h))}
+            className="group absolute left-[52%] -translate-y-1/2 cursor-default whitespace-nowrap"
+          >
             {dots && (
-              <span className="font-mono tracking-[0.3em] text-foam/25 transition-colors group-hover:text-mint/70">
+              <span className="absolute right-full mr-2 font-mono tracking-[0.3em] text-foam/25 transition-colors group-hover:text-mint/70">
                 {dots}
               </span>
             )}
