@@ -348,10 +348,12 @@ export default function CompanyPage() {
           </section>
 
           {/* what we do */}
-          <section className="flex flex-col gap-10 rounded-[40px] bg-panel p-7 sm:p-[60px]">
-            <h2 className="mono-body text-foam">What we do</h2>
+          <section className="relative flex flex-col items-center gap-10 overflow-hidden rounded-[40px] bg-panel p-7 sm:p-[60px]">
+            <span className="mono-body absolute left-7 top-7 text-foam sm:left-[60px] sm:top-[60px]">
+              What we do
+            </span>
             <WordSphere />
-            <div className="grid gap-[60px] sm:grid-cols-2">
+            <div className="grid w-full gap-[60px] sm:grid-cols-2">
               <h3 className="heading text-foam">
                 Every system.
                 <br />
