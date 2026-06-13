@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import HomeBackdrop from "./HomeBackdrop";
 import { ScrollRootContext } from "./ScrollRoot";
-import { useMenu } from "./SiteChrome";
 import { CloseDots } from "./ui";
 import { type Industry } from "@/lib/industries";
 
@@ -34,7 +33,6 @@ export default function IndustrySheet({
   children: ReactNode;
 }) {
   const router = useRouter();
-  const { setOpen } = useMenu();
   const sheetRef = useRef<HTMLDivElement>(null);
   const [root, setRoot] = useState<HTMLElement | null>(null);
   const [expanded, setExpanded] = useState(false);
@@ -148,10 +146,10 @@ export default function IndustrySheet({
             >
               <span className="h-1 w-10 rounded-full bg-foam" />
             </div>
-            {/* menu — always reachable */}
+            {/* close the sheet — returns to the home page */}
             <button
-              onClick={() => setOpen(true)}
-              aria-label="Open menu"
+              onClick={dismiss}
+              aria-label="Close"
               className="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full bg-foam backdrop-blur-xl transition-transform hover:scale-105"
             >
               <CloseDots size={20} color="#2b3231" />

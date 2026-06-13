@@ -27,7 +27,7 @@ export default function IndustrySwitcher({
         onClick={onClose}
         className="fixed inset-0 z-30 cursor-default"
       />
-      <div className="absolute bottom-[72px] left-1/2 z-40 w-[340px] max-w-[calc(100vw-32px)] -translate-x-1/2 rounded-[28px] bg-panel/90 p-5 shadow-2xl backdrop-blur-2xl">
+      <div className="absolute bottom-[72px] left-1/2 z-40 w-[340px] max-w-[calc(100vw-32px)] -translate-x-1/2 rounded-[28px] bg-[#1a2120]/40 p-5 shadow-2xl ring-1 ring-white/10 backdrop-blur-2xl">
         <div className="mono-label px-2 pb-2 text-mist">industries</div>
         <ul>
           {industries.map((ind) => {
