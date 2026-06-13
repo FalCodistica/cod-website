@@ -2,9 +2,11 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import HomeBackdrop from "./HomeBackdrop";
 import { ScrollRootContext } from "./ScrollRoot";
 import { useMenu } from "./SiteChrome";
-import { DotGrid } from "./ui";
+import { CloseDots } from "./ui";
+import { type Industry } from "@/lib/industries";
 
 const PEEK = 10; // px of backdrop shown above the sheet at rest
 const OFFSCREEN = 2400; // SSR-safe initial offset (no window needed)
@@ -24,9 +26,11 @@ const EASE =
  * it animates reliably; the drag writes the transform directly for 1:1 feel.
  */
 export default function IndustrySheet({
+  industry,
   children,
 }: {
   slug: string;
+  industry: Industry;
   children: ReactNode;
 }) {
   const router = useRouter();
@@ -117,8 +121,8 @@ export default function IndustrySheet({
 
   return (
     <>
-      {/* dark backdrop — the home page is revealed once the sheet dismisses */}
-      <div className="fixed inset-0 z-20 bg-black" aria-hidden />
+      {/* home stays visible behind the sheet (revealed on drag / dismiss) */}
+      <HomeBackdrop industry={industry} />
 
       <div
         ref={sheetRef}
@@ -150,7 +154,7 @@ export default function IndustrySheet({
               aria-label="Open menu"
               className="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full bg-foam backdrop-blur-xl transition-transform hover:scale-105"
             >
-              <DotGrid size={20} color="#2b3231" />
+              <CloseDots size={20} color="#2b3231" />
             </button>
           </div>
 

@@ -92,6 +92,31 @@ export function DotGrid({ size = 20, color = "#dde4e3" }: { size?: number; color
   );
 }
 
+/* the "close" dot grid from Figma — corners + centre lit, edges dimmed */
+export function CloseDots({ size = 20, color = "#2b3231" }: { size?: number; color?: string }) {
+  const r = size / 10;
+  const pos = [size * 0.1, size * 0.5, size * 0.9];
+  return (
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden>
+      {pos.flatMap((cy, yi) =>
+        pos.map((cx, xi) => {
+          const lit = (xi + yi) % 2 === 0; // corners + centre
+          return (
+            <circle
+              key={`${cx}-${cy}`}
+              cx={cx}
+              cy={cy}
+              r={r}
+              fill={color}
+              opacity={lit ? 1 : 0.1}
+            />
+          );
+        }),
+      )}
+    </svg>
+  );
+}
+
 /* sideways chevron made of 3 dots (menu rows) */
 export function DotChevron({ color = "#dde4e3" }: { color?: string }) {
   return (

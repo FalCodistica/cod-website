@@ -2,8 +2,8 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import IndustrySwitcher from "./IndustrySwitcher";
 import { useScrollRoot } from "./ScrollRoot";
-import { useMenu } from "./SiteChrome";
 import { DotGrid, Sphere } from "./ui";
 import { type Industry } from "@/lib/industries";
 
@@ -75,7 +75,7 @@ export default function IndustryHero({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const root = useScrollRoot();
-  const { setOpen } = useMenu();
+  const [switcherOpen, setSwitcherOpen] = useState(false);
   const [p, setP] = useState(0);
   const [vp, setVp] = useState({ w: 0, h: 0 });
 
@@ -207,19 +207,27 @@ export default function IndustryHero({
           </div>
         </div>
 
-        {/* industry indicator — own sphere + menu (fades out while reading) */}
+        {/* industry indicator — own sphere + switcher (fades out while reading) */}
         <div
-          className="glass-pill absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 items-center gap-1 p-2 transition-opacity duration-500"
+          className="absolute bottom-5 left-1/2 z-30 -translate-x-1/2 transition-opacity duration-500"
           style={{ opacity: shrunk ? 0 : 1, pointerEvents: shrunk ? "none" : "auto" }}
         >
-          <Sphere from={industry.sphere.from} to={industry.sphere.to} size={40} />
-          <button
-            onClick={() => setOpen(true)}
-            aria-label="Browse industries"
-            className="flex size-10 items-center justify-center rounded-full bg-foam/10 transition-colors hover:bg-foam/20"
-          >
-            <DotGrid size={16} color="#dde4e3" />
-          </button>
+          <IndustrySwitcher
+            currentSlug={industry.slug}
+            open={switcherOpen}
+            onClose={() => setSwitcherOpen(false)}
+          />
+          <div className="glass-pill flex items-center gap-1 p-2">
+            <Sphere from={industry.sphere.from} to={industry.sphere.to} size={40} />
+            <button
+              onClick={() => setSwitcherOpen((v) => !v)}
+              aria-label="Browse industries"
+              aria-expanded={switcherOpen}
+              className="flex size-10 items-center justify-center rounded-full bg-foam/10 transition-colors hover:bg-foam/20"
+            >
+              <DotGrid size={16} color="#dde4e3" />
+            </button>
+          </div>
         </div>
 
         {/* scroll hint */}

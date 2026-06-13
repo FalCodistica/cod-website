@@ -41,7 +41,7 @@ export default async function IndustryPage({
   const next = industries[(idx + 1) % industries.length];
 
   return (
-    <IndustrySheet key={slug} slug={slug}>
+    <IndustrySheet key={slug} slug={slug} industry={industry}>
       {/* — hero (title → statement → image card + word reveal) — */}
       <IndustryHero
         industry={industry}
