@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useScrollRoot } from "./ScrollRoot";
 import { EyebrowPill } from "./ui";
 import { type Industry } from "@/lib/industries";
 
@@ -59,6 +60,7 @@ export default function ChallengeScene({
   const pointsRef = useRef<HTMLDivElement>(null);
   const noteRef = useRef<HTMLDivElement>(null);
   const hintRef = useRef<HTMLSpanElement>(null);
+  const root = useScrollRoot();
 
   useEffect(() => {
     const space = spaceRef.current;
@@ -210,16 +212,17 @@ export default function ChallengeScene({
       onScroll();
     };
 
+    const scrollTarget: HTMLElement | Window = root ?? window;
     resize();
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    scrollTarget.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      scrollTarget.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [industry.sphere.from]);
+  }, [industry.sphere.from, root]);
 
   return (
     <section ref={spaceRef} className="relative h-[450vh]">

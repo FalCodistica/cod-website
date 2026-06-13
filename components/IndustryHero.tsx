@@ -2,6 +2,7 @@
 
 import { Fragment, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useScrollRoot } from "./ScrollRoot";
 import { useMenu } from "./SiteChrome";
 import { DotGrid, Sphere } from "./ui";
 import { type Industry } from "@/lib/industries";
@@ -55,12 +56,11 @@ function RevealParagraph({
 }
 
 /*
- * Industry hero — a pinned, multi-stage scroll experience:
- *   stage 0  bottom sheet: black peek at top, rounded corners, grabber
- *   1st scroll  → the sheet snaps to fullscreen (black + handle vanish)
- *               and the title morphs into the opening statement
- *   2nd scroll  → the full-bleed image fluidly shrinks into a small card
- *   then        → the two paragraphs below it reveal word-by-word on scroll
+ * Industry hero content (inside the bottom sheet):
+ *   the full-bleed image carries the title, which morphs into the opening
+ *   statement, then the image fluidly shrinks into a card while the two
+ *   context paragraphs below reveal word-by-word on scroll.
+ * The sheet itself owns the slide-up, rounded corners, grabber and menu.
  */
 export default function IndustryHero({
   industry,
@@ -74,6 +74,7 @@ export default function IndustryHero({
   detailB: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const root = useScrollRoot();
   const { setOpen } = useMenu();
   const [p, setP] = useState(0);
   const [vp, setVp] = useState({ w: 0, h: 0 });
@@ -81,6 +82,7 @@ export default function IndustryHero({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const target: HTMLElement | Window = root ?? window;
     let raf = 0;
     const update = () => {
       raf = 0;
@@ -95,18 +97,18 @@ export default function IndustryHero({
       onScroll();
     };
     onResize();
-    window.addEventListener("scroll", onScroll, { passive: true });
+    target.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      target.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [root]);
 
   // staged thresholds (fluid, triggered) + scrubbed reveal
-  const opened = p > 0.04;
-  const shrunk = p > 0.28;
+  const past = p > 0.06; // title → statement
+  const shrunk = p > 0.28; // image → card + reveal
   const rp = clamp01((p - 0.33) / 0.4);
 
   const { w, h } = vp;
@@ -117,16 +119,14 @@ export default function IndustryHero({
   const cardTop = Math.round(Math.max(64, h * (narrow ? 0.07 : 0.09)));
   const textGap = narrow ? 16 : 28;
 
-  // image wrapper geometry per stage
+  // image wrapper geometry — full-bleed, then a centred card
   let geo: React.CSSProperties;
   if (!w) {
-    geo = { top: 12, left: 0, width: "100%", height: "calc(100% - 12px)", borderRadius: 40 };
+    geo = { top: 0, left: 0, width: "100%", height: "100%", borderRadius: 0 };
   } else if (shrunk) {
     geo = { top: cardTop, left: cardLeft, width: cardW, height: cardH, borderRadius: 24 };
-  } else if (opened) {
-    geo = { top: 0, left: 0, width: w, height: h, borderRadius: 0 };
   } else {
-    geo = { top: 12, left: 0, width: w, height: h - 12, borderRadius: 40 };
+    geo = { top: 0, left: 0, width: w, height: h, borderRadius: 0 };
   }
 
   const wordsA = detailA.split(" ");
@@ -134,23 +134,13 @@ export default function IndustryHero({
   const total = wordsA.length + wordsB.length;
 
   return (
-    <section ref={ref} className="relative h-[400vh]">
+    <section ref={ref} className="relative -mt-px h-[400vh]">
       <div className="sticky top-0 h-screen overflow-hidden bg-ink">
-        {/* black peek above the sheet (vanishes when opened) */}
-        <div
-          className="absolute inset-x-0 top-0 z-10 h-3 bg-black transition-opacity duration-500"
-          style={{ opacity: opened ? 0 : 1 }}
-          aria-hidden
-        />
-
-        {/* image — morphs from full-bleed sheet to a small card */}
+        {/* image — morphs from full-bleed to a small card */}
         <div
           className="absolute overflow-hidden"
           style={{
             ...geo,
-            boxSizing: "border-box",
-            borderTop: "1px solid",
-            borderTopColor: opened ? "transparent" : "rgba(255,255,255,0.3)",
             transition: "all 0.75s cubic-bezier(0.65,0,0.35,1)",
           }}
         >
@@ -165,29 +155,13 @@ export default function IndustryHero({
           <div className="absolute inset-0 bg-black/20" />
         </div>
 
-        {/* grabber (vanishes with the black peek) */}
-        <div
-          className="absolute left-1/2 top-4 z-30 h-1 w-10 -translate-x-1/2 rounded-full bg-foam transition-opacity duration-500"
-          style={{ opacity: opened ? 0 : 1 }}
-          aria-hidden
-        />
-
-        {/* menu button — light circle, dark dots */}
-        <button
-          onClick={() => setOpen(true)}
-          aria-label="Open menu"
-          className="absolute right-5 top-6 z-30 flex size-10 items-center justify-center rounded-full bg-foam backdrop-blur-xl transition-transform hover:scale-105"
-        >
-          <DotGrid size={20} color="#2b3231" />
-        </button>
-
         {/* title pill */}
         <div
           className="absolute inset-0 z-20 flex items-center justify-center px-3 transition-all duration-500 sm:px-5"
           style={{
-            opacity: opened ? 0 : 1,
-            transform: opened ? "translateY(-24px) scale(0.96)" : "none",
-            pointerEvents: opened ? "none" : "auto",
+            opacity: past ? 0 : 1,
+            transform: past ? "translateY(-24px) scale(0.96)" : "none",
+            pointerEvents: past ? "none" : "auto",
           }}
         >
           <div className="glass-dark flex w-full items-center justify-center rounded-full p-2.5 sm:p-10">
@@ -201,7 +175,7 @@ export default function IndustryHero({
         <div
           className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center p-5 transition-all duration-500"
           style={{
-            opacity: opened && !shrunk ? 1 : 0,
+            opacity: past && !shrunk ? 1 : 0,
             transform: shrunk ? "translateY(-24px)" : "none",
           }}
         >
@@ -251,7 +225,7 @@ export default function IndustryHero({
         {/* scroll hint */}
         <span
           className="mono-label absolute bottom-24 left-1/2 z-20 -translate-x-1/2 text-foam/60 transition-opacity duration-300"
-          style={{ opacity: opened ? 0 : 1 }}
+          style={{ opacity: past ? 0 : 1 }}
           aria-hidden
         >
           Scroll

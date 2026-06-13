@@ -5,6 +5,7 @@ import ChallengeScene from "@/components/ChallengeScene";
 import Footer from "@/components/Footer";
 import IndustryAccordion from "@/components/IndustryAccordion";
 import IndustryHero from "@/components/IndustryHero";
+import IndustrySheet from "@/components/IndustrySheet";
 import { DotChevron, EyebrowPill, FilledButton, Sphere } from "@/components/ui";
 import { industries } from "@/lib/industries";
 import { industryContent } from "@/lib/industry-content";
@@ -40,8 +41,8 @@ export default async function IndustryPage({
   const next = industries[(idx + 1) % industries.length];
 
   return (
-    <div className="bg-black">
-      {/* — hero (bottom sheet → fullscreen → image card + word reveal) — */}
+    <IndustrySheet key={slug} slug={slug}>
+      {/* — hero (title → statement → image card + word reveal) — */}
       <IndustryHero
         industry={industry}
         statement={content.statement}
@@ -49,7 +50,7 @@ export default async function IndustryPage({
         detailB={content.detailB}
       />
 
-      {/* — everything below the sheet — */}
+      {/* — everything below the hero — */}
       <div className="relative bg-ink">
       {/* — the challenge (pinned canvas story) — */}
       <ChallengeScene
@@ -114,6 +115,6 @@ export default async function IndustryPage({
       </div>
 
       <Footer />
-    </div>
+    </IndustrySheet>
   );
 }
