@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
 import CompanySidebar from "@/components/CompanySidebar";
+import RuledField from "@/components/RuledField";
 import WordSphere from "@/components/WordSphere";
 import { CopyEmailChip, FilledButton, LinkedInButton } from "@/components/ui";
 
@@ -215,15 +216,7 @@ export default function CompanyPage() {
             id="investment-partnerships"
             className="flex scroll-mt-10 flex-col gap-10 rounded-[40px] bg-panel p-7 sm:p-[60px]"
           >
-            <div className="relative">
-              <div className="ruled h-[217px] w-full" aria-hidden />
-              {/* circular ruled ornament */}
-              <div
-                className="ruled absolute left-1/2 top-0 size-[217px] -translate-x-1/2 rounded-full"
-                style={{ "--rule-color": "#889392" } as React.CSSProperties}
-                aria-hidden
-              />
-            </div>
+            <RuledField />
             <div className="grid gap-[60px] sm:grid-cols-2">
               <h2 className="heading text-foam">
                 Infrastructure takes time. The right partners understand that.

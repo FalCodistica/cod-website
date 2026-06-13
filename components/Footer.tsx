@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { industries } from "@/lib/industries";
+import RuledField from "./RuledField";
 import { CopyEmailChip, FilledButton, LinkedInButton } from "./ui";
 
 export default function Footer() {
@@ -72,8 +73,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      {/* ruled lines, fading out */}
-      <div className="ruled fade-bottom h-[217px] w-full" aria-hidden />
+      {/* ruled lines with a centred circle, fading out */}
+      <RuledField fade />
     </footer>
   );
 }
