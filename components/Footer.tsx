@@ -66,9 +66,7 @@ export default function Footer() {
               </ul>
             </nav>
             <div className="flex gap-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <LinkedInButton key={i} />
-              ))}
+              <LinkedInButton />
             </div>
           </div>
         </div>

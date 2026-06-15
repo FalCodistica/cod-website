@@ -31,6 +31,12 @@ const items: Item[] = [
     lines: ["Building intelligent infrastructure requires patience"],
     subs: ["Investment Philosophy", "Shared Strategic Horizon"],
   },
+  {
+    kind: "section",
+    id: "powering-the-invisible",
+    label: "04. Powering the invisible",
+    lines: ["Many of the systems that sustain modern life are never seen."],
+  },
   { kind: "dot", label: "How we think" },
   {
     kind: "section",
@@ -43,12 +49,6 @@ const items: Item[] = [
     id: "principle",
     label: "02. A principle that guides us",
     lines: ["Find what you are passionate about and passionate even more."],
-  },
-  {
-    kind: "section",
-    id: "powering-the-invisible",
-    label: "01. Powering the invisible",
-    lines: ["Many of the systems that sustain modern life are never seen."],
   },
 ];
 

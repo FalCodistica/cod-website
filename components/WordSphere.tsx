@@ -73,9 +73,10 @@ export default function WordSphere() {
   const [hovered, setHovered] = useState<string | null>(null);
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[632px] text-[10px]">
-      {/* gradient equator band — lights the middle so the wheel reads as a sphere */}
+      {/* gradient equator band — fills the container width so the wheel reads
+         as a sphere (matches Figma's full-width Rectangle 1295) */}
       <div
-        className="absolute inset-x-[-48px] top-1/2 h-[316px] -translate-y-1/2 rounded-full"
+        className="absolute left-1/2 top-1/2 h-[316px] w-[156%] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
             "linear-gradient(90deg, #0e1514 0%, #1a2120 40%, #1a2120 60%, #0e1514 100%)",

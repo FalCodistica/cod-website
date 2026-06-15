@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ChallengeScene from "@/components/ChallengeScene";
-import Footer from "@/components/Footer";
 import IndustryAccordion from "@/components/IndustryAccordion";
 import IndustryHero from "@/components/IndustryHero";
 import IndustrySheet from "@/components/IndustrySheet";
@@ -113,8 +112,6 @@ export default async function IndustryPage({
         </Link>
       </section>
       </div>
-
-      <Footer />
     </IndustrySheet>
   );
 }

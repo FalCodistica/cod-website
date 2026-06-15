@@ -100,11 +100,11 @@ export default function CompanyPage() {
                     (t) => (
                       <span
                         key={t}
-                        className="mono-body flex h-10 items-center justify-center rounded-full text-mist"
+                        className="mono-body flex h-10 items-center justify-center rounded-full text-foam"
                         style={{
-                          background: "rgba(221,228,227,0.02)",
+                          background: "rgba(221,228,227,0.08)",
                           boxShadow:
-                            "inset 1px 1px 0 rgba(178,200,232,0.10), inset -1px -1px 0 rgba(178,200,232,0.05)",
+                            "inset 1px 1px 0 rgba(178,200,232,0.28), inset -1px -1px 0 rgba(178,200,232,0.12)",
                           backdropFilter: "blur(20px)",
                         }}
                       >
@@ -117,11 +117,11 @@ export default function CompanyPage() {
                 <div
                   className="flex size-[220px] shrink-0 items-center justify-center rounded-full p-2.5 text-center"
                   style={{
-                    background: "linear-gradient(135deg, #b2c8e8, #334863)",
-                    boxShadow: "inset 0 0 50px #b2c8e8",
+                    background: "linear-gradient(0deg, #0e1514 0%, #334863 100%)",
+                    boxShadow: "inset 0 0 50px var(--color-steel-light)",
                   }}
                 >
-                  <span className="mono-body w-[180px] text-[#1b324b]">
+                  <span className="mono-body w-[180px] text-link-ice">
                     Meaningful infrastructure
                   </span>
                 </div>
@@ -159,19 +159,20 @@ export default function CompanyPage() {
           {/* 02 — team & talent */}
           <section
             id="team-talent"
-            className="relative scroll-mt-10 overflow-hidden rounded-[40px]"
+            className="relative min-h-[600px] scroll-mt-10 overflow-hidden rounded-[40px]"
           >
             <Image
               src="/images/team-bg.jpg"
               alt=""
               fill
-              className="object-cover"
+              className="object-cover object-bottom"
               sizes="1060px"
             />
             <div
               className="absolute inset-0"
               style={{
-                background: "linear-gradient(120deg, rgba(9,15,15,0.9), rgba(51,72,99,0.55))",
+                background:
+                  "linear-gradient(160deg, rgba(9,15,15,0.92) 0%, rgba(9,15,15,0.45) 38%, rgba(51,72,99,0.25) 100%)",
               }}
             />
             <div className="relative flex flex-col gap-10 p-7 sm:flex-row sm:p-[60px] sm:pb-[120px]">
@@ -193,20 +194,22 @@ export default function CompanyPage() {
                   </FilledButton>
                 </div>
               </div>
-              {/* decorative team-values tree */}
-              <div className="mono-body hidden flex-1 flex-col items-end justify-end gap-2 text-link-ice sm:flex">
-                <span className="mono-label mb-2 text-mist">What Drives the Team</span>
-                {[
-                  "genuine passion for what we build",
-                  "Respect for engineering",
-                  "Shared commitment to excellence",
-                ].map((t) => (
-                  <span key={t} className="flex items-center gap-3">
-                    {t}
-                    <span className="h-px w-12 bg-steel" aria-hidden />
-                    <span className="h-4 w-1 rounded-r border border-steel" aria-hidden />
-                  </span>
-                ))}
+              {/* rocket + "what drives the team" connectors */}
+              <div className="hidden flex-1 items-end justify-end gap-4 self-stretch sm:flex">
+                <div className="mono-body flex flex-col items-end gap-5 pb-1 text-link-ice">
+                  <span className="mono-label mb-2 text-mist">What Drives the Team</span>
+                  {[
+                    "genuine passion for what we build",
+                    "Respect for engineering",
+                    "Shared commitment to excellence",
+                  ].map((t) => (
+                    <span key={t} className="flex items-center gap-3 text-right">
+                      {t}
+                      <span className="h-px w-14 bg-steel" aria-hidden />
+                    </span>
+                  ))}
+                </div>
+                <TeamRocket />
               </div>
             </div>
           </section>
@@ -379,6 +382,44 @@ export default function CompanyPage() {
   );
 }
 
+/* stylised rocket for the "what drives the team" diagram */
+function TeamRocket() {
+  return (
+    <svg
+      width="40"
+      height="340"
+      viewBox="0 0 40 340"
+      fill="none"
+      aria-hidden
+      className="shrink-0 self-end"
+    >
+      {/* nose cone */}
+      <path d="M20 2C7 36 0 66 0 92h40C40 66 33 36 20 2Z" fill="#334863" />
+      {/* body */}
+      <rect x="0" y="95" width="40" height="150" rx="6" fill="#334863" />
+      {/* three segments (aligned with the value connectors) */}
+      <rect x="0" y="249" width="40" height="16" rx="4" fill="#334863" />
+      <rect x="0" y="269" width="40" height="16" rx="4" fill="#334863" />
+      <rect x="0" y="289" width="40" height="16" rx="4" fill="#334863" />
+      {/* exhaust trail, fading out */}
+      <line
+        x1="20"
+        y1="312"
+        x2="20"
+        y2="340"
+        stroke="url(#exhaust)"
+        strokeWidth="2"
+      />
+      <defs>
+        <linearGradient id="exhaust" x1="20" y1="312" x2="20" y2="340" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#334863" />
+          <stop offset="1" stopColor="#334863" stopOpacity="0" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
+
 /* thin connector curves between diagram nodes */
 function DiagramLink({ flip = false }: { flip?: boolean }) {
   return (
@@ -391,6 +432,7 @@ function DiagramLink({ flip = false }: { flip?: boolean }) {
       className={`shrink-0 max-sm:hidden ${flip ? "-scale-x-100" : ""}`}
     >
       <path d="M0 71 C 40 71, 40 1, 80 1" stroke="#334863" />
+      <path d="M0 71 H 80" stroke="#334863" />
       <path d="M0 71 C 40 71, 40 141, 80 141" stroke="#334863" />
     </svg>
   );
