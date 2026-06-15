@@ -308,10 +308,10 @@ export default function CompanyPage() {
             className="relative scroll-mt-10 overflow-hidden rounded-[40px]"
           >
             <Image
-              src="/images/texture-streaks.jpg"
+              src="/images/marquee-glow.jpg"
               alt=""
               fill
-              className="object-cover opacity-60"
+              className="object-cover"
               sizes="1060px"
             />
             <div
