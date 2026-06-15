@@ -1,15 +1,22 @@
+import Image from "next/image";
 import Link from "next/link";
 
-/* CODISTICA wordmark. Placeholder lettering matched to the Figma proportions
-   (166x20, #dde4e3) until the vector export is available. */
+/* Codistica logo — icon + wordmark + "powering the invisible" tagline. */
 export default function Logo({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
       aria-label="Codistica — home"
-      className={`select-none font-sans text-[19px] font-bold uppercase leading-none tracking-[0.18em] text-foam ${className}`}
+      className={`inline-flex items-center ${className}`}
     >
-      Codistica
+      <Image
+        src="/codistica-logo.png"
+        alt="Codistica — powering the invisible"
+        width={1334}
+        height={265}
+        priority
+        className="h-10 w-auto select-none"
+      />
     </Link>
   );
 }
