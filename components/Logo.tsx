@@ -11,9 +11,9 @@ export default function Logo({ className = "" }: { className?: string }) {
     >
       <Image
         src="/codistica-logo.png"
-        alt="Codistica — powering the invisible"
-        width={1334}
-        height={265}
+        alt="Codistica"
+        width={1335}
+        height={264}
         priority
         className="h-10 w-auto select-none"
       />
