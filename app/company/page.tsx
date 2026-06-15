@@ -277,10 +277,12 @@ export default function CompanyPage() {
             </div>
             <div className="flex flex-col pb-[60px]">
               <div
-                className="grid gap-[60px] bg-cover px-7 py-4 sm:grid-cols-2 sm:px-[60px]"
+                className="grid gap-[60px] px-7 py-4 sm:grid-cols-2 sm:px-[60px]"
                 style={{
                   backgroundImage:
-                    "linear-gradient(90deg, #090f0f, transparent 50%, #090f0f), url(/images/marquee-glow.jpg)",
+                    "radial-gradient(ellipse 130% 175% at 38% 50%, rgba(9,15,15,0) 0%, rgba(9,15,15,0) 44%, #090f0f 100%), url(/images/marquee-glow.jpg)",
+                  backgroundSize: "100% 100%",
+                  backgroundRepeat: "no-repeat",
                 }}
               >
                 <h3 className="mono-body py-4 text-foam">Connected with purpose</h3>
