@@ -2,19 +2,19 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import HomeBackdrop from "./HomeBackdrop";
 import { ScrollRootContext } from "./ScrollRoot";
 import { CloseDots } from "./ui";
 import { type Industry } from "@/lib/industries";
 
-const PEEK = 10; // px of backdrop shown above the sheet at rest
+const PEEK = 10; // px of the page behind shown above the sheet at rest
 const OFFSCREEN = 2400; // SSR-safe initial offset (no window needed)
 const EASE =
   "transform 0.5s cubic-bezier(0.32,0.72,0,1), border-radius 0.5s cubic-bezier(0.32,0.72,0,1)";
 
 /*
- * A real bottom sheet for an industry. It slides up from the bottom over a
- * dark backdrop, rests with rounded top corners + a grabber, and:
+ * A real bottom sheet for an industry. It slides up from the bottom over
+ * whatever page is behind it (the still-mounted Home when intercepted), rests
+ * with rounded top corners + a grabber, and:
  *   - expands to fullscreen (corners/grabber fade) once you scroll in
  *   - the grabber can be dragged down; past a threshold it dismisses the
  *     sheet and returns to the home page
@@ -25,7 +25,6 @@ const EASE =
  * it animates reliably; the drag writes the transform directly for 1:1 feel.
  */
 export default function IndustrySheet({
-  industry,
   children,
 }: {
   slug: string;
@@ -77,7 +76,6 @@ export default function IndustrySheet({
   useEffect(() => {
     if (drag.current || closing.current) return;
     move(expanded ? 0 : PEEK, true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [expanded]);
 
   const dismiss = () => {
@@ -88,7 +86,9 @@ export default function IndustrySheet({
     const finish = () => {
       if (done) return;
       done = true;
-      router.push("/");
+      // clears the @sheet slot and reveals Home (kept mounted underneath);
+      // scroll:false leaves Home's scroll position untouched.
+      router.push("/", { scroll: false });
     };
     el.addEventListener(
       "transitionend",
@@ -118,47 +118,42 @@ export default function IndustrySheet({
   };
 
   return (
-    <>
-      {/* home stays visible behind the sheet (revealed on drag / dismiss) */}
-      <HomeBackdrop industry={industry} />
-
-      <div
-        ref={sheetRef}
-        style={{
-          borderTopLeftRadius: expanded ? 0 : 40,
-          borderTopRightRadius: expanded ? 0 : 40,
-        }}
-        className="fixed inset-0 z-30 overflow-y-auto overflow-x-hidden overscroll-contain bg-ink transition-[border-radius] duration-500 [transform:translateY(2400px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        <ScrollRootContext.Provider value={root}>
-          {/* chrome pinned to the sheet's top edge */}
-          <div className="sticky top-0 z-40 h-0">
-            {/* grabber — draggable to dismiss (only while at the top) */}
-            <div
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={onPointerUp}
-              className="absolute left-1/2 top-0 flex h-9 w-32 -translate-x-1/2 cursor-grab touch-none items-center justify-center transition-opacity duration-300 active:cursor-grabbing"
-              style={{
-                opacity: expanded ? 0 : 1,
-                pointerEvents: expanded ? "none" : "auto",
-              }}
-            >
-              <span className="h-1 w-10 rounded-full bg-foam" />
-            </div>
-            {/* close the sheet — returns to the home page */}
-            <button
-              onClick={dismiss}
-              aria-label="Close"
-              className="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full bg-foam backdrop-blur-xl transition-transform hover:scale-105"
-            >
-              <CloseDots size={20} color="#2b3231" />
-            </button>
+    <div
+      ref={sheetRef}
+      style={{
+        borderTopLeftRadius: expanded ? 0 : 40,
+        borderTopRightRadius: expanded ? 0 : 40,
+      }}
+      className="fixed inset-0 z-30 overflow-y-auto overflow-x-hidden overscroll-contain bg-ink transition-[border-radius] duration-500 [transform:translateY(2400px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
+      <ScrollRootContext.Provider value={root}>
+        {/* chrome pinned to the sheet's top edge */}
+        <div className="sticky top-0 z-40 h-0">
+          {/* grabber — draggable to dismiss (only while at the top) */}
+          <div
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            className="absolute left-1/2 top-0 flex h-9 w-32 -translate-x-1/2 cursor-grab touch-none items-center justify-center transition-opacity duration-300 active:cursor-grabbing"
+            style={{
+              opacity: expanded ? 0 : 1,
+              pointerEvents: expanded ? "none" : "auto",
+            }}
+          >
+            <span className="h-1 w-10 rounded-full bg-foam" />
           </div>
+          {/* close the sheet — returns to the home page */}
+          <button
+            onClick={dismiss}
+            aria-label="Close"
+            className="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full bg-foam backdrop-blur-xl transition-transform hover:scale-105"
+          >
+            <CloseDots size={20} color="#2b3231" />
+          </button>
+        </div>
 
-          {children}
-        </ScrollRootContext.Provider>
-      </div>
-    </>
+        {children}
+      </ScrollRootContext.Provider>
+    </div>
   );
 }

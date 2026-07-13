@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
@@ -14,7 +14,6 @@ const N = industries.length;
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const router = useRouter();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -33,11 +32,12 @@ export default function Home() {
       {/* scroll runway: one viewport per industry */}
       <div ref={containerRef} style={{ height: `${N * 100}vh` }}>
         <div className="sticky top-0 h-screen overflow-hidden bg-ink">
-          {/* image card */}
-          <button
+          {/* image card — a Link so it triggers the intercepted sheet route
+              (and gets prefetched automatically) */}
+          <Link
+            href={`/industries/${current.slug}`}
             aria-label={`Explore ${current.name}`}
-            onClick={() => router.push(`/industries/${current.slug}`)}
-            className="absolute inset-x-0 top-20 bottom-20 cursor-pointer overflow-hidden rounded-[40px]"
+            className="absolute inset-x-0 top-20 bottom-20 block cursor-pointer overflow-hidden rounded-[40px]"
           >
             <AnimatePresence initial={false}>
               <motion.div
@@ -60,7 +60,7 @@ export default function Home() {
             </AnimatePresence>
             {/* inner glow */}
             <div className="hero-shadow pointer-events-none absolute inset-0 rounded-[40px]" />
-          </button>
+          </Link>
 
           {/* preload all heroes */}
           <div className="hidden">

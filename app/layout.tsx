@@ -21,13 +21,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  sheet,
 }: Readonly<{
   children: React.ReactNode;
+  sheet: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable} antialiased`}>
       <body>
-        <SiteChrome>{children}</SiteChrome>
+        <SiteChrome>
+          {children}
+          {/* intercepted industry sheet — overlays the page above (@sheet slot) */}
+          {sheet}
+        </SiteChrome>
       </body>
     </html>
   );

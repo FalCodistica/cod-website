@@ -20,10 +20,6 @@
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background: var(--color-ink);
   color: var(--color-foam);
