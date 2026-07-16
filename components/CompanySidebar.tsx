@@ -6,12 +6,18 @@ type Item =
   | { kind: "dot"; label: string }
   | { kind: "section"; id: string; label: string; lines: string[]; subs?: string[] };
 
-const items: Item[] = [
+export const partnershipSidebarItems: Item[] = [
   { kind: "dot", label: "Partnership & collaboration" },
   {
     kind: "section",
+    id: "build-with-us",
+    label: "01. Build with us",
+    lines: ["There are different ways to collaborate with Codistica."],
+  },
+  {
+    kind: "section",
     id: "strategic-development",
-    label: "01. Strategic development",
+    label: "02. Strategic development",
     lines: [
       "Some collaborations begin with a shared idea. Others begin with a complex challenge.",
       "At Codistica, strategic development focuses on [...]",
@@ -20,40 +26,62 @@ const items: Item[] = [
   {
     kind: "section",
     id: "team-talent",
-    label: "02. Team & talent",
+    label: "03. Team & talent",
     lines: ["The strength of Codistica comes from the people behind the systems we build"],
     subs: ["how we work", "what drives the team"],
   },
   {
     kind: "section",
     id: "investment-partnerships",
-    label: "03. Investment partnerships",
+    label: "04. Investment partnerships",
     lines: ["Building intelligent infrastructure requires patience"],
-    subs: ["Investment Philosophy", "Shared Strategic Horizon"],
+    subs: ["investment philosophy", "shared strategic horizon"],
+  },
+];
+
+export const howWeThinkSidebarItems: Item[] = [
+  { kind: "dot", label: "How we think" },
+  {
+    kind: "section",
+    id: "why",
+    label: "01. Why",
+    lines: ["It always begins with a question, a quiet spark of curiosity that refuses to fade."],
+  },
+  {
+    kind: "section",
+    id: "how",
+    label: "02. How",
+    lines: ["We write the hidden stories within the world around us."],
+  },
+  {
+    kind: "section",
+    id: "what",
+    label: "03. What",
+    lines: ["Complete, in-house IoT solutions that defy physical and virtual world boundaries."],
+  },
+  {
+    kind: "section",
+    id: "founders-belief",
+    label: "04. Founder’s belief",
+    lines: ["Every meaningful system begins with the way we choose to think about the world."],
+    subs: ["a principle that guides us"],
   },
   {
     kind: "section",
     id: "powering-the-invisible",
-    label: "04. Powering the invisible",
+    label: "05. Powering the invisible",
     lines: ["Many of the systems that sustain modern life are never seen."],
-  },
-  { kind: "dot", label: "How we think" },
-  {
-    kind: "section",
-    id: "founders-belief",
-    label: "01. Founder’s belief",
-    lines: ["Every meaningful system begins with the way we choose to think about the world."],
-  },
-  {
-    kind: "section",
-    id: "principle",
-    label: "02. A principle that guides us",
-    lines: ["Find what you are passionate about and passionate even more."],
   },
 ];
 
-export default function CompanySidebar() {
-  const [active, setActive] = useState("strategic-development");
+export default function CompanySidebar({
+  items,
+  defaultActive,
+}: {
+  items: Item[];
+  defaultActive: string;
+}) {
+  const [active, setActive] = useState(defaultActive);
 
   useEffect(() => {
     const ids = items.filter((i) => i.kind === "section").map((i) => i.id);
@@ -70,7 +98,7 @@ export default function CompanySidebar() {
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
-  }, []);
+  }, [items]);
 
   return (
     <aside className="sticky top-10 hidden w-[298px] shrink-0 self-start xl:block">

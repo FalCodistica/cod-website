@@ -10,6 +10,10 @@ import { Sphere } from "@/components/ui";
 import { industries } from "@/lib/industries";
 
 const N = industries.length;
+// the last industry gets one extra viewport-height of hold time, pinned and
+// fully settled, before the page hands off to the footer
+const EXTRA_HOLD = 1;
+const RUNWAY_UNITS = N + EXTRA_HOLD;
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +25,7 @@ export default function Home() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.min(N - 1, Math.max(0, Math.round(v * (N - 1))));
+    const idx = Math.min(N - 1, Math.max(0, Math.floor(v * RUNWAY_UNITS)));
     if (idx !== active) setActive(idx);
   });
 
@@ -29,8 +33,8 @@ export default function Home() {
 
   return (
     <>
-      {/* scroll runway: one viewport per industry */}
-      <div ref={containerRef} style={{ height: `${N * 100}vh` }}>
+      {/* scroll runway: one viewport per industry, plus a hold for the last */}
+      <div ref={containerRef} style={{ height: `${(N + EXTRA_HOLD) * 100}vh` }}>
         <div className="sticky top-0 h-screen overflow-hidden bg-ink">
           {/* image card — a Link so it triggers the intercepted sheet route
               (and gets prefetched automatically) */}
@@ -74,12 +78,18 @@ export default function Home() {
             <span className="pointer-events-none text-sm font-medium tracking-[-0.01em] text-snow sm:text-[clamp(28px,2.5vw,48px)] sm:tracking-[-0.03em]">
               Technology partner for
             </span>
-            <Sphere
-              from={current.sphere.from}
-              to={current.sphere.to}
-              size={56}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-[background,box-shadow] duration-700"
-            />
+            <Link
+              href={`/industries/${current.slug}`}
+              aria-label={`Explore ${current.name}`}
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+            >
+              <Sphere
+                from={current.sphere.from}
+                to={current.sphere.to}
+                size={56}
+                className="transition-[background,box-shadow] duration-700"
+              />
+            </Link>
             <span className="relative block h-[1.15em] overflow-hidden text-right text-sm font-medium tracking-[-0.01em] text-snow sm:text-[clamp(28px,2.5vw,48px)] sm:tracking-[-0.03em]">
               <AnimatePresence initial={false} mode="popLayout">
                 <motion.span
@@ -103,31 +113,29 @@ export default function Home() {
           {/* header on top */}
           <Header floating />
 
-          {/* mobile CTA above tab bar */}
+          {/* mobile CTA */}
           <a
             href="mailto:info@codistica.com"
             className="absolute bottom-24 left-1/2 z-10 inline-flex h-10 -translate-x-1/2 items-center justify-center rounded-full bg-foam px-4 text-sm font-medium text-coal sm:hidden"
           >
             Talk to us
           </a>
-
-          {/* tab bar */}
-          <div className="absolute inset-x-0 bottom-0 z-10 flex h-20 items-center justify-center">
-            <button
-              aria-label="Next industry"
-              onClick={() =>
-                window.scrollBy({
-                  top: window.innerHeight,
-                  behavior: "smooth",
-                })
-              }
-              className="glass-pill flex size-14 items-center justify-center transition-colors hover:bg-foam/15"
-            >
-              <AsteriskIcon />
-            </button>
-          </div>
         </div>
       </div>
+      {/* Deliberately no pull-up trick here. The hero is `position: sticky`
+          within its own runway above, so it naturally releases and scrolls
+          away over exactly the runway's last viewport while this footer
+          (plain, unmodified document flow) scrolls in immediately behind it
+          at the same rate — their shared edge lines up exactly throughout,
+          with z-20 keeping the footer painted on top. A scroll-linked
+          transform version (pulling the footer up early, then easing back
+          out) was tried and reverted three times: it produced a dead gap,
+          then the hero reappearing at the true end, then a genuine
+          back-and-forth bounce once both were fixed — and none of those
+          could be debugged live against real scroll input in this
+          environment. This version has no per-viewport constant to get
+          wrong: total scrollable height is always exactly the runway's
+          height plus the footer's real height, so it can't gap or bounce. */}
       <div className="relative z-20 bg-ink">
         <Footer />
       </div>
@@ -158,26 +166,5 @@ function StepRail({ side, active }: { side: "left" | "right"; active: number }) 
         />
       ))}
     </div>
-  );
-}
-
-/* the dotted asterisk in the tab bar */
-function AsteriskIcon() {
-  const dots: [number, number][] = [];
-  const cx = 13,
-    cy = 13,
-    r1 = 5,
-    r2 = 11;
-  for (let k = 0; k < 6; k++) {
-    const a = (Math.PI / 3) * k - Math.PI / 2;
-    dots.push([cx + r1 * Math.cos(a), cy + r1 * Math.sin(a)]);
-    dots.push([cx + r2 * Math.cos(a), cy + r2 * Math.sin(a)]);
-  }
-  return (
-    <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden>
-      {dots.map(([x, y], i) => (
-        <circle key={i} cx={x} cy={y} r={i % 2 ? 2.6 : 2.2} fill="#dde4e3" />
-      ))}
-    </svg>
   );
 }

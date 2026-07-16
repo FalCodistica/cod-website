@@ -25,6 +25,11 @@ body {
   color: var(--color-foam);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  /* the homepage pins full-viewport sections via position:sticky; native
+     rubber-band overscroll at the very top/bottom of the page briefly
+     reveals whatever sits past the pinned section before springing back,
+     which reads as an unwanted bounce right at the hero/footer handoff */
+  overscroll-behavior-y: none;
 }
 
 /* ——— shared visual primitives from Figma ——— */
@@ -128,6 +133,21 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.step-in {
+  animation: step-in 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 ::selection {

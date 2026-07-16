@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { industries } from "@/lib/industries";
 import RuledField from "./RuledField";
-import { CopyEmailChip, FilledButton, LinkedInButton } from "./ui";
+import {
+  CopyEmailChip,
+  FacebookButton,
+  FilledButton,
+  InstagramButton,
+  LinkedInButton,
+  TikTokButton,
+} from "./ui";
 
 export default function Footer() {
   return (
@@ -57,7 +64,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/company"
+                    href="/about"
                     className="flex h-10 items-center text-sm font-medium text-foam transition-colors hover:text-mint"
                   >
                     About us
@@ -67,6 +74,9 @@ export default function Footer() {
             </nav>
             <div className="flex gap-1">
               <LinkedInButton />
+              <InstagramButton />
+              <FacebookButton />
+              <TikTokButton />
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import IndustrySwitcher from "./IndustrySwitcher";
 import { useScrollRoot } from "./ScrollRoot";
-import { DotGrid, Sphere } from "./ui";
+import { DotGrid, EyebrowPill, Sphere } from "./ui";
 import { type Industry } from "@/lib/industries";
 
 const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
@@ -196,6 +196,9 @@ export default function IndustryHero({
             width: w ? cardW : "calc(100% - 40px)",
           }}
         >
+          <div className="mb-6 flex justify-center">
+            <EyebrowPill>The invisible system</EyebrowPill>
+          </div>
           <div className="grid gap-x-10 gap-y-4 sm:grid-cols-2 sm:gap-y-6">
             <RevealParagraph words={wordsA} start={0} total={total} rp={rp} />
             <RevealParagraph

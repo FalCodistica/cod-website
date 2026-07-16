@@ -83,7 +83,7 @@ function MenuOverlay() {
                 {/* partially-lit dot grid, as in Figma's close state */}
                 <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden>
                   {[
-                    [2, 2, 0.08], [10, 2, 1], [18, 2, 1],
+                    [2, 2, 1], [10, 2, 0.08], [18, 2, 1],
                     [2, 10, 0.08], [10, 10, 1], [18, 10, 0.08],
                     [2, 18, 1], [10, 18, 0.08], [18, 18, 1],
                   ].map(([cx, cy, o], i) => (
@@ -131,14 +131,24 @@ function MenuOverlay() {
                       </span>
                     </div>
                   </Link>
-                  <Link
-                    href="/company"
-                    onClick={() => setOpen(false)}
-                    className="glass-dark flex h-10 items-center justify-between rounded-b-2xl bg-foam/10 px-4 text-sm font-medium text-snow transition-colors hover:bg-foam/15"
-                  >
-                    About us
-                    <DotChevron />
-                  </Link>
+                  <div className="flex flex-col gap-px overflow-hidden rounded-b-2xl">
+                    <Link
+                      href="/company"
+                      onClick={() => setOpen(false)}
+                      className="glass-dark flex h-10 items-center justify-between bg-foam/10 px-4 text-sm font-medium text-snow transition-colors hover:bg-foam/15"
+                    >
+                      Partnership &amp; collaboration
+                      <DotChevron />
+                    </Link>
+                    <Link
+                      href="/about"
+                      onClick={() => setOpen(false)}
+                      className="glass-dark flex h-10 items-center justify-between bg-foam/10 px-4 text-sm font-medium text-snow transition-colors hover:bg-foam/15"
+                    >
+                      About us
+                      <DotChevron />
+                    </Link>
+                  </div>
                 </div>
                 <div className="flex items-center justify-between gap-1">
                   <CopyEmailChip email="info@codistica.com" />

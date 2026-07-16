@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
-import CompanySidebar from "@/components/CompanySidebar";
+import CompanySidebar, { partnershipSidebarItems } from "@/components/CompanySidebar";
 import RuledField from "@/components/RuledField";
-import WordSphere from "@/components/WordSphere";
-import { CopyEmailChip, FilledButton, LinkedInButton } from "@/components/ui";
+import { FilledButton } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Partnership & collaboration — Codistica",
@@ -18,7 +17,7 @@ export default function CompanyPage() {
     <>
       <Header />
       <div className="flex gap-[60px] px-5 pb-30 pt-10">
-        <CompanySidebar />
+        <CompanySidebar items={partnershipSidebarItems} defaultActive="build-with-us" />
         <main className="mx-auto flex w-full max-w-[1060px] flex-col gap-5">
           {/* hero */}
           <section className="relative flex h-[540px] flex-col justify-between overflow-hidden rounded-[40px]">
@@ -48,6 +47,38 @@ export default function CompanyPage() {
                   <span className="mono-body text-foam">{label}</span>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* 00 — build with us */}
+          <section
+            id="build-with-us"
+            className="flex scroll-mt-10 flex-col gap-10 rounded-[40px] bg-panel p-7 sm:p-[60px]"
+          >
+            <h2 className="heading text-foam">
+              There are different ways
+              <br />
+              to collaborate with Codistica.
+            </h2>
+            <div className="flex flex-col gap-6 text-lg font-medium leading-relaxed text-mist">
+              <p>
+                Codistica was built around a simple belief. The systems that
+                shape our world deserve deeper intelligence, thoughtful
+                collaboration, and people who care deeply about what they
+                build.
+              </p>
+              <p>
+                We work with individuals, teams, and organizations driven by
+                curiosity, discipline, and a genuine passion for solving
+                meaningful problems — people who believe that building the
+                right systems can quietly improve how the world operates.
+              </p>
+              <p>
+                Whether through strategic initiatives, joining our team, or
+                exploring investment partnerships, what matters most is
+                alignment in values, long-term vision, and the passion to
+                build systems that matter.
+              </p>
             </div>
           </section>
 
@@ -150,8 +181,8 @@ export default function CompanyPage() {
               </div>
             </div>
             <div>
-              <FilledButton href="mailto:info@codistica.com">
-                Tell us what you&apos;re building
+              <FilledButton href="/apply/strategic-collaboration">
+                Propose a strategic collaboration
               </FilledButton>
             </div>
           </section>
@@ -183,14 +214,24 @@ export default function CompanyPage() {
                   Passion makes them matter.
                 </h2>
                 <p className="text-sm font-medium leading-relaxed text-foam">
-                  We look for precision, curiosity, and pride in thoughtful work.
-                  People who care deeply about what they create and thrive in an
-                  environment built around discipline, ownership, and the freedom
-                  to think.
+                  The strength of Codistica comes from the people behind the
+                  systems we build. We value people who combine technical
+                  rigor with genuine passion for solving complex problems —
+                  people who take pride in thoughtful work and care deeply
+                  about the systems they create.
                 </p>
+                <div className="flex flex-col gap-2">
+                  <h3 className="mono-body text-foam">How we work</h3>
+                  <p className="text-sm font-medium leading-relaxed text-foam">
+                    Our environment encourages curiosity, ownership, and
+                    continuous improvement. We believe passionate people,
+                    working with discipline and the freedom to think, create
+                    the most meaningful systems.
+                  </p>
+                </div>
                 <div>
-                  <FilledButton href="mailto:info@codistica.com?subject=Open%20roles">
-                    See open roles
+                  <FilledButton href="/apply/join-team">
+                    Submit your profile
                   </FilledButton>
                 </div>
               </div>
@@ -225,154 +266,29 @@ export default function CompanyPage() {
                 Infrastructure takes time. The right partners understand that.
               </h2>
               <div className="flex flex-col gap-10">
-                <p className="text-lg font-medium leading-relaxed text-mist">
-                  We collaborate with investors who share both strategic
-                  perspective and a genuine belief in the value of meaningful
-                  systems. Our approach is not transactional. We seek partners
-                  grounded in long-term thinking, disciplined execution, and the
-                  patience to build something that lasts.
-                </p>
-                <div>
-                  <FilledButton href="mailto:info@codistica.com">Talk to us</FilledButton>
+                <div className="flex flex-col gap-3">
+                  <h3 className="mono-body text-foam">Investment philosophy</h3>
+                  <p className="text-lg font-medium leading-relaxed text-mist">
+                    We collaborate with investors who share both strategic
+                    perspective and a genuine belief in the value of
+                    meaningful systems. We prioritize partnerships grounded
+                    in long-term thinking, disciplined execution, and belief
+                    in the power of intelligent systems.
+                  </p>
                 </div>
-              </div>
-            </div>
-          </section>
-
-          {/* interlude image */}
-          <section className="relative flex h-[540px] items-center justify-center overflow-hidden rounded-[40px]">
-            <Image
-              src="/images/texture-streaks.jpg"
-              alt=""
-              fill
-              className="object-cover"
-              sizes="1060px"
-            />
-            <h2 className="display relative text-center text-foam">
-              What moves the world is rarely seen
-            </h2>
-          </section>
-
-          {/* powering the invisible */}
-          <section
-            id="powering-the-invisible"
-            className="flex scroll-mt-10 flex-col overflow-hidden rounded-[40px] bg-ink-deep"
-          >
-            <div className="flex flex-col gap-10 rounded-[40px] bg-panel p-7 sm:p-[60px]">
-              <div className="flex max-w-[470px] flex-col gap-2">
-                <h2 className="mono-body text-foam">The invisible layer</h2>
-                <p className="heading text-foam">
-                  Every day, the world runs on systems no one thinks about.
-                </p>
-              </div>
-              <p className="text-lg font-medium leading-relaxed text-mist">
-                Across cities, industries, and infrastructures, countless systems
-                operate quietly behind the scenes. They move people, enable
-                communication, power buildings, and process resources.
-                <br />
-                Controllers. Sensors. Data. Software. Quiet layers of
-                intelligence shaping how the world functions, yet are rarely
-                seen.
-              </p>
-            </div>
-            <div className="flex flex-col pb-[60px]">
-              <div
-                className="grid gap-[60px] px-7 py-4 sm:grid-cols-2 sm:px-[60px]"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(ellipse 130% 175% at 38% 50%, rgba(9,15,15,0) 0%, rgba(9,15,15,0) 44%, #090f0f 100%), url(/images/marquee-glow.jpg)",
-                  backgroundSize: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                <h3 className="mono-body py-4 text-foam">Connected with purpose</h3>
-                <h3 className="mono-body py-4 text-foam">Where we work</h3>
-              </div>
-              <div className="grid gap-[60px] px-7 sm:grid-cols-2 sm:px-[60px]">
-                <p className="text-sm font-medium leading-relaxed text-mist">
-                  When connected with purpose, these elements transform machines
-                  into living systems. Isolated components become ecosystems.
-                  Static infrastructure becomes responsive, observable, aware.
-                </p>
-                <p className="text-sm font-medium leading-relaxed text-mist">
-                  Codistica was built around curiosity, discipline, and a deep
-                  respect for this invisible layer. Our work focuses precisely
-                  there. In the intelligence that allows complex systems to
-                  operate with greater clarity, reliability, and awareness.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* founder's belief */}
-          <section
-            id="founders-belief"
-            className="relative scroll-mt-10 overflow-hidden rounded-[40px]"
-          >
-            <Image
-              src="/images/marquee-glow.jpg"
-              alt=""
-              fill
-              className="object-cover"
-              sizes="1060px"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "linear-gradient(to bottom, rgba(9,15,15,0) 0%, #090f0f 100%)",
-              }}
-            />
-            <div className="relative flex flex-col px-7 sm:px-[60px]">
-              <div id="principle" className="scroll-mt-10 pt-[60px]">
-                <blockquote className="heading text-foam">
-                  &quot;Find what you are passionate about
-                  <br />
-                  and passionate even more&quot;
-                </blockquote>
-              </div>
-              <div className="mt-[104px] flex flex-col justify-between gap-8 border-t border-[#003736] py-5 pb-[60px] sm:flex-row sm:items-end">
-                <div className="flex flex-col gap-8">
-                  <div className="text-lg font-medium leading-relaxed">
-                    <div className="text-foam">Ernesto Stifano</div>
-                    <div className="text-mist">Co-founder, CEO</div>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <CopyEmailChip email="ernesto.stifano@codistica.com" />
-                    <LinkedInButton />
-                  </div>
+                <div className="flex flex-col gap-3">
+                  <h3 className="mono-body text-foam">Shared strategic horizon</h3>
+                  <p className="text-lg font-medium leading-relaxed text-mist">
+                    Our approach is not transactional. We seek partners who
+                    understand that building meaningful infrastructure
+                    requires time, commitment, and passion for creating
+                    lasting value.
+                  </p>
                 </div>
-                <Image
-                  src="/images/founder.jpg"
-                  alt="Ernesto Stifano, co-founder and CEO of Codistica"
-                  width={160}
-                  height={160}
-                  className="rounded-lg object-cover"
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* what we do */}
-          <section className="relative flex flex-col items-center gap-10 overflow-hidden rounded-[40px] bg-panel p-7 sm:p-[60px]">
-            <span className="mono-body absolute left-7 top-7 text-foam sm:left-[60px] sm:top-[60px]">
-              What we do
-            </span>
-            <WordSphere />
-            <div className="grid w-full gap-[60px] sm:grid-cols-2">
-              <h3 className="heading text-foam">
-                Every system.
-                <br />
-                One conviction.
-              </h3>
-              <div className="flex flex-col gap-10">
-                <p className="text-lg font-medium leading-relaxed text-mist">
-                  Connect physical infrastructure with digital intelligence. Turn
-                  the invisible into something observable, responsive, and aware.
-                  <br />
-                  Concept to implementation. In-house. End to end.
-                </p>
                 <div>
-                  <FilledButton href="mailto:info@codistica.com">Talk to us</FilledButton>
+                  <FilledButton href="/apply/strategic-conversation">
+                    Start a strategic conversation
+                  </FilledButton>
                 </div>
               </div>
             </div>
