@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
-import CompanySidebar, { partnershipSidebarItems } from "@/components/CompanySidebar";
 import RuledField from "@/components/RuledField";
 import { FilledButton } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Partnership & collaboration — Codistica",
+  title: "Partnership & collaboration - Codistica",
   description:
     "Systems worth building. Together. Strategic development, team & talent, and investment partnerships at Codistica.",
 };
@@ -15,9 +14,8 @@ export const metadata: Metadata = {
 export default function CompanyPage() {
   return (
     <>
-      <Header />
-      <div className="flex gap-[60px] px-5 pb-30 pt-10">
-        <CompanySidebar items={partnershipSidebarItems} defaultActive="build-with-us" />
+      <Header sticky />
+      <div className="px-5 pb-30 pt-10">
         <main className="mx-auto flex w-full max-w-[1060px] flex-col gap-5">
           {/* hero */}
           <section className="relative flex h-[540px] flex-col justify-between overflow-hidden rounded-[40px]">
@@ -35,18 +33,6 @@ export default function CompanyPage() {
                 <br />
                 Together.
               </h1>
-            </div>
-            <div className="relative grid grid-cols-3 gap-2 p-10">
-              {[
-                ["35", "Clients"],
-                ["51", "Projects"],
-                ["6", "Countries"],
-              ].map(([num, label]) => (
-                <div key={label} className="flex flex-col items-center gap-2">
-                  <span className="display text-snow">{num}</span>
-                  <span className="mono-body text-foam">{label}</span>
-                </div>
-              ))}
             </div>
           </section>
 
@@ -70,7 +56,7 @@ export default function CompanyPage() {
               <p>
                 We work with individuals, teams, and organizations driven by
                 curiosity, discipline, and a genuine passion for solving
-                meaningful problems — people who believe that building the
+                meaningful problems - people who believe that building the
                 right systems can quietly improve how the world operates.
               </p>
               <p>
@@ -216,7 +202,7 @@ export default function CompanyPage() {
                 <p className="text-sm font-medium leading-relaxed text-foam">
                   The strength of Codistica comes from the people behind the
                   systems we build. We value people who combine technical
-                  rigor with genuine passion for solving complex problems —
+                  rigor with genuine passion for solving complex problems -
                   people who take pride in thoughtful work and care deeply
                   about the systems they create.
                 </p>

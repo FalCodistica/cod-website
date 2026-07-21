@@ -87,7 +87,7 @@ export default function Home() {
                 from={current.sphere.from}
                 to={current.sphere.to}
                 size={56}
-                className="transition-[background,box-shadow] duration-700"
+                className="scale-50 transition-[background,box-shadow,transform] duration-700 sm:scale-100"
               />
             </Link>
             <span className="relative block h-[1.15em] overflow-hidden text-right text-sm font-medium tracking-[-0.01em] text-snow sm:text-[clamp(28px,2.5vw,48px)] sm:tracking-[-0.03em]">

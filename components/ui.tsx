@@ -191,7 +191,7 @@ export function Sphere({
   return (
     <span
       aria-hidden
-      className={`sphere inline-block shrink-0 ${className}`}
+      className={`sphere inline-block align-middle shrink-0 ${className}`}
       style={
         {
           width: size,

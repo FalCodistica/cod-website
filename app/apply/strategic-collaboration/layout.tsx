@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Develop your project with Codistica — Codistica",
+  title: "Develop your project with Codistica - Codistica",
   description: "Propose a strategic collaboration with Codistica.",
 };
 

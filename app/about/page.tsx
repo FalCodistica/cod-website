@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
-import CompanySidebar, { howWeThinkSidebarItems } from "@/components/CompanySidebar";
 import WordSphere from "@/components/WordSphere";
 import { CopyEmailChip, FilledButton, LinkedInButton } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "How we think — Codistica",
+  title: "How we think - Codistica",
   description:
     "Why, how, and what drives Codistica. The founder's belief in building the invisible layer of intelligent systems.",
 };
@@ -15,9 +14,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Header />
-      <div className="flex gap-[60px] px-5 pb-30 pt-10">
-        <CompanySidebar items={howWeThinkSidebarItems} defaultActive="why" />
+      <Header sticky />
+      <div className="px-5 pb-30 pt-10">
         <main className="mx-auto flex w-full max-w-[1060px] flex-col gap-5">
           {/* hero */}
           <section className="relative flex h-[540px] items-center justify-center overflow-hidden rounded-[40px]">
@@ -64,7 +62,7 @@ export default function AboutPage() {
               Turning data into moments of clarity and wonder. By challenging
               what seems impossible today, we enable tomorrow&apos;s
               possibilities. With courage and no shortcuts taken, we explore,
-              we question, and we deliver — nurturing every project as if it
+              we question, and we deliver - nurturing every project as if it
               carried our own name.
             </p>
           </section>

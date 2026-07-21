@@ -30,12 +30,18 @@ export function SiteChrome({ children }: { children: ReactNode }) {
   );
 }
 
-export function Header({ floating = false }: { floating?: boolean }) {
+export function Header({
+  floating = false,
+  sticky = false,
+}: {
+  floating?: boolean;
+  sticky?: boolean;
+}) {
   const { open, setOpen } = useMenu();
   return (
     <header
       className={`${
-        floating ? "absolute" : "relative"
+        floating ? "absolute" : sticky ? "sticky bg-ink/90 backdrop-blur-xl" : "relative"
       } inset-x-0 top-0 z-40 flex h-20 items-center justify-between px-5`}
     >
       <Logo />

@@ -14,7 +14,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Codistica — Powering the invisible",
+  title: "Codistica - Powering the invisible",
   description:
     "Technology partner for vertical mobility, waste treatment, telecommunications, fashion, food & beverage, household appliances, and building automation. Connect physical infrastructure with digital intelligence.",
 };

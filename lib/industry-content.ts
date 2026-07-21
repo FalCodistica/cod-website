@@ -22,7 +22,7 @@ export const industryContent: Record<string, IndustryContent> = {
     statement:
       "Every day, billions of people move through buildings. Elevators, escalators, and mobility systems quietly carry the rhythm of modern cities. Yet few ever think about the infrastructure that makes that movement possible.",
     detailA:
-      "Behind every elevator ride lies an invisible network of controllers, sensors, and mechanical systems working in quiet coordination. Every day, thousands of micro-decisions take place across buildings and cities — guiding movement, ensuring safety, and sustaining the rhythm of modern life.",
+      "Behind every elevator ride lies an invisible network of controllers, sensors, and mechanical systems working in quiet coordination. Every day, thousands of micro-decisions take place across buildings and cities - guiding movement, ensuring safety, and sustaining the rhythm of modern life.",
     detailB:
       "Much of this infrastructure was designed decades ago, in a time when connectivity and intelligent monitoring were not yet part of the equation. Understanding these hidden systems is the first step toward evolving them.",
     challengeTitle:
@@ -73,7 +73,7 @@ export const industryContent: Record<string, IndustryContent> = {
     statement:
       "Every day, cities produce more than they can see. Waste streams move through plants and processes that quietly decide what is recovered, what is transformed, and what is lost.",
     detailA:
-      "Behind every treatment plant lies a dense network of processing lines, sensors, and control systems working in coordination. Every hour, material flows are sorted, processed, and transformed — recovering value from what the world leaves behind.",
+      "Behind every treatment plant lies a dense network of processing lines, sensors, and control systems working in coordination. Every hour, material flows are sorted, processed, and transformed - recovering value from what the world leaves behind.",
     detailB:
       "Much of this infrastructure still runs on isolated controls and manual oversight. Understanding these processes end to end is the first step toward making them intelligent.",
     challengeTitle:
@@ -206,7 +206,7 @@ export const industryContent: Record<string, IndustryContent> = {
       },
       {
         title: "Inventory systems",
-        body: "Knowing what exists, where it is, and where it's going — in real time.",
+        body: "Knowing what exists, where it is, and where it's going - in real time.",
       },
       {
         title: "Supply chain",
@@ -277,7 +277,7 @@ export const industryContent: Record<string, IndustryContent> = {
     statement:
       "Every home runs on machines no one thinks about. Appliances quietly wash, cool, and cook through millions of cycles. Yet few ever think about the intelligence those machines could carry.",
     detailA:
-      "Behind every appliance lies a system of controllers, sensors, and components working in coordination. Every cycle generates signals about performance, wear, and use — most of it never heard.",
+      "Behind every appliance lies a system of controllers, sensors, and components working in coordination. Every cycle generates signals about performance, wear, and use - most of it never heard.",
     detailB:
       "Much of this product category was designed before connectivity mattered. Understanding these embedded systems is the first step toward evolving them.",
     challengeTitle:
@@ -359,7 +359,7 @@ export const industryContent: Record<string, IndustryContent> = {
       },
       {
         title: "Access control",
-        body: "Security that knows who, where, and when — without friction.",
+        body: "Security that knows who, where, and when - without friction.",
       },
       {
         title: "Security systems",

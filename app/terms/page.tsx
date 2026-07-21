@@ -1,7 +1,7 @@
 import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
 
-export const metadata = { title: "Terms of use — Codistica" };
+export const metadata = { title: "Terms of use - Codistica" };
 
 export default function TermsPage() {
   return (

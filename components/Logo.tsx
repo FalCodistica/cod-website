@@ -6,7 +6,7 @@ export default function Logo({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label="Codistica — home"
+      aria-label="Codistica - home"
       className={`inline-flex items-center ${className}`}
     >
       <Image
