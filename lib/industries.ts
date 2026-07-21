@@ -41,7 +41,7 @@ export const industries: Industry[] = [
     slug: "food-beverage",
     label: "food & beverage",
     name: "Food & beverage",
-    hero: "/images/hero-food-beverage.jpg",
+    hero: "/images/hero-food-beverage.png",
     sphere: { from: "#e8e5b2", to: "#635e33" },
   },
   {
