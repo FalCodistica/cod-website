@@ -2,13 +2,7 @@
 
 import { motion } from "motion/react";
 
-export default function Stepper({
-  steps,
-  current,
-}: {
-  steps: string[];
-  current: number;
-}) {
+export default function Stepper({ steps, current }: { steps: string[]; current: number }) {
   const progress = ((current + 1) / steps.length) * 100;
   return (
     <div className="flex w-full max-w-[640px] flex-col items-center gap-2">

@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { Header } from "@/components/SiteChrome";
+import { useRef, useState } from "react";
 import Footer from "@/components/Footer";
+import { Header } from "@/components/SiteChrome";
 import { Sphere } from "@/components/ui";
 import { industries } from "@/lib/industries";
 

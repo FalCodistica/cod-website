@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
-import WordSphere from "@/components/WordSphere";
+import { Header } from "@/components/SiteChrome";
 import { CopyEmailChip, FilledButton, LinkedInButton } from "@/components/ui";
+import WordSphere from "@/components/WordSphere";
 
 export const metadata: Metadata = {
   title: "How we think - Codistica",
@@ -39,14 +39,11 @@ export default function AboutPage() {
             id="why"
             className="flex scroll-mt-10 flex-col gap-10 rounded-[40px] bg-panel p-7 sm:p-[60px]"
           >
-            <h2 className="heading text-foam">
-              It always begins with a question.
-            </h2>
+            <h2 className="heading text-foam">It always begins with a question.</h2>
             <p className="text-lg font-medium leading-relaxed text-mist">
-              A quiet spark of curiosity that refuses to fade. Fueled by
-              passion and guided by the belief that every insight can shape
-              something greater, we aim to leave the world more connected,
-              more conscious, and quietly changed for the better.
+              A quiet spark of curiosity that refuses to fade. Fueled by passion and guided by the
+              belief that every insight can shape something greater, we aim to leave the world more
+              connected, more conscious, and quietly changed for the better.
             </p>
           </section>
 
@@ -59,11 +56,10 @@ export default function AboutPage() {
               We write the hidden stories within the world around us.
             </h2>
             <p className="text-lg font-medium leading-relaxed text-mist">
-              Turning data into moments of clarity and wonder. By challenging
-              what seems impossible today, we enable tomorrow&apos;s
-              possibilities. With courage and no shortcuts taken, we explore,
-              we question, and we deliver - nurturing every project as if it
-              carried our own name.
+              Turning data into moments of clarity and wonder. By challenging what seems impossible
+              today, we enable tomorrow&apos;s possibilities. With courage and no shortcuts taken,
+              we explore, we question, and we deliver - nurturing every project as if it carried our
+              own name.
             </p>
           </section>
 
@@ -84,8 +80,8 @@ export default function AboutPage() {
               </h3>
               <div className="flex flex-col gap-10">
                 <p className="text-lg font-medium leading-relaxed text-mist">
-                  Connect physical infrastructure with digital intelligence. Turn
-                  the invisible into something observable, responsive, and aware.
+                  Connect physical infrastructure with digital intelligence. Turn the invisible into
+                  something observable, responsive, and aware.
                   <br />
                   Concept to implementation. In-house. End to end.
                 </p>
@@ -116,32 +112,26 @@ export default function AboutPage() {
             className="flex scroll-mt-10 flex-col gap-10 rounded-[40px] bg-panel p-7 sm:p-[60px]"
           >
             <h2 className="heading text-foam">
-              Every meaningful system begins with the way we choose to think
-              about the world.
+              Every meaningful system begins with the way we choose to think about the world.
             </h2>
             <p className="text-lg font-medium leading-relaxed text-mist">
-              Codistica was built around curiosity, discipline, and a deep
-              respect for the invisible systems that sustain modern life.
+              Codistica was built around curiosity, discipline, and a deep respect for the invisible
+              systems that sustain modern life.
               <br />
               <br />
-              Across cities, industries, and infrastructures, countless
-              mechanisms operate quietly behind the scenes. They move people,
-              enable communication, power buildings, process resources, and
-              support the environments where we live and work.
+              Across cities, industries, and infrastructures, countless mechanisms operate quietly
+              behind the scenes. They move people, enable communication, power buildings, process
+              resources, and support the environments where we live and work.
               <br />
               <br />
-              Most of these systems remain invisible. Yet they shape how the
-              world functions. At Codistica, our work focuses precisely
-              there, in the layers of intelligence that allow complex systems
-              to operate with greater clarity, reliability, and awareness.
+              Most of these systems remain invisible. Yet they shape how the world functions. At
+              Codistica, our work focuses precisely there, in the layers of intelligence that allow
+              complex systems to operate with greater clarity, reliability, and awareness.
             </p>
           </section>
 
           {/* a principle that guides us */}
-          <section
-            id="principle"
-            className="relative scroll-mt-10 overflow-hidden rounded-[40px]"
-          >
+          <section id="principle" className="relative scroll-mt-10 overflow-hidden rounded-[40px]">
             <Image
               src="/images/marquee-glow.jpg"
               alt=""
@@ -188,19 +178,16 @@ export default function AboutPage() {
               <div className="flex max-w-[470px] flex-col gap-2">
                 <h2 className="mono-body text-foam">The invisible layer</h2>
                 <p className="heading text-foam">
-                  Many of the systems that sustain modern life are never
-                  seen.
+                  Many of the systems that sustain modern life are never seen.
                 </p>
               </div>
               <p className="text-lg font-medium leading-relaxed text-mist">
-                Controllers. Sensors. Data. Infrastructure. Software. Quiet
-                layers of intelligence shaping how cities move, buildings
-                operate, and industries function.
+                Controllers. Sensors. Data. Infrastructure. Software. Quiet layers of intelligence
+                shaping how cities move, buildings operate, and industries function.
                 <br />
-                When connected with purpose, these elements transform
-                machines into living systems. This is where Codistica works,
-                designing the intelligence that powers what is unseen, yet
-                essential to the world around us.
+                When connected with purpose, these elements transform machines into living systems.
+                This is where Codistica works, designing the intelligence that powers what is
+                unseen, yet essential to the world around us.
               </p>
             </div>
             <div className="flex flex-col pb-[60px]">
@@ -218,15 +205,14 @@ export default function AboutPage() {
               </div>
               <div className="grid gap-[60px] px-7 sm:grid-cols-2 sm:px-[60px]">
                 <p className="text-sm font-medium leading-relaxed text-mist">
-                  When connected with purpose, these elements transform machines
-                  into living systems. Isolated components become ecosystems.
-                  Static infrastructure becomes responsive, observable, aware.
+                  When connected with purpose, these elements transform machines into living
+                  systems. Isolated components become ecosystems. Static infrastructure becomes
+                  responsive, observable, aware.
                 </p>
                 <p className="text-sm font-medium leading-relaxed text-mist">
-                  Codistica was built around curiosity, discipline, and a deep
-                  respect for this invisible layer. Our work focuses precisely
-                  there. In the intelligence that allows complex systems to
-                  operate with greater clarity, reliability, and awareness.
+                  Codistica was built around curiosity, discipline, and a deep respect for this
+                  invisible layer. Our work focuses precisely there. In the intelligence that allows
+                  complex systems to operate with greater clarity, reliability, and awareness.
                 </p>
               </div>
             </div>

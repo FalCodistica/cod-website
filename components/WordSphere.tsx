@@ -78,10 +78,9 @@ export default function WordSphere() {
       <div
         className="absolute left-1/2 top-1/2 h-[316px] w-[156%] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
-          background:
-            "linear-gradient(90deg, #0e1514 0%, #1a2120 40%, #1a2120 60%, #0e1514 100%)",
+          background: "linear-gradient(90deg, #0e1514 0%, #1a2120 40%, #1a2120 60%, #0e1514 100%)",
         }}
-        aria-hidden
+        aria-hidden="true"
       />
 
       {/* hovered word, shown in the centre */}
@@ -101,6 +100,7 @@ export default function WordSphere() {
           className="absolute left-1/2 top-1/2 h-0 w-1/2 origin-left"
           style={{ transform: `rotate(${-angle}deg)` }}
         >
+          {/* biome-ignore lint/a11y/noStaticElementInteractions: purely decorative hover affordance, not a focusable control */}
           <div
             onMouseEnter={() => setHovered(label)}
             onMouseLeave={() => setHovered((h) => (h === label ? null : h))}

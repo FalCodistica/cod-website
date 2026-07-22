@@ -4,7 +4,7 @@ import { FilledButton } from "@/components/ui";
 
 function CheckIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="11" stroke="#80d5d2" strokeWidth="1.5" />
       <path
         d="M7.5 12.5l3 3 6-6"

@@ -1,6 +1,6 @@
 function CaretRight() {
   return (
-    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden>
+    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
       <path
         d="M1 1l4 4-4 4"
         stroke="currentColor"

@@ -16,7 +16,7 @@ export default function RuledField({
   return (
     <div
       className={`relative h-[217px] w-full ${fade ? "fade-bottom" : ""} ${className}`}
-      aria-hidden
+      aria-hidden="true"
     >
       {/* dim line field — rounded as a stadium */}
       <div className="ruled h-full w-full rounded-full" />

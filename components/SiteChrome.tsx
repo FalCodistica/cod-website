@@ -1,17 +1,11 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
-import Logo from "./Logo";
-import {
-  CopyEmailChip,
-  DotChevron,
-  DotGrid,
-  FilledButton,
-  LinkedInButton,
-} from "./ui";
+import { createContext, type ReactNode, useContext, useState } from "react";
 import { industries } from "@/lib/industries";
+import Logo from "./Logo";
+import { CopyEmailChip, DotChevron, DotGrid, FilledButton, LinkedInButton } from "./ui";
 
 const MenuContext = createContext<{ open: boolean; setOpen: (v: boolean) => void }>({
   open: false,
@@ -46,6 +40,7 @@ export function Header({
     >
       <Logo />
       <button
+        type="button"
         onClick={() => setOpen(!open)}
         aria-label="Open menu"
         className="glass-pill absolute right-3 top-3 flex size-14 items-center justify-center transition-colors hover:bg-foam/15 sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
@@ -82,18 +77,25 @@ function MenuOverlay() {
             {/* close row */}
             <div className="flex h-14 items-center justify-center">
               <button
+                type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
                 className="flex size-14 items-center justify-center"
               >
                 {/* partially-lit dot grid, as in Figma's close state */}
-                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden>
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
                   {[
-                    [2, 2, 1], [10, 2, 0.08], [18, 2, 1],
-                    [2, 10, 0.08], [10, 10, 1], [18, 10, 0.08],
-                    [2, 18, 1], [10, 18, 0.08], [18, 18, 1],
-                  ].map(([cx, cy, o], i) => (
-                    <circle key={i} cx={cx} cy={cy} r="2" fill="#dde4e3" opacity={o} />
+                    [2, 2, 1],
+                    [10, 2, 0.08],
+                    [18, 2, 1],
+                    [2, 10, 0.08],
+                    [10, 10, 1],
+                    [18, 10, 0.08],
+                    [2, 18, 1],
+                    [10, 18, 0.08],
+                    [18, 18, 1],
+                  ].map(([cx, cy, o]) => (
+                    <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="2" fill="#dde4e3" opacity={o} />
                   ))}
                 </svg>
               </button>
@@ -110,9 +112,7 @@ function MenuOverlay() {
                         onClick={() => setOpen(false)}
                         className="group flex h-10 items-center text-lg font-medium text-foam"
                       >
-                        <span className="transition-colors group-hover:text-mint">
-                          {ind.name}
-                        </span>
+                        <span className="transition-colors group-hover:text-mint">{ind.name}</span>
                       </Link>
                     </li>
                   ))}

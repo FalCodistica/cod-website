@@ -1,16 +1,15 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { Industry } from "@/lib/industries";
 import { useScrollRoot } from "./ScrollRoot";
 import { EyebrowPill } from "./ui";
-import { type Industry } from "@/lib/industries";
 
 /* ── math helpers (ported from the prototype) ───────────────────── */
 const clamp01 = (t: number) => Math.min(1, Math.max(0, t));
 const lerp = (a: number, b: number, t: number) => a + (b - a) * clamp01(t);
-const easeInOut = (t: number) =>
-  t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+const easeInOut = (t: number) => (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);
+const easeOut = (t: number) => 1 - (1 - t) ** 3;
 const bellCurve = (x: number, center: number, width: number, height: number) => {
   const d = (x - center) / width;
   return height * Math.exp(-0.5 * d * d);
@@ -65,8 +64,8 @@ export default function ChallengeScene({
   useEffect(() => {
     const space = spaceRef.current;
     const canvas = canvasRef.current;
-    if (!space || !canvas) return;
-    const ctx = canvas.getContext("2d")!;
+    const ctx = canvas?.getContext("2d");
+    if (!space || !canvas || !ctx) return;
     const dpr = window.devicePixelRatio || 1;
     const accent = hexToRgb(industry.sphere.from);
     let W = 0;
@@ -77,8 +76,8 @@ export default function ChallengeScene({
       H = window.innerHeight;
       canvas.width = W * dpr;
       canvas.height = H * dpr;
-      canvas.style.width = W + "px";
-      canvas.style.height = H + "px";
+      canvas.style.width = `${W}px`;
+      canvas.style.height = `${H}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
@@ -144,19 +143,11 @@ export default function ChallengeScene({
       ctx.fillRect(0, rowY + LINE_H - 90, W, 92);
 
       // ── sphere 1 — rides the row, then the bell ──
-      const c1X = lerp(
-        rowX - 40,
-        centerLineX,
-        easeInOut(clamp01(p / 0.2)),
-      );
-      const c1Y =
-        rowY - 20 - bellCurve(centerIdx, centerIdx, bellWidth, bellHeight) - centralRise;
+      const c1X = lerp(rowX - 40, centerLineX, easeInOut(clamp01(p / 0.2)));
+      const c1Y = rowY - 20 - bellCurve(centerIdx, centerIdx, bellWidth, bellHeight) - centralRise;
       const c1A = clamp01(p / 0.03);
       const pulsePhase = clamp01((p - 0.2) / 0.2);
-      const pulse =
-        pulsePhase > 0 && settleEased < 1
-          ? Math.sin(pulsePhase * Math.PI) * 0.15
-          : 0;
+      const pulse = pulsePhase > 0 && settleEased < 1 ? Math.sin(pulsePhase * Math.PI) * 0.15 : 0;
       ctx.beginPath();
       ctx.arc(c1X, c1Y, R + 4, 0, Math.PI * 2);
       ctx.fillStyle = rgba(accent, 0.12 * c1A);
@@ -169,11 +160,7 @@ export default function ChallengeScene({
       // ── sphere 2 — emerges from below ──
       if (p > 0.38) {
         const c2A = clamp01((p - 0.38) / 0.06);
-        const c2Y = lerp(
-          H + 40,
-          rowY + LINE_H + 20,
-          easeOut(clamp01((p - 0.4) / 0.45)),
-        );
+        const c2Y = lerp(H + 40, rowY + LINE_H + 20, easeOut(clamp01((p - 0.4) / 0.45)));
         ctx.beginPath();
         ctx.arc(centerLineX, c2Y, R + 4, 0, Math.PI * 2);
         ctx.fillStyle = rgba(accent, 0.12 * c2A);
@@ -185,16 +172,13 @@ export default function ChallengeScene({
       }
 
       // ── overlay captions, synced to the phases ──
-      if (titleRef.current)
-        titleRef.current.style.opacity = String(1 - clamp01((p - 0.12) / 0.1));
+      if (titleRef.current) titleRef.current.style.opacity = String(1 - clamp01((p - 0.12) / 0.1));
       if (pointsRef.current)
         pointsRef.current.style.opacity = String(
           clamp01((p - 0.2) / 0.06) * (1 - clamp01((p - 0.52) / 0.08)),
         );
-      if (noteRef.current)
-        noteRef.current.style.opacity = String(clamp01((p - 0.6) / 0.08));
-      if (hintRef.current)
-        hintRef.current.style.opacity = String(1 - clamp01(p / 0.02));
+      if (noteRef.current) noteRef.current.style.opacity = String(clamp01((p - 0.6) / 0.08));
+      if (hintRef.current) hintRef.current.style.opacity = String(1 - clamp01(p / 0.02));
     };
 
     let raf = 0;
@@ -235,9 +219,7 @@ export default function ChallengeScene({
           className="pointer-events-none absolute inset-x-0 top-[12%] flex flex-col items-center px-5"
         >
           <EyebrowPill>The challenge</EyebrowPill>
-          <h2 className="heading mt-2 max-w-[720px] text-center text-foam">
-            {title}
-          </h2>
+          <h2 className="heading mt-2 max-w-[720px] text-center text-foam">{title}</h2>
         </div>
 
         {/* the problem — appears as the central line rises */}
@@ -267,7 +249,7 @@ export default function ChallengeScene({
         <span
           ref={hintRef}
           className="mono-label pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 text-mint/40"
-          aria-hidden
+          aria-hidden="true"
         >
           Scroll
         </span>

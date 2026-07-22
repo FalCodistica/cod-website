@@ -1,13 +1,13 @@
 "use client";
 
-import { useRef, useState, type DragEvent } from "react";
 import { motion } from "motion/react";
+import { type DragEvent, useRef, useState } from "react";
 
 type Status = "idle" | "uploading" | "verifying" | "done";
 
 function UploadIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
       <path
         d="M10 13V3M10 3l-4 4M10 3l4 4"
         stroke="#dde4e3"
@@ -27,7 +27,7 @@ function UploadIcon() {
 
 function RemoveIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
       <path d="M1 1l12 12M13 1L1 13" stroke="#bec9c7" strokeWidth="1.5" strokeLinecap="round" />
     </svg>
   );
@@ -84,7 +84,7 @@ export default function Dropzone({
     <div className="flex w-full flex-col gap-3 border-b border-rule py-[10px]">
       <span className="mono-body text-mist">
         {label}
-        {required && <span aria-hidden> *</span>}
+        {required && <span aria-hidden="true"> *</span>}
       </span>
 
       <input

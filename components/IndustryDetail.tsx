@@ -68,7 +68,7 @@ export default function IndustryDetail({ slug }: { slug: string }) {
               backgroundImage:
                 "linear-gradient(to bottom, #0e1514, transparent), linear-gradient(90deg, #0e1514, transparent 50%, #0e1514), url(/images/marquee-glow.jpg)",
             }}
-            aria-hidden
+            aria-hidden="true"
           />
           <div className="relative flex flex-col items-center gap-2 text-center">
             <h2 className="heading text-foam">{content.closing[0]}</h2>

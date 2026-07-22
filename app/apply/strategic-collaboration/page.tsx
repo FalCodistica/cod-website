@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import FormShell from "@/components/forms/FormShell";
-import Stepper from "@/components/forms/Stepper";
-import StepButton from "@/components/forms/StepButton";
+import { useState } from "react";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
-import { TextField, SelectField, TextareaField, PillGroup } from "@/components/forms/fields";
+import FormShell from "@/components/forms/FormShell";
+import { PillGroup, SelectField, TextareaField, TextField } from "@/components/forms/fields";
+import StepButton from "@/components/forms/StepButton";
+import Stepper from "@/components/forms/Stepper";
 import { countries } from "@/lib/countries";
 
 const steps = ["About you", "Your project", "Current stage", "Timeline"];
@@ -101,26 +101,87 @@ export default function StrategicCollaborationPage() {
         <div key={step} className="step-in flex flex-col">
           {step === 0 && (
             <>
-              <TextField label="Name" name="name" placeholder="Your name" value={data.name} onChange={(v) => set("name", v)} />
-              <TextField label="Work email" name="email" type="email" placeholder="you@company.com" value={data.email} onChange={(v) => set("email", v)} />
-              <TextField label="Company" name="company" placeholder="Where you work" value={data.company} onChange={(v) => set("company", v)} />
-              <TextField label="Role" name="role" placeholder="Your position" value={data.role} onChange={(v) => set("role", v)} />
-              <SelectField label="Country" name="country" options={countries} value={data.country} onChange={(v) => set("country", v)} />
-              <TextField label="Phone number" name="phone" type="tel" placeholder="+1 555-555-5555" value={data.phone} onChange={(v) => set("phone", v)} />
+              <TextField
+                label="Name"
+                name="name"
+                placeholder="Your name"
+                value={data.name}
+                onChange={(v) => set("name", v)}
+              />
+              <TextField
+                label="Work email"
+                name="email"
+                type="email"
+                placeholder="you@company.com"
+                value={data.email}
+                onChange={(v) => set("email", v)}
+              />
+              <TextField
+                label="Company"
+                name="company"
+                placeholder="Where you work"
+                value={data.company}
+                onChange={(v) => set("company", v)}
+              />
+              <TextField
+                label="Role"
+                name="role"
+                placeholder="Your position"
+                value={data.role}
+                onChange={(v) => set("role", v)}
+              />
+              <SelectField
+                label="Country"
+                name="country"
+                options={countries}
+                value={data.country}
+                onChange={(v) => set("country", v)}
+              />
+              <TextField
+                label="Phone number"
+                name="phone"
+                type="tel"
+                placeholder="+1 555-555-5555"
+                value={data.phone}
+                onChange={(v) => set("phone", v)}
+              />
             </>
           )}
 
           {step === 1 && (
             <>
-              <TextareaField label="What are you building or trying to solve?" name="projectWhat" placeholder="Tell us about the initiative" value={data.projectWhat} onChange={(v) => set("projectWhat", v)} />
-              <TextareaField label="What systems or infrastructure are currently involved?" name="projectSystems" placeholder="Existing infrastructure, tools, or constraints" value={data.projectSystems} onChange={(v) => set("projectSystems", v)} />
-              <TextareaField label="What would success look like?" name="projectSuccess" placeholder="The outcome you're working toward" value={data.projectSuccess} onChange={(v) => set("projectSuccess", v)} />
+              <TextareaField
+                label="What are you building or trying to solve?"
+                name="projectWhat"
+                placeholder="Tell us about the initiative"
+                value={data.projectWhat}
+                onChange={(v) => set("projectWhat", v)}
+              />
+              <TextareaField
+                label="What systems or infrastructure are currently involved?"
+                name="projectSystems"
+                placeholder="Existing infrastructure, tools, or constraints"
+                value={data.projectSystems}
+                onChange={(v) => set("projectSystems", v)}
+              />
+              <TextareaField
+                label="What would success look like?"
+                name="projectSuccess"
+                placeholder="The outcome you're working toward"
+                value={data.projectSuccess}
+                onChange={(v) => set("projectSuccess", v)}
+              />
             </>
           )}
 
           {step === 2 && (
             <>
-              <PillGroup label="What stage are you currently in?" options={stageOptions} value={data.stage} onChange={(v) => set("stage", v as string)} />
+              <PillGroup
+                label="What stage are you currently in?"
+                options={stageOptions}
+                value={data.stage}
+                onChange={(v) => set("stage", v as string)}
+              />
               <PillGroup
                 label="What kind of support are you looking for?"
                 hint="Select all that apply"
@@ -134,7 +195,12 @@ export default function StrategicCollaborationPage() {
 
           {step === 3 && (
             <>
-              <PillGroup label="Is there a timeline you are working toward?" options={timelineOptions} value={data.timeline} onChange={(v) => set("timeline", v as string)} />
+              <PillGroup
+                label="Is there a timeline you are working toward?"
+                options={timelineOptions}
+                value={data.timeline}
+                onChange={(v) => set("timeline", v as string)}
+              />
               <p className="pt-6 text-xs font-medium leading-relaxed text-ash">
                 By submitting this form, you agree to the processing of your personal data in
                 accordance with our{" "}

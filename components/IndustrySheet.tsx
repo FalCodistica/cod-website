@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { type ReactNode, useEffect, useRef, useState } from "react";
+import type { Industry } from "@/lib/industries";
 import { ScrollRootContext } from "./ScrollRoot";
 import { CloseDots } from "./ui";
-import { type Industry } from "@/lib/industries";
 
 const PEEK = 10; // px of the page behind shown above the sheet at rest
 const OFFSCREEN = 2400; // SSR-safe initial offset (no window needed)
@@ -51,6 +51,7 @@ export default function IndustrySheet({
   useEffect(() => setRoot(sheetRef.current), []);
 
   // slide-up entrance: snap one viewport down, then ease to the peek
+  // biome-ignore lint/correctness/useExhaustiveDependencies: mount-only; move is a stable closure over refs
   useEffect(() => {
     const el = sheetRef.current;
     if (!el) return;
@@ -73,6 +74,7 @@ export default function IndustrySheet({
   }, []);
 
   // settle to the resting position when expansion changes (not mid-drag)
+  // biome-ignore lint/correctness/useExhaustiveDependencies: move is a stable closure over refs
   useEffect(() => {
     if (drag.current || closing.current) return;
     move(expanded ? 0 : PEEK, true);
@@ -90,11 +92,9 @@ export default function IndustrySheet({
       // scroll:false leaves Home's scroll position untouched.
       router.push("/", { scroll: false });
     };
-    el.addEventListener(
-      "transitionend",
-      (e) => e.propertyName === "transform" && finish(),
-      { once: true },
-    );
+    el.addEventListener("transitionend", (e) => e.propertyName === "transform" && finish(), {
+      once: true,
+    });
     setTimeout(finish, 600); // fallback
     move(window.innerHeight, true);
   };
@@ -144,6 +144,7 @@ export default function IndustrySheet({
           </div>
           {/* close the sheet — returns to the home page */}
           <button
+            type="button"
             onClick={dismiss}
             aria-label="Close"
             className="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full bg-foam backdrop-blur-xl transition-transform hover:scale-105"

@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import FormShell from "@/components/forms/FormShell";
-import StepButton from "@/components/forms/StepButton";
+import { useState } from "react";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import Dropzone from "@/components/forms/Dropzone";
-import { TextField, SelectField, PillGroup } from "@/components/forms/fields";
+import FormShell from "@/components/forms/FormShell";
+import { PillGroup, SelectField, TextField } from "@/components/forms/fields";
+import StepButton from "@/components/forms/StepButton";
 import { countries } from "@/lib/countries";
 
 const opportunityOptions = ["Full-time", "Internship", "Freelance / contract", "Open to anything"];
@@ -39,8 +39,7 @@ export default function JoinTeamPage() {
   const set = <K extends keyof FormData>(key: K, value: FormData[K]) =>
     setData((d) => ({ ...d, [key]: value }));
 
-  const canSubmit =
-    data.name && data.email && data.phone && data.role && data.country && cv;
+  const canSubmit = data.name && data.email && data.phone && data.role && data.country && cv;
 
   function handleSubmit() {
     if (!canSubmit) return;
@@ -67,12 +66,52 @@ export default function JoinTeamPage() {
 
       <div className="flex w-full flex-col gap-10">
         <div className="flex flex-col">
-          <TextField label="Name" name="name" placeholder="Your name" value={data.name} onChange={(v) => set("name", v)} />
-          <TextField label="Email" name="email" type="email" placeholder="you@email.com" value={data.email} onChange={(v) => set("email", v)} />
-          <TextField label="Phone number" name="phone" type="tel" placeholder="+1 555-555-5555" value={data.phone} onChange={(v) => set("phone", v)} />
-          <TextField label="LinkedIn / portfolio" name="linkedin" type="url" placeholder="Link to your profile" required={false} value={data.linkedin} onChange={(v) => set("linkedin", v)} />
-          <TextField label="Current role" name="role" placeholder="What you do now" value={data.role} onChange={(v) => set("role", v)} />
-          <SelectField label="Country" name="country" options={countries} value={data.country} onChange={(v) => set("country", v)} />
+          <TextField
+            label="Name"
+            name="name"
+            placeholder="Your name"
+            value={data.name}
+            onChange={(v) => set("name", v)}
+          />
+          <TextField
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="you@email.com"
+            value={data.email}
+            onChange={(v) => set("email", v)}
+          />
+          <TextField
+            label="Phone number"
+            name="phone"
+            type="tel"
+            placeholder="+1 555-555-5555"
+            value={data.phone}
+            onChange={(v) => set("phone", v)}
+          />
+          <TextField
+            label="LinkedIn / portfolio"
+            name="linkedin"
+            type="url"
+            placeholder="Link to your profile"
+            required={false}
+            value={data.linkedin}
+            onChange={(v) => set("linkedin", v)}
+          />
+          <TextField
+            label="Current role"
+            name="role"
+            placeholder="What you do now"
+            value={data.role}
+            onChange={(v) => set("role", v)}
+          />
+          <SelectField
+            label="Country"
+            name="country"
+            options={countries}
+            value={data.country}
+            onChange={(v) => set("country", v)}
+          />
           <Dropzone file={cv} onChange={setCv} />
           <PillGroup
             label="What type of opportunity are you looking for?"

@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent } from "react";
+import type { ChangeEvent } from "react";
 
 const rowClass =
   "flex w-full flex-col gap-2 border-b border-rule py-[10px] sm:flex-row sm:items-center sm:gap-0";
@@ -9,7 +9,7 @@ const valueWrapClass = "min-w-[220px] flex-1";
 
 function RequiredMark({ required }: { required?: boolean }) {
   if (!required) return null;
-  return <span aria-hidden> *</span>;
+  return <span aria-hidden="true"> *</span>;
 }
 
 export function TextField({
@@ -91,10 +91,16 @@ function ChevronDown() {
       height="6"
       viewBox="0 0 10 6"
       fill="none"
-      aria-hidden
+      aria-hidden="true"
       className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 text-mist"
     >
-      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M1 1l4 4 4-4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

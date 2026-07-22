@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Header } from "@/components/SiteChrome";
 import Footer from "@/components/Footer";
 import RuledField from "@/components/RuledField";
+import { Header } from "@/components/SiteChrome";
 import { FilledButton } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -48,22 +48,19 @@ export default function CompanyPage() {
             </h2>
             <div className="flex flex-col gap-6 text-lg font-medium leading-relaxed text-mist">
               <p>
-                Codistica was built around a simple belief. The systems that
-                shape our world deserve deeper intelligence, thoughtful
-                collaboration, and people who care deeply about what they
-                build.
+                Codistica was built around a simple belief. The systems that shape our world deserve
+                deeper intelligence, thoughtful collaboration, and people who care deeply about what
+                they build.
               </p>
               <p>
-                We work with individuals, teams, and organizations driven by
-                curiosity, discipline, and a genuine passion for solving
-                meaningful problems - people who believe that building the
-                right systems can quietly improve how the world operates.
+                We work with individuals, teams, and organizations driven by curiosity, discipline,
+                and a genuine passion for solving meaningful problems - people who believe that
+                building the right systems can quietly improve how the world operates.
               </p>
               <p>
-                Whether through strategic initiatives, joining our team, or
-                exploring investment partnerships, what matters most is
-                alignment in values, long-term vision, and the passion to
-                build systems that matter.
+                Whether through strategic initiatives, joining our team, or exploring investment
+                partnerships, what matters most is alignment in values, long-term vision, and the
+                passion to build systems that matter.
               </p>
             </div>
           </section>
@@ -79,19 +76,17 @@ export default function CompanyPage() {
               Others begin with a complex challenge.
             </h2>
             <p className="text-lg font-medium leading-relaxed text-mist">
-              At Codistica, strategic development focuses on initiatives where
-              technology, infrastructure, and thoughtful execution can create
-              meaningful and lasting impact. We collaborate with organizations,
-              industry experts, and partners who bring deep domain knowledge and
-              the same commitment to building systems that truly work.
+              At Codistica, strategic development focuses on initiatives where technology,
+              infrastructure, and thoughtful execution can create meaningful and lasting impact. We
+              collaborate with organizations, industry experts, and partners who bring deep domain
+              knowledge and the same commitment to building systems that truly work.
             </p>
 
             {/* challenge → infrastructure diagram */}
             <div
               className="relative overflow-hidden rounded-full px-5 py-5"
               style={{
-                background:
-                  "linear-gradient(105deg, #0e1514 0%, #334863 100%)",
+                background: "linear-gradient(105deg, #0e1514 0%, #334863 100%)",
               }}
             >
               <div
@@ -107,28 +102,24 @@ export default function CompanyPage() {
                     className="object-cover"
                     sizes="220px"
                   />
-                  <span className="mono-body relative text-link-ice">
-                    Complex challenge
-                  </span>
+                  <span className="mono-body relative text-link-ice">Complex challenge</span>
                 </div>
                 <DiagramLink />
                 <div className="flex w-full max-w-[300px] flex-col gap-8 sm:shrink">
-                  {["Systems thinking", "Technical expertise", "Disciplined execution"].map(
-                    (t) => (
-                      <span
-                        key={t}
-                        className="mono-body flex h-10 items-center justify-center rounded-full text-foam"
-                        style={{
-                          background: "rgba(221,228,227,0.08)",
-                          boxShadow:
-                            "inset 1px 1px 0 rgba(178,200,232,0.28), inset -1px -1px 0 rgba(178,200,232,0.12)",
-                          backdropFilter: "blur(20px)",
-                        }}
-                      >
-                        {t}
-                      </span>
-                    ),
-                  )}
+                  {["Systems thinking", "Technical expertise", "Disciplined execution"].map((t) => (
+                    <span
+                      key={t}
+                      className="mono-body flex h-10 items-center justify-center rounded-full text-foam"
+                      style={{
+                        background: "rgba(221,228,227,0.08)",
+                        boxShadow:
+                          "inset 1px 1px 0 rgba(178,200,232,0.28), inset -1px -1px 0 rgba(178,200,232,0.12)",
+                        backdropFilter: "blur(20px)",
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
                 <DiagramLink flip />
                 <div
@@ -149,20 +140,18 @@ export default function CompanyPage() {
               <h3 className="mono-body text-foam">Collaboration model</h3>
               <div className="grid gap-6 text-sm font-medium leading-relaxed text-mist sm:grid-cols-3">
                 <p>
-                  The strongest collaborations begin with understanding. At
-                  Codistica, every strategic collaboration starts with careful
-                  listening and thoughtful exploration of the challenge at hand.
+                  The strongest collaborations begin with understanding. At Codistica, every
+                  strategic collaboration starts with careful listening and thoughtful exploration
+                  of the challenge at hand.
                 </p>
                 <p>
-                  We take the time to understand the context, the systems
-                  involved, and the long-term objectives behind each initiative.
-                  From there, ideas evolve into structured strategies, and
-                  strategies into carefully designed solutions.
+                  We take the time to understand the context, the systems involved, and the
+                  long-term objectives behind each initiative. From there, ideas evolve into
+                  structured strategies, and strategies into carefully designed solutions.
                 </p>
                 <p>
-                  Our approach combines systems thinking, technical expertise,
-                  and disciplined execution to transform complex challenges into
-                  meaningful infrastructure.
+                  Our approach combines systems thinking, technical expertise, and disciplined
+                  execution to transform complex challenges into meaningful infrastructure.
                 </p>
               </div>
             </div>
@@ -200,25 +189,21 @@ export default function CompanyPage() {
                   Passion makes them matter.
                 </h2>
                 <p className="text-sm font-medium leading-relaxed text-foam">
-                  The strength of Codistica comes from the people behind the
-                  systems we build. We value people who combine technical
-                  rigor with genuine passion for solving complex problems -
-                  people who take pride in thoughtful work and care deeply
-                  about the systems they create.
+                  The strength of Codistica comes from the people behind the systems we build. We
+                  value people who combine technical rigor with genuine passion for solving complex
+                  problems - people who take pride in thoughtful work and care deeply about the
+                  systems they create.
                 </p>
                 <div className="flex flex-col gap-2">
                   <h3 className="mono-body text-foam">How we work</h3>
                   <p className="text-sm font-medium leading-relaxed text-foam">
-                    Our environment encourages curiosity, ownership, and
-                    continuous improvement. We believe passionate people,
-                    working with discipline and the freedom to think, create
-                    the most meaningful systems.
+                    Our environment encourages curiosity, ownership, and continuous improvement. We
+                    believe passionate people, working with discipline and the freedom to think,
+                    create the most meaningful systems.
                   </p>
                 </div>
                 <div>
-                  <FilledButton href="/apply/join-team">
-                    Submit your profile
-                  </FilledButton>
+                  <FilledButton href="/apply/join-team">Submit your profile</FilledButton>
                 </div>
               </div>
               {/* rocket + "what drives the team" connectors */}
@@ -255,19 +240,17 @@ export default function CompanyPage() {
                 <div className="flex flex-col gap-3">
                   <h3 className="mono-body text-foam">Investment philosophy</h3>
                   <p className="text-lg font-medium leading-relaxed text-mist">
-                    We collaborate with investors who share both strategic
-                    perspective and a genuine belief in the value of
-                    meaningful systems. We prioritize partnerships grounded
-                    in long-term thinking, disciplined execution, and belief
-                    in the power of intelligent systems.
+                    We collaborate with investors who share both strategic perspective and a genuine
+                    belief in the value of meaningful systems. We prioritize partnerships grounded
+                    in long-term thinking, disciplined execution, and belief in the power of
+                    intelligent systems.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3">
                   <h3 className="mono-body text-foam">Shared strategic horizon</h3>
                   <p className="text-lg font-medium leading-relaxed text-mist">
-                    Our approach is not transactional. We seek partners who
-                    understand that building meaningful infrastructure
-                    requires time, commitment, and passion for creating
+                    Our approach is not transactional. We seek partners who understand that building
+                    meaningful infrastructure requires time, commitment, and passion for creating
                     lasting value.
                   </p>
                 </div>
@@ -294,7 +277,7 @@ function TeamRocket() {
       height="340"
       viewBox="0 0 40 340"
       fill="none"
-      aria-hidden
+      aria-hidden="true"
       className="shrink-0 self-end"
     >
       {/* nose cone */}
@@ -306,16 +289,16 @@ function TeamRocket() {
       <rect x="0" y="269" width="40" height="16" rx="4" fill="#334863" />
       <rect x="0" y="289" width="40" height="16" rx="4" fill="#334863" />
       {/* exhaust trail, fading out */}
-      <line
-        x1="20"
-        y1="312"
-        x2="20"
-        y2="340"
-        stroke="url(#exhaust)"
-        strokeWidth="2"
-      />
+      <line x1="20" y1="312" x2="20" y2="340" stroke="url(#exhaust)" strokeWidth="2" />
       <defs>
-        <linearGradient id="exhaust" x1="20" y1="312" x2="20" y2="340" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="exhaust"
+          x1="20"
+          y1="312"
+          x2="20"
+          y2="340"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="#334863" />
           <stop offset="1" stopColor="#334863" stopOpacity="0" />
         </linearGradient>
@@ -332,7 +315,7 @@ function DiagramLink({ flip = false }: { flip?: boolean }) {
       height="142"
       viewBox="0 0 80 142"
       fill="none"
-      aria-hidden
+      aria-hidden="true"
       className={`shrink-0 max-sm:hidden ${flip ? "-scale-x-100" : ""}`}
     >
       <path d="M0 71 C 40 71, 40 1, 80 1" stroke="#334863" />

@@ -83,8 +83,7 @@ export const industryContent: Record<string, IndustryContent> = {
       "Energy and resource flows that go unmeasured.",
       "Data locked inside isolated equipment and vendors.",
     ],
-    challengeNote:
-      "In a world demanding circularity, waste treatment often remains a black box.",
+    challengeNote: "In a world demanding circularity, waste treatment often remains a black box.",
     ecosystemHeadline: ["Not plants.", "Living processes."],
     ecosystemBody:
       "We see waste treatment as a connected process ecosystem. By introducing digital intelligence across processing lines, sensors, and plant infrastructure, treatment becomes observable, efficient, and accountable.",
@@ -185,8 +184,7 @@ export const industryContent: Record<string, IndustryContent> = {
       "Quality issues discovered too late.",
       "Supply chain data fragmented across partners.",
     ],
-    challengeNote:
-      "In a world demanding transparency, fashion production often remains opaque.",
+    challengeNote: "In a world demanding transparency, fashion production often remains opaque.",
     ecosystemHeadline: ["Not machines.", "A supply chain that thinks."],
     ecosystemBody:
       "We see fashion production as a connected system. By introducing digital intelligence across machinery, lines, and logistics, production becomes traceable, efficient, and responsive.",
@@ -236,8 +234,7 @@ export const industryContent: Record<string, IndustryContent> = {
       "Quality and safety checks that come too late.",
       "Traceability fragmented across suppliers and systems.",
     ],
-    challengeNote:
-      "In a world demanding food transparency, production often remains invisible.",
+    challengeNote: "In a world demanding food transparency, production often remains invisible.",
     ecosystemHeadline: ["Not lines.", "A living chain."],
     ecosystemBody:
       "We see food production as a connected chain. By introducing digital intelligence across processing, packaging, and logistics, production becomes safe, traceable, and efficient.",
@@ -287,8 +284,7 @@ export const industryContent: Record<string, IndustryContent> = {
       "Failures discovered only when machines stop.",
       "Product data that never returns to the maker.",
     ],
-    challengeNote:
-      "In a world of connected living, appliances often remain silent.",
+    challengeNote: "In a world of connected living, appliances often remain silent.",
     ecosystemHeadline: ["Not boxes.", "Connected products."],
     ecosystemBody:
       "We see appliances as connected products. By introducing digital intelligence across controllers, sensors, and product platforms, appliances become observable, serviceable, and smarter with every cycle.",
@@ -338,8 +334,7 @@ export const industryContent: Record<string, IndustryContent> = {
       "Energy spent without measurement or intent.",
       "Operational data trapped in proprietary silos.",
     ],
-    challengeNote:
-      "In a world of smart everything, buildings often remain fragmented.",
+    challengeNote: "In a world of smart everything, buildings often remain fragmented.",
     ecosystemHeadline: ["Not systems.", "One building, aware."],
     ecosystemBody:
       "We see buildings as living ecosystems. By connecting climate, lighting, energy, and security layers, buildings become observable, efficient, and responsive to the people inside them.",

@@ -1,17 +1,22 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import FormShell from "@/components/forms/FormShell";
-import Stepper from "@/components/forms/Stepper";
-import StepButton from "@/components/forms/StepButton";
+import { useState } from "react";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
-import { TextField, SelectField, PillGroup } from "@/components/forms/fields";
+import FormShell from "@/components/forms/FormShell";
+import { PillGroup, SelectField, TextField } from "@/components/forms/fields";
+import StepButton from "@/components/forms/StepButton";
+import Stepper from "@/components/forms/Stepper";
 import { countries } from "@/lib/countries";
 
 const steps = ["About you", "Current stage", "Involvement"];
 
-const stageOptions = ["Exploring options", "Actively evaluating", "Ready to commit", "Already invested"];
+const stageOptions = [
+  "Exploring options",
+  "Actively evaluating",
+  "Ready to commit",
+  "Already invested",
+];
 const involvementOptions = [
   "Direct investment",
   "Strategic partnership",
@@ -88,17 +93,60 @@ export default function StrategicConversationPage() {
         <div key={step} className="step-in flex flex-col">
           {step === 0 && (
             <>
-              <TextField label="Name" name="name" placeholder="Your name" value={data.name} onChange={(v) => set("name", v)} />
-              <TextField label="Work email" name="email" type="email" placeholder="you@company.com" value={data.email} onChange={(v) => set("email", v)} />
-              <TextField label="Company" name="company" placeholder="Where you work" value={data.company} onChange={(v) => set("company", v)} />
-              <TextField label="Role" name="role" placeholder="Your position" value={data.role} onChange={(v) => set("role", v)} />
-              <SelectField label="Country" name="country" options={countries} value={data.country} onChange={(v) => set("country", v)} />
-              <TextField label="Phone number" name="phone" type="tel" placeholder="+1 555-555-5555" value={data.phone} onChange={(v) => set("phone", v)} />
+              <TextField
+                label="Name"
+                name="name"
+                placeholder="Your name"
+                value={data.name}
+                onChange={(v) => set("name", v)}
+              />
+              <TextField
+                label="Work email"
+                name="email"
+                type="email"
+                placeholder="you@company.com"
+                value={data.email}
+                onChange={(v) => set("email", v)}
+              />
+              <TextField
+                label="Company"
+                name="company"
+                placeholder="Where you work"
+                value={data.company}
+                onChange={(v) => set("company", v)}
+              />
+              <TextField
+                label="Role"
+                name="role"
+                placeholder="Your position"
+                value={data.role}
+                onChange={(v) => set("role", v)}
+              />
+              <SelectField
+                label="Country"
+                name="country"
+                options={countries}
+                value={data.country}
+                onChange={(v) => set("country", v)}
+              />
+              <TextField
+                label="Phone number"
+                name="phone"
+                type="tel"
+                placeholder="+1 555-555-5555"
+                value={data.phone}
+                onChange={(v) => set("phone", v)}
+              />
             </>
           )}
 
           {step === 1 && (
-            <PillGroup label="What stage are you currently in?" options={stageOptions} value={data.stage} onChange={(v) => set("stage", v as string)} />
+            <PillGroup
+              label="What stage are you currently in?"
+              options={stageOptions}
+              value={data.stage}
+              onChange={(v) => set("stage", v as string)}
+            />
           )}
 
           {step === 2 && (
@@ -111,7 +159,12 @@ export default function StrategicConversationPage() {
                 onChange={(v) => set("involvement", v as string[])}
                 multi
               />
-              <PillGroup label="What time horizon do you typically invest with?" options={horizonOptions} value={data.horizon} onChange={(v) => set("horizon", v as string)} />
+              <PillGroup
+                label="What time horizon do you typically invest with?"
+                options={horizonOptions}
+                value={data.horizon}
+                onChange={(v) => set("horizon", v as string)}
+              />
               <p className="pt-6 text-xs font-medium leading-relaxed text-ash">
                 By submitting this form, you agree to the processing of your personal data in
                 accordance with our{" "}

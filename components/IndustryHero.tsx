@@ -1,11 +1,11 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Fragment, useEffect, useRef, useState } from "react";
+import type { Industry } from "@/lib/industries";
 import IndustrySwitcher from "./IndustrySwitcher";
 import { useScrollRoot } from "./ScrollRoot";
 import { DotGrid, EyebrowPill, Sphere } from "./ui";
-import { type Industry } from "@/lib/industries";
 
 const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
 
@@ -33,11 +33,12 @@ function RevealParagraph({
       {words.map((w, i) => {
         const t = clamp01(rp * total - (start + i));
         return (
+          // biome-ignore lint/suspicious/noArrayIndexKey: words is a fixed, never-reordered list
           <Fragment key={i}>
             <span className="relative inline-block align-baseline">
               <span style={{ opacity: t, color: "#bec9c7" }}>{w}</span>
               <span
-                aria-hidden
+                aria-hidden="true"
                 className="pointer-events-none absolute inset-0 flex items-center justify-center"
                 style={{
                   opacity: 1 - t,
@@ -165,9 +166,7 @@ export default function IndustryHero({
           }}
         >
           <div className="glass-dark flex w-full items-center justify-center rounded-full p-2.5 sm:p-10">
-            <h1 className="display text-center text-foam">
-              Codistica for {industry.label}
-            </h1>
+            <h1 className="display text-center text-foam">Codistica for {industry.label}</h1>
           </div>
         </div>
 
@@ -201,12 +200,7 @@ export default function IndustryHero({
           </div>
           <div className="grid gap-x-10 gap-y-4 sm:grid-cols-2 sm:gap-y-6">
             <RevealParagraph words={wordsA} start={0} total={total} rp={rp} />
-            <RevealParagraph
-              words={wordsB}
-              start={wordsA.length}
-              total={total}
-              rp={rp}
-            />
+            <RevealParagraph words={wordsB} start={wordsA.length} total={total} rp={rp} />
           </div>
         </div>
 
@@ -223,6 +217,7 @@ export default function IndustryHero({
           <div className="glass-pill flex items-center gap-1 p-2">
             <Sphere from={industry.sphere.from} to={industry.sphere.to} size={40} />
             <button
+              type="button"
               onClick={() => setSwitcherOpen((v) => !v)}
               aria-label="Browse industries"
               aria-expanded={switcherOpen}
@@ -237,7 +232,7 @@ export default function IndustryHero({
         <span
           className="mono-label absolute bottom-24 left-1/2 z-20 -translate-x-1/2 text-foam/60 transition-opacity duration-300"
           style={{ opacity: past ? 0 : 1 }}
-          aria-hidden
+          aria-hidden="true"
         >
           Scroll
         </span>

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Sphere } from "./ui";
 import { industries } from "@/lib/industries";
+import { Sphere } from "./ui";
 
 /*
  * The industry switcher that opens from the sphere pill — distinct from the
@@ -23,6 +23,7 @@ export default function IndustrySwitcher({
     <>
       {/* click-away catcher */}
       <button
+        type="button"
         aria-label="Close industries"
         onClick={onClose}
         className="fixed inset-0 z-30 cursor-default"
@@ -61,8 +62,7 @@ export default function IndustrySwitcher({
                   <span
                     className="h-px w-10 shrink-0"
                     style={{
-                      background:
-                        "linear-gradient(to left, #dde4e3, transparent)",
+                      background: "linear-gradient(to left, #dde4e3, transparent)",
                       opacity: current ? 1 : 0.3,
                     }}
                   />
