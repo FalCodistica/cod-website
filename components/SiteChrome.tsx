@@ -38,7 +38,7 @@ export function Header({
         floating ? "absolute" : sticky ? "sticky bg-ink/90 backdrop-blur-xl" : "relative"
       } inset-x-0 top-0 z-40 flex h-20 items-center justify-between px-5`}
     >
-      <Logo />
+      <Logo className="max-sm:absolute max-sm:left-1/2 max-sm:top-1/2 max-sm:-translate-x-1/2 max-sm:-translate-y-1/2" />
       <button
         type="button"
         onClick={() => setOpen(!open)}

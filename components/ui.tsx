@@ -171,6 +171,21 @@ export function DotChevron({ color = "#dde4e3" }: { color?: string }) {
   );
 }
 
+/* full downward arrow (shaft + head), made of dots (scroll hint) */
+export function ScrollArrow({ color = "#dde4e3" }: { color?: string }) {
+  return (
+    <svg width="14" height="24" viewBox="0 0 14 24" aria-hidden="true">
+      <circle cx="7" cy="1" r="1.4" fill={color} />
+      <circle cx="7" cy="7" r="1.4" fill={color} />
+      <circle cx="7" cy="13" r="1.4" fill={color} />
+      <circle cx="1" cy="17" r="1.4" fill={color} />
+      <circle cx="7" cy="17" r="1.4" fill={color} />
+      <circle cx="13" cy="17" r="1.4" fill={color} />
+      <circle cx="7" cy="23" r="1.4" fill={color} />
+    </svg>
+  );
+}
+
 /* gradient ball */
 export function Sphere({
   from,

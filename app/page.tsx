@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import Footer from "@/components/Footer";
 import { Header } from "@/components/SiteChrome";
-import { Sphere } from "@/components/ui";
+import { ScrollArrow, Sphere } from "@/components/ui";
 import { industries } from "@/lib/industries";
 
 const N = industries.length;
@@ -18,6 +18,7 @@ const RUNWAY_UNITS = N + EXTRA_HOLD;
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -27,6 +28,7 @@ export default function Home() {
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     const idx = Math.min(N - 1, Math.max(0, Math.floor(v * RUNWAY_UNITS)));
     if (idx !== active) setActive(idx);
+    if (v > 0.01 && !scrolled) setScrolled(true);
   });
 
   const current = industries[active];
@@ -112,6 +114,18 @@ export default function Home() {
 
           {/* header on top */}
           <Header floating />
+
+          {/* scroll hint */}
+          <div
+            className="glass-dark pointer-events-none absolute bottom-40 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 transition-opacity duration-300 sm:bottom-24"
+            style={{ opacity: scrolled ? 0 : 1 }}
+            aria-hidden="true"
+          >
+            <span className="mono-label text-foam">Scroll</span>
+            <span className="animate-bounce-y">
+              <ScrollArrow color="#dde4e3" />
+            </span>
+          </div>
 
           {/* mobile CTA */}
           <a

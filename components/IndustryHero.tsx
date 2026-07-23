@@ -5,7 +5,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import type { Industry } from "@/lib/industries";
 import IndustrySwitcher from "./IndustrySwitcher";
 import { useScrollRoot } from "./ScrollRoot";
-import { DotGrid, EyebrowPill, Sphere } from "./ui";
+import { DotGrid, EyebrowPill, ScrollArrow, Sphere } from "./ui";
 
 const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
 
@@ -136,7 +136,7 @@ export default function IndustryHero({
 
   return (
     <section ref={ref} className="relative -mt-px h-[400vh]">
-      <div className="sticky top-0 h-screen overflow-hidden bg-ink">
+      <div className="sticky top-0 h-dvh overflow-hidden bg-ink">
         {/* image — morphs from full-bleed to a small card */}
         <div
           className="absolute overflow-hidden"
@@ -206,8 +206,12 @@ export default function IndustryHero({
 
         {/* industry indicator — own sphere + switcher (fades out while reading) */}
         <div
-          className="absolute bottom-5 left-1/2 z-30 -translate-x-1/2 transition-opacity duration-500"
-          style={{ opacity: shrunk ? 0 : 1, pointerEvents: shrunk ? "none" : "auto" }}
+          className="absolute left-1/2 z-30 -translate-x-1/2 transition-opacity duration-500"
+          style={{
+            bottom: "calc(1.25rem + env(safe-area-inset-bottom))",
+            opacity: shrunk ? 0 : 1,
+            pointerEvents: shrunk ? "none" : "auto",
+          }}
         >
           <IndustrySwitcher
             currentSlug={industry.slug}
@@ -229,13 +233,16 @@ export default function IndustryHero({
         </div>
 
         {/* scroll hint */}
-        <span
-          className="mono-label absolute bottom-24 left-1/2 z-20 -translate-x-1/2 text-foam/60 transition-opacity duration-300"
+        <div
+          className="glass-dark pointer-events-none absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 transition-opacity duration-300"
           style={{ opacity: past ? 0 : 1 }}
           aria-hidden="true"
         >
-          Scroll
-        </span>
+          <span className="mono-label text-foam">Scroll</span>
+          <span className="animate-bounce-y">
+            <ScrollArrow color="#dde4e3" />
+          </span>
+        </div>
       </div>
     </section>
   );

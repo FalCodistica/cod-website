@@ -75,17 +75,21 @@ body {
   text-transform: uppercase;
 }
 
-/* frosted pill (fill dde4e3/8% + blur) */
-.glass-pill {
-  background: rgba(221, 228, 227, 0.08);
-  backdrop-filter: blur(50px);
-  border-radius: 999px;
-}
+/* frosted pill (fill dde4e3/8% + blur). Layered as a Tailwind "component" so
+   utility classes (bg-foam, hover:bg-foam/15, etc.) can still override the
+   background — unlayered CSS would otherwise always win over utilities. */
+@layer components {
+  .glass-pill {
+    background: rgba(221, 228, 227, 0.08);
+    backdrop-filter: blur(50px);
+    border-radius: 999px;
+  }
 
-/* dark glass (black 8% + heavy blur) used by hero heading + statements */
-.glass-dark {
-  background: rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(40px);
+  /* dark glass (black 8% + heavy blur) used by hero heading + statements */
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+  }
 }
 
 /* hero image inner glow (steel from above, teal from below) */
@@ -158,6 +162,20 @@ body {
 
 .step-in {
   animation: step-in 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes bounce-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce-y {
+  animation: bounce-y 1.6s ease-in-out infinite;
 }
 
 ::selection {
