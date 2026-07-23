@@ -20,6 +20,12 @@
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
+html {
+  /* keep the vertical scrollbar always rendered instead of only appearing
+     while scrolling, so it doesn't pop in/out and shift layout */
+  overflow-y: scroll;
+}
+
 body {
   background: var(--color-ink);
   color: var(--color-foam);

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { submitJoinTeam } from "@/app/apply/actions";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import Dropzone from "@/components/forms/Dropzone";
 import FormShell from "@/components/forms/FormShell";
@@ -33,6 +34,8 @@ const initial: FormData = {
 
 export default function JoinTeamPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<FormData>(initial);
   const [cv, setCv] = useState<File | null>(null);
 
@@ -41,9 +44,22 @@ export default function JoinTeamPage() {
 
   const canSubmit = data.name && data.email && data.phone && data.role && data.country && cv;
 
-  function handleSubmit() {
-    if (!canSubmit) return;
-    setSubmitted(true);
+  async function handleSubmit() {
+    if (!canSubmit || !cv) return;
+    setSubmitting(true);
+    setError(null);
+    try {
+      const result = await submitJoinTeam(data, cv);
+      if (result.ok) {
+        setSubmitted(true);
+      } else {
+        setError(result.error);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -131,8 +147,10 @@ export default function JoinTeamPage() {
           .
         </p>
 
-        <StepButton disabled={!canSubmit} showCaret={false} onClick={handleSubmit}>
-          Submit application
+        {error && <p className="text-sm font-medium text-red-400">{error}</p>}
+
+        <StepButton disabled={!canSubmit || submitting} showCaret={false} onClick={handleSubmit}>
+          {submitting ? "Submitting…" : "Submit application"}
         </StepButton>
       </div>
     </FormShell>

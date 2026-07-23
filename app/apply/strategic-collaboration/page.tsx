@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { submitStrategicCollaboration } from "@/app/apply/actions";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import FormShell from "@/components/forms/FormShell";
 import { PillGroup, SelectField, TextareaField, TextField } from "@/components/forms/fields";
@@ -58,6 +59,8 @@ const initial: FormData = {
 export default function StrategicCollaborationPage() {
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<FormData>(initial);
 
   const set = <K extends keyof FormData>(key: K, value: FormData[K]) =>
@@ -70,9 +73,22 @@ export default function StrategicCollaborationPage() {
     data.timeline,
   ][step];
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!canContinue) return;
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(null);
+    try {
+      const result = await submitStrategicCollaboration(data);
+      if (result.ok) {
+        setSubmitted(true);
+      } else {
+        setError(result.error);
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -223,13 +239,20 @@ export default function StrategicCollaborationPage() {
               Back
             </button>
           )}
+          {error && step === steps.length - 1 && (
+            <p className="text-center text-sm font-medium text-red-400">{error}</p>
+          )}
           {step < steps.length - 1 ? (
             <StepButton disabled={!canContinue} onClick={() => setStep((s) => s + 1)}>
               Continue
             </StepButton>
           ) : (
-            <StepButton disabled={!canContinue} showCaret={false} onClick={handleSubmit}>
-              Submit
+            <StepButton
+              disabled={!canContinue || submitting}
+              showCaret={false}
+              onClick={handleSubmit}
+            >
+              {submitting ? "Submitting…" : "Submit"}
             </StepButton>
           )}
         </div>
