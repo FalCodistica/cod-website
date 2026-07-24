@@ -18,7 +18,7 @@ export default function AboutPage() {
       <div className="px-5 pb-30 pt-10">
         <main className="mx-auto flex w-full max-w-[1060px] flex-col gap-5">
           {/* hero */}
-          <section className="relative flex h-[540px] items-center justify-center overflow-hidden rounded-[40px]">
+          <section className="theme-pin-dark relative flex h-[540px] items-center justify-center overflow-hidden rounded-[40px]">
             <Image
               src="/images/texture-streaks.jpg"
               alt=""
@@ -93,7 +93,7 @@ export default function AboutPage() {
           </section>
 
           {/* interlude image */}
-          <section className="relative flex h-[540px] items-center justify-center overflow-hidden rounded-[40px]">
+          <section className="theme-pin-dark relative flex h-[540px] items-center justify-center overflow-hidden rounded-[40px]">
             <Image
               src="/images/marquee-glow.jpg"
               alt=""
@@ -131,7 +131,10 @@ export default function AboutPage() {
           </section>
 
           {/* a principle that guides us */}
-          <section id="principle" className="relative scroll-mt-10 overflow-hidden rounded-[40px]">
+          <section
+            id="principle"
+            className="theme-pin-dark relative scroll-mt-10 overflow-hidden rounded-[40px]"
+          >
             <Image
               src="/images/marquee-glow.jpg"
               alt=""

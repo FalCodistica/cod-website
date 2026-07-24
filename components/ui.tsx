@@ -14,7 +14,7 @@ export function FilledButton({
   return (
     <Link
       href={href}
-      className={`inline-flex h-10 items-center justify-center rounded-full bg-foam px-6 text-sm font-medium text-coal transition-transform hover:scale-[1.03] ${className}`}
+      className={`btn-glow inline-flex h-10 items-center justify-center rounded-full bg-foam px-6 text-sm font-medium text-coal transition-transform hover:scale-[1.02] ${className}`}
     >
       {children}
     </Link>
@@ -123,7 +123,7 @@ export function TikTokButton({ className = "" }: { className?: string }) {
 }
 
 /* 3x3 dot grid used by the menu trigger */
-export function DotGrid({ size = 20, color = "#dde4e3" }: { size?: number; color?: string }) {
+export function DotGrid({ size = 20, color = "currentColor" }: { size?: number; color?: string }) {
   const r = size / 10;
   const pos = [size * 0.1, size * 0.5, size * 0.9];
   return (
@@ -161,7 +161,7 @@ export function CloseDots({ size = 20, color = "#2b3231" }: { size?: number; col
 }
 
 /* sideways chevron made of 3 dots (menu rows) */
-export function DotChevron({ color = "#dde4e3" }: { color?: string }) {
+export function DotChevron({ color = "currentColor" }: { color?: string }) {
   return (
     <svg width="6" height="10" viewBox="0 0 6 10" aria-hidden="true">
       <circle cx="1" cy="1" r="1" fill={color} />

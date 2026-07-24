@@ -5,10 +5,11 @@ import { useState } from "react";
 import { submitStrategicConversation } from "@/app/apply/actions";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import FormShell from "@/components/forms/FormShell";
-import { PillGroup, SelectField, TextField } from "@/components/forms/fields";
+import { ComboboxField, PillGroup, TextField } from "@/components/forms/fields";
 import StepButton from "@/components/forms/StepButton";
 import Stepper from "@/components/forms/Stepper";
 import { countries } from "@/lib/countries";
+import { isValidEmail, isValidPhone } from "@/lib/validation";
 
 const steps = ["About you", "Current stage", "Involvement"];
 
@@ -61,7 +62,12 @@ export default function StrategicConversationPage() {
     setData((d) => ({ ...d, [key]: value }));
 
   const canContinue = [
-    data.name && data.email && data.company && data.role && data.country && data.phone,
+    data.name &&
+      isValidEmail(data.email) &&
+      data.company &&
+      data.role &&
+      data.country &&
+      isValidPhone(data.phone),
     data.stage,
     data.involvement.length > 0 && data.horizon,
   ][step];
@@ -138,9 +144,10 @@ export default function StrategicConversationPage() {
                 value={data.role}
                 onChange={(v) => set("role", v)}
               />
-              <SelectField
+              <ComboboxField
                 label="Country"
                 name="country"
+                placeholder="Search…"
                 options={countries}
                 value={data.country}
                 onChange={(v) => set("country", v)}

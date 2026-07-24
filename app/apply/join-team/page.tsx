@@ -6,9 +6,10 @@ import { submitJoinTeam } from "@/app/apply/actions";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import Dropzone from "@/components/forms/Dropzone";
 import FormShell from "@/components/forms/FormShell";
-import { PillGroup, SelectField, TextField } from "@/components/forms/fields";
+import { ComboboxField, PillGroup, TextField } from "@/components/forms/fields";
 import StepButton from "@/components/forms/StepButton";
 import { countries } from "@/lib/countries";
+import { isValidEmail, isValidPhone, isValidUrl } from "@/lib/validation";
 
 const opportunityOptions = ["Full-time", "Internship", "Freelance / contract", "Open to anything"];
 
@@ -42,7 +43,14 @@ export default function JoinTeamPage() {
   const set = <K extends keyof FormData>(key: K, value: FormData[K]) =>
     setData((d) => ({ ...d, [key]: value }));
 
-  const canSubmit = data.name && data.email && data.phone && data.role && data.country && cv;
+  const canSubmit =
+    data.name &&
+    isValidEmail(data.email) &&
+    isValidPhone(data.phone) &&
+    (!data.linkedin || isValidUrl(data.linkedin)) &&
+    data.role &&
+    data.country &&
+    cv;
 
   async function handleSubmit() {
     if (!canSubmit || !cv) return;
@@ -121,9 +129,10 @@ export default function JoinTeamPage() {
             value={data.role}
             onChange={(v) => set("role", v)}
           />
-          <SelectField
+          <ComboboxField
             label="Country"
             name="country"
+            placeholder="Search…"
             options={countries}
             value={data.country}
             onChange={(v) => set("country", v)}

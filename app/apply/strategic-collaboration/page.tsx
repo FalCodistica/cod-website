@@ -5,10 +5,11 @@ import { useState } from "react";
 import { submitStrategicCollaboration } from "@/app/apply/actions";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import FormShell from "@/components/forms/FormShell";
-import { PillGroup, SelectField, TextareaField, TextField } from "@/components/forms/fields";
+import { ComboboxField, PillGroup, TextareaField, TextField } from "@/components/forms/fields";
 import StepButton from "@/components/forms/StepButton";
 import Stepper from "@/components/forms/Stepper";
 import { countries } from "@/lib/countries";
+import { isValidEmail, isValidPhone } from "@/lib/validation";
 
 const steps = ["About you", "Your project", "Current stage", "Timeline"];
 
@@ -67,7 +68,12 @@ export default function StrategicCollaborationPage() {
     setData((d) => ({ ...d, [key]: value }));
 
   const canContinue = [
-    data.name && data.email && data.company && data.role && data.country && data.phone,
+    data.name &&
+      isValidEmail(data.email) &&
+      data.company &&
+      data.role &&
+      data.country &&
+      isValidPhone(data.phone),
     data.projectWhat && data.projectSystems && data.projectSuccess,
     data.stage && data.support.length > 0,
     data.timeline,
@@ -146,9 +152,10 @@ export default function StrategicCollaborationPage() {
                 value={data.role}
                 onChange={(v) => set("role", v)}
               />
-              <SelectField
+              <ComboboxField
                 label="Country"
                 name="country"
+                placeholder="Search…"
                 options={countries}
                 value={data.country}
                 onChange={(v) => set("country", v)}

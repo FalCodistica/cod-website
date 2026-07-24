@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteChrome } from "@/components/SiteChrome";
+import { ThemeProvider } from "@/components/ThemeProvider";
+
+/* Sets data-theme before first paint so the page never flashes the wrong
+   theme. Reads the stored choice (or falls back to the OS preference) —
+   kept in sync with the logic in components/ThemeProvider.tsx. */
+const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');var m=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t==='light'||t==='dark'?t:m);}catch(e){}})()`;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,13 +33,23 @@ export default function RootLayout({
   sheet: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrains.variable} antialiased`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: static, no user input — see themeInitScript above */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
-        <SiteChrome>
-          {children}
-          {/* intercepted industry sheet — overlays the page above (@sheet slot) */}
-          {sheet}
-        </SiteChrome>
+        <ThemeProvider>
+          <SiteChrome>
+            {children}
+            {/* intercepted industry sheet — overlays the page above (@sheet slot) */}
+            {sheet}
+          </SiteChrome>
+        </ThemeProvider>
       </body>
     </html>
   );

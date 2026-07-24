@@ -124,7 +124,7 @@ export default function IndustrySheet({
         borderTopLeftRadius: expanded ? 0 : 40,
         borderTopRightRadius: expanded ? 0 : 40,
       }}
-      className="fixed inset-0 z-30 overflow-y-auto overflow-x-hidden overscroll-contain bg-ink transition-[border-radius] duration-500 [transform:translateY(2400px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className="theme-pin-dark fixed inset-0 z-30 overflow-y-auto overflow-x-hidden overscroll-contain bg-ink transition-[border-radius] duration-500 [transform:translateY(2400px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <ScrollRootContext.Provider value={root}>
         {/* chrome pinned to the sheet's top edge */}

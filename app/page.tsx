@@ -37,7 +37,7 @@ export default function Home() {
     <>
       {/* scroll runway: one viewport per industry, plus a hold for the last */}
       <div ref={containerRef} style={{ height: `${(N + EXTRA_HOLD) * 100}vh` }}>
-        <div className="sticky top-0 h-screen overflow-hidden bg-ink">
+        <div className="theme-pin-dark sticky top-0 h-screen overflow-hidden bg-ink">
           {/* image card — a Link so it triggers the intercepted sheet route
               (and gets prefetched automatically) */}
           <Link
@@ -130,7 +130,7 @@ export default function Home() {
           {/* mobile CTA */}
           <a
             href="mailto:info@codistica.com"
-            className="absolute bottom-24 left-1/2 z-10 inline-flex h-10 -translate-x-1/2 items-center justify-center rounded-full bg-foam px-4 text-sm font-medium text-coal sm:hidden"
+            className="btn-glow absolute bottom-24 left-1/2 z-10 inline-flex h-10 -translate-x-1/2 items-center justify-center rounded-full bg-foam px-4 text-sm font-medium text-coal transition-transform hover:scale-[1.02] sm:hidden"
           >
             Talk to us
           </a>

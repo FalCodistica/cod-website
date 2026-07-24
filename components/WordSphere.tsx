@@ -78,7 +78,8 @@ export default function WordSphere() {
       <div
         className="absolute left-1/2 top-1/2 h-[316px] w-[156%] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
-          background: "linear-gradient(90deg, #0e1514 0%, #1a2120 40%, #1a2120 60%, #0e1514 100%)",
+          background:
+            "linear-gradient(90deg, var(--color-ink) 0%, var(--color-panel) 40%, var(--color-panel) 60%, var(--color-ink) 100%)",
         }}
         aria-hidden="true"
       />

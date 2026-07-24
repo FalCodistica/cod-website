@@ -1,15 +1,26 @@
 "use client";
 
-import type { ChangeEvent } from "react";
+import { type ChangeEvent, type KeyboardEvent, useEffect, useRef, useState } from "react";
+import { type FieldType, fieldError } from "@/lib/validation";
 
 const rowClass =
-  "flex w-full flex-col gap-2 border-b border-rule py-[10px] sm:flex-row sm:items-center sm:gap-0";
+  "flex w-full flex-col gap-2 border-b border-rule py-[10px] sm:flex-row sm:items-start sm:gap-0";
 const labelClass = "mono-body min-w-[220px] flex-1 text-mist";
+const rowLabelClass = `${labelClass} sm:pt-[10px]`;
 const valueWrapClass = "min-w-[220px] flex-1";
 
 function RequiredMark({ required }: { required?: boolean }) {
   if (!required) return null;
   return <span aria-hidden="true"> *</span>;
+}
+
+function FieldError({ message }: { message: string | null }) {
+  if (!message) return null;
+  return (
+    <span className="mono-body block pb-[10px] text-xs normal-case tracking-normal text-alert">
+      {message}
+    </span>
+  );
 }
 
 export function TextField({
@@ -20,18 +31,24 @@ export function TextField({
   required = true,
   value,
   onChange,
+  forceShowErrors = false,
 }: {
   label: string;
   name: string;
-  type?: "text" | "email" | "tel" | "url";
+  type?: FieldType;
   placeholder?: string;
   required?: boolean;
   value: string;
   onChange: (value: string) => void;
+  forceShowErrors?: boolean;
 }) {
+  const [touched, setTouched] = useState(false);
+  const error = fieldError(type, value, required);
+  const showError = Boolean(error) && (touched || forceShowErrors);
+
   return (
     <label className={rowClass}>
-      <span className={labelClass}>
+      <span className={rowLabelClass}>
         {label}
         <RequiredMark required={required} />
       </span>
@@ -43,8 +60,13 @@ export function TextField({
           placeholder={placeholder}
           value={value}
           onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
-          className="w-full bg-transparent py-[10px] text-base font-medium text-foam outline-none placeholder:text-foam/50"
+          onBlur={() => setTouched(true)}
+          aria-invalid={showError}
+          className={`w-full bg-transparent py-[10px] text-base font-medium outline-none placeholder:text-foam/50 ${
+            showError ? "text-alert" : "text-foam"
+          }`}
         />
+        {showError && <FieldError message={error} />}
       </div>
     </label>
   );
@@ -57,6 +79,7 @@ export function TextareaField({
   required = true,
   value,
   onChange,
+  forceShowErrors = false,
 }: {
   label: string;
   name: string;
@@ -64,7 +87,12 @@ export function TextareaField({
   required?: boolean;
   value: string;
   onChange: (value: string) => void;
+  forceShowErrors?: boolean;
 }) {
+  const [touched, setTouched] = useState(false);
+  const error = fieldError("text", value, required);
+  const showError = Boolean(error) && (touched || forceShowErrors);
+
   return (
     <label className="flex w-full flex-col gap-2 border-b border-rule py-[10px]">
       <span className={labelClass}>
@@ -78,8 +106,13 @@ export function TextareaField({
         value={value}
         rows={4}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full resize-none bg-transparent py-[10px] text-base font-medium text-foam outline-none placeholder:text-foam/50"
+        onBlur={() => setTouched(true)}
+        aria-invalid={showError}
+        className={`w-full resize-none bg-transparent py-[10px] text-base font-medium outline-none placeholder:text-foam/50 ${
+          showError ? "text-alert" : "text-foam"
+        }`}
       />
+      {showError && <FieldError message={error} />}
     </label>
   );
 }
@@ -105,47 +138,147 @@ function ChevronDown() {
   );
 }
 
-export function SelectField({
+/* Text input with a filterable dropdown of matching options — an
+   autocomplete select for lists too long to scan as a native <select>
+   (e.g. the full country list). Only a value from `options` is ever
+   committed; an unmatched query reverts on blur. */
+export function ComboboxField({
   label,
   name,
   options,
-  placeholder = "Select…",
+  placeholder = "Search…",
   required = true,
   value,
   onChange,
+  forceShowErrors = false,
 }: {
   label: string;
   name: string;
-  options: string[];
+  options: readonly string[];
   placeholder?: string;
   required?: boolean;
   value: string;
   onChange: (value: string) => void;
+  forceShowErrors?: boolean;
 }) {
+  const [query, setQuery] = useState(value);
+  const [open, setOpen] = useState(false);
+  const [highlighted, setHighlighted] = useState(0);
+  const [touched, setTouched] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setQuery(value);
+  }, [value]);
+
+  useEffect(() => {
+    function onPointerDown(e: PointerEvent) {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setOpen(false);
+        setQuery(value);
+        setTouched(true);
+      }
+    }
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [value]);
+
+  const q = query.trim().toLowerCase();
+  const filtered = q
+    ? options
+        .filter((o) => o.toLowerCase().includes(q))
+        .sort((a, b) => {
+          const aStarts = a.toLowerCase().startsWith(q) ? 0 : 1;
+          const bStarts = b.toLowerCase().startsWith(q) ? 0 : 1;
+          return aStarts - bStarts || a.localeCompare(b);
+        })
+    : options;
+
+  const error = fieldError("text", value, required);
+  const showError = Boolean(error) && (touched || forceShowErrors) && !open;
+
+  function commit(option: string) {
+    onChange(option);
+    setQuery(option);
+    setOpen(false);
+    setTouched(true);
+  }
+
+  function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setOpen(true);
+      setHighlighted((i) => Math.min(i + 1, filtered.length - 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setHighlighted((i) => Math.max(i - 1, 0));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (open && filtered[highlighted]) commit(filtered[highlighted]);
+    } else if (e.key === "Escape") {
+      setOpen(false);
+      setQuery(value);
+      setTouched(true);
+    }
+  }
+
+  function handleBlur() {
+    setOpen(false);
+    setQuery(value);
+    setTouched(true);
+  }
+
   return (
     <label className={rowClass}>
-      <span className={labelClass}>
+      <span className={rowLabelClass}>
         {label}
         <RequiredMark required={required} />
       </span>
-      <div className={`relative ${valueWrapClass}`}>
-        <select
-          name={name}
-          required={required}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className="w-full appearance-none bg-transparent py-[10px] pr-6 text-base font-medium text-foam outline-none"
-        >
-          <option value="" disabled hidden className="bg-panel text-foam/50">
-            {placeholder}
-          </option>
-          {options.map((o) => (
-            <option key={o} value={o} className="bg-panel text-foam">
-              {o}
-            </option>
-          ))}
-        </select>
-        <ChevronDown />
+      <div className={valueWrapClass} ref={rootRef}>
+        <div className="relative">
+          <input
+            type="text"
+            name={name}
+            autoComplete="off"
+            role="combobox"
+            aria-expanded={open}
+            aria-invalid={showError}
+            placeholder={placeholder}
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+              setOpen(true);
+              setHighlighted(0);
+            }}
+            onFocus={() => setOpen(true)}
+            onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
+            className={`w-full bg-transparent py-[10px] pr-6 text-base font-medium outline-none placeholder:text-foam/50 ${
+              showError ? "text-alert" : "text-foam"
+            }`}
+          />
+          <ChevronDown />
+          {open && filtered.length > 0 && (
+            <ul className="glass-dark absolute left-0 right-0 top-full z-10 mt-2 max-h-56 overflow-y-auto rounded-2xl py-2 shadow-lg">
+              {filtered.map((o, i) => (
+                <li key={o}>
+                  <button
+                    type="button"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => commit(o)}
+                    onMouseEnter={() => setHighlighted(i)}
+                    className={`w-full px-4 py-2 text-left text-sm font-medium transition-colors ${
+                      i === highlighted ? "bg-foam/15 text-foam" : "text-foam/80"
+                    }`}
+                  >
+                    {o}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        {showError && <FieldError message={error} />}
       </div>
     </label>
   );

@@ -17,7 +17,7 @@ export default function Stepper({ steps, current }: { steps: string[]; current: 
           ),
         )}
       </div>
-      <div className="h-1 w-full overflow-hidden rounded-full" style={{ background: "#324b4a" }}>
+      <div className="h-1 w-full overflow-hidden rounded-full bg-rule">
         <motion.div
           className="h-full rounded-full bg-mint"
           initial={false}

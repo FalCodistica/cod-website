@@ -5,7 +5,36 @@ import Link from "next/link";
 import { createContext, type ReactNode, useContext, useState } from "react";
 import { industries } from "@/lib/industries";
 import Logo from "./Logo";
-import { CopyEmailChip, DotChevron, DotGrid, FilledButton, LinkedInButton } from "./ui";
+import { type ThemeChoice, useTheme } from "./ThemeProvider";
+import { CopyEmailChip, DotChevron, DotGrid, LinkedInButton } from "./ui";
+
+const themeOptions: { value: ThemeChoice; label: string }[] = [
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+  { value: "system", label: "System" },
+];
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+  return (
+    <fieldset className="glass-pill m-0 flex items-center gap-1 border-0 p-1">
+      <legend className="sr-only">Theme</legend>
+      {themeOptions.map((o) => (
+        <button
+          key={o.value}
+          type="button"
+          onClick={() => setTheme(o.value)}
+          aria-pressed={theme === o.value}
+          className={`h-8 flex-1 rounded-full text-xs font-medium transition-colors ${
+            theme === o.value ? "bg-foam text-coal" : "text-foam hover:bg-foam/15"
+          }`}
+        >
+          {o.label}
+        </button>
+      ))}
+    </fieldset>
+  );
+}
 
 const MenuContext = createContext<{ open: boolean; setOpen: (v: boolean) => void }>({
   open: false,
@@ -43,13 +72,10 @@ export function Header({
         type="button"
         onClick={() => setOpen(!open)}
         aria-label="Open menu"
-        className="glass-pill absolute right-3 top-3 flex size-14 items-center justify-center transition-colors hover:bg-foam/15 sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
+        className="glass-pill absolute right-3 top-3 flex size-14 items-center justify-center text-foam transition-colors hover:bg-foam/15 sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
       >
         <DotGrid size={20} />
       </button>
-      <FilledButton href="mailto:info@codistica.com" className="max-sm:hidden">
-        Talk to us
-      </FilledButton>
     </header>
   );
 }
@@ -80,7 +106,7 @@ function MenuOverlay() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="flex size-14 items-center justify-center"
+                className="flex size-14 items-center justify-center text-foam"
               >
                 {/* partially-lit dot grid, as in Figma's close state */}
                 <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
@@ -95,7 +121,14 @@ function MenuOverlay() {
                     [10, 18, 0.08],
                     [18, 18, 1],
                   ].map(([cx, cy, o]) => (
-                    <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="2" fill="#dde4e3" opacity={o} />
+                    <circle
+                      key={`${cx}-${cy}`}
+                      cx={cx}
+                      cy={cy}
+                      r="2"
+                      fill="currentColor"
+                      opacity={o}
+                    />
                   ))}
                 </svg>
               </button>
@@ -127,7 +160,7 @@ function MenuOverlay() {
                     className="group block overflow-hidden rounded-t-2xl"
                   >
                     <div
-                      className="relative flex h-[183px] items-center justify-center bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="theme-pin-dark relative flex h-[183px] items-center justify-center bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
                       style={{ backgroundImage: "url(/images/texture-streaks.jpg)" }}
                     >
                       <span className="text-center text-lg font-medium leading-snug tracking-tight text-foam">
@@ -160,6 +193,7 @@ function MenuOverlay() {
                   <CopyEmailChip email="info@codistica.com" />
                   <LinkedInButton />
                 </div>
+                <ThemeToggle />
               </div>
             </div>
           </motion.div>

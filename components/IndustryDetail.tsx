@@ -89,7 +89,7 @@ export default function IndustryDetail({ slug }: { slug: string }) {
                 <span className="mono-label text-mist">Next</span>
                 <span className="text-sm font-medium text-foam">{next.name}</span>
               </span>
-              <DotChevron />
+              <DotChevron color="#dde4e3" />
             </span>
           </Link>
         </section>

@@ -21,7 +21,7 @@ export default function StepButton({
   return (
     <button
       {...props}
-      className={`flex h-14 w-full items-center justify-center gap-3 rounded-full bg-foam text-base font-medium text-coal transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:scale-100 ${className}`}
+      className={`btn-glow flex h-14 w-full items-center justify-center gap-3 rounded-full bg-foam text-base font-medium text-coal transition-transform hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none disabled:hover:scale-100 ${className}`}
     >
       {children}
       {showCaret && <CaretRight />}
