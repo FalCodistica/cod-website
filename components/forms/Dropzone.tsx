@@ -7,17 +7,24 @@ type Status = "idle" | "uploading" | "verifying" | "done";
 
 function UploadIcon() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-hidden="true"
+      className="text-foam"
+    >
       <path
         d="M10 13V3M10 3l-4 4M10 3l4 4"
-        stroke="#dde4e3"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M2.5 13.5v2a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-2"
-        stroke="#dde4e3"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
@@ -27,8 +34,20 @@ function UploadIcon() {
 
 function RemoveIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <path d="M1 1l12 12M13 1L1 13" stroke="#bec9c7" strokeWidth="1.5" strokeLinecap="round" />
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      aria-hidden="true"
+      className="text-mist"
+    >
+      <path
+        d="M1 1l12 12M13 1L1 13"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }

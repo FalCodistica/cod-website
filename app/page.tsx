@@ -130,7 +130,7 @@ export default function Home() {
           {/* mobile CTA */}
           <a
             href="mailto:info@codistica.com"
-            className="btn-glow absolute bottom-24 left-1/2 z-10 inline-flex h-10 -translate-x-1/2 items-center justify-center rounded-full bg-foam px-4 text-sm font-medium text-coal transition-transform hover:scale-[1.02] sm:hidden"
+            className="btn-glass absolute bottom-24 left-1/2 z-10 inline-flex h-10 -translate-x-1/2 items-center justify-center rounded-full px-4 text-sm font-medium transition-transform hover:scale-[1.02] sm:hidden"
           >
             Talk to us
           </a>

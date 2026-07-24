@@ -124,7 +124,7 @@ export default function IndustrySheet({
         borderTopLeftRadius: expanded ? 0 : 40,
         borderTopRightRadius: expanded ? 0 : 40,
       }}
-      className="theme-pin-dark fixed inset-0 z-30 overflow-y-auto overflow-x-hidden overscroll-contain bg-ink transition-[border-radius] duration-500 [transform:translateY(2400px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className="fixed inset-0 z-30 overflow-y-auto overflow-x-hidden overscroll-contain bg-ink transition-[border-radius] duration-500 [transform:translateY(2400px)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       <ScrollRootContext.Provider value={root}>
         {/* chrome pinned to the sheet's top edge */}
@@ -147,9 +147,9 @@ export default function IndustrySheet({
             type="button"
             onClick={dismiss}
             aria-label="Close"
-            className="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full bg-foam backdrop-blur-xl transition-transform hover:scale-105"
+            className="absolute right-5 top-5 flex size-10 items-center justify-center rounded-full bg-foam text-coal backdrop-blur-xl transition-transform hover:scale-105"
           >
-            <CloseDots size={20} color="#2b3231" />
+            <CloseDots size={20} />
           </button>
         </div>
 

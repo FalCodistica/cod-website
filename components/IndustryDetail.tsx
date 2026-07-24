@@ -61,12 +61,12 @@ export default function IndustryDetail({ slug }: { slug: string }) {
         </section>
 
         {/* — closing — */}
-        <section className="relative flex flex-col items-center gap-[60px] overflow-hidden px-5 pb-2 pt-[120px]">
+        <section className="relative flex flex-col items-center gap-[60px] overflow-hidden px-5 pb-2 pt-[120px] bg-ink">
           <div
             className="pointer-events-none absolute inset-x-0 bottom-0 h-[360px] bg-cover bg-center"
             style={{
               backgroundImage:
-                "linear-gradient(to bottom, #0e1514, transparent), linear-gradient(90deg, #0e1514, transparent 50%, #0e1514), url(/images/marquee-glow.jpg)",
+                "linear-gradient(to bottom, var(--color-ink), transparent), linear-gradient(90deg, var(--color-ink), transparent 50%, var(--color-ink)), url(/images/marquee-glow.jpg)",
             }}
             aria-hidden="true"
           />
@@ -89,7 +89,7 @@ export default function IndustryDetail({ slug }: { slug: string }) {
                 <span className="mono-label text-mist">Next</span>
                 <span className="text-sm font-medium text-foam">{next.name}</span>
               </span>
-              <DotChevron color="#dde4e3" />
+              <DotChevron />
             </span>
           </Link>
         </section>

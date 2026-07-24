@@ -70,6 +70,9 @@ export default function ChallengeScene({
     const accent = hexToRgb(industry.sphere.from);
     let W = 0;
     let H = 0;
+    // the fade-to-background gradient below needs the page's actual ink
+    // color, which flips with the theme — re-read whenever data-theme changes
+    let inkRgb = hexToRgb(getComputedStyle(space).getPropertyValue("--color-ink").trim());
 
     const resize = () => {
       W = window.innerWidth;
@@ -137,8 +140,8 @@ export default function ChallengeScene({
 
       // fade the line bottoms into the background (Figma)
       const fade = ctx.createLinearGradient(0, rowY + LINE_H - 90, 0, rowY + LINE_H);
-      fade.addColorStop(0, "rgba(14,21,20,0)");
-      fade.addColorStop(1, "rgba(14,21,20,1)");
+      fade.addColorStop(0, rgba(inkRgb, 0));
+      fade.addColorStop(1, rgba(inkRgb, 1));
       ctx.fillStyle = fade;
       ctx.fillRect(0, rowY + LINE_H - 90, W, 92);
 
@@ -201,9 +204,21 @@ export default function ChallengeScene({
     onScroll();
     scrollTarget.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
+
+    // re-read --color-ink and repaint when the theme toggles
+    const themeObserver = new MutationObserver(() => {
+      inkRgb = hexToRgb(getComputedStyle(space).getPropertyValue("--color-ink").trim());
+      onScroll();
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
     return () => {
       scrollTarget.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
+      themeObserver.disconnect();
       if (raf) cancelAnimationFrame(raf);
     };
   }, [industry.sphere.from, root]);

@@ -182,7 +182,7 @@ function MenuOverlay() {
                     <Link
                       href="/about"
                       onClick={() => setOpen(false)}
-                      className="glass-dark flex h-10 items-center justify-between bg-foam/10 px-4 text-sm font-medium text-snow transition-colors hover:bg-foam/15"
+                      className="glass-dark rounded-b-2xl flex h-10 items-center justify-between bg-foam/10 px-4 text-sm font-medium text-snow transition-colors hover:bg-foam/15"
                     >
                       About us
                       <DotChevron />

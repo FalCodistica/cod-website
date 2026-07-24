@@ -36,13 +36,12 @@ function RevealParagraph({
           // biome-ignore lint/suspicious/noArrayIndexKey: words is a fixed, never-reordered list
           <Fragment key={i}>
             <span className="relative inline-block align-baseline">
-              <span style={{ opacity: t, color: "#bec9c7" }}>{w}</span>
+              <span style={{ opacity: t, color: "var(--color-mist)" }}>{w}</span>
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 flex items-center justify-center"
+                className="pointer-events-none absolute inset-0 flex items-center justify-center text-ash/50"
                 style={{
                   opacity: 1 - t,
-                  color: "rgba(136,147,146,0.5)",
                   letterSpacing: "0.08em",
                 }}
               >
@@ -225,22 +224,22 @@ export default function IndustryHero({
               onClick={() => setSwitcherOpen((v) => !v)}
               aria-label="Browse industries"
               aria-expanded={switcherOpen}
-              className="flex size-10 items-center justify-center rounded-full bg-foam/10 transition-colors hover:bg-foam/20"
+              className="flex size-10 items-center justify-center rounded-full bg-foam/10 text-foam transition-colors hover:bg-foam/20"
             >
-              <DotGrid size={16} color="#dde4e3" />
+              <DotGrid size={16} />
             </button>
           </div>
         </div>
 
         {/* scroll hint */}
         <div
-          className="glass-dark pointer-events-none absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 transition-opacity duration-300"
+          className="glass-dark pointer-events-none absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 text-foam transition-opacity duration-300"
           style={{ opacity: past ? 0 : 1 }}
           aria-hidden="true"
         >
           <span className="mono-label text-foam">Scroll</span>
           <span className="animate-bounce-y">
-            <ScrollArrow color="#dde4e3" />
+            <ScrollArrow />
           </span>
         </div>
       </div>
