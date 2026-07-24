@@ -28,6 +28,7 @@
    (checkboxes, the country <select>'s scrollbar, etc). */
 :root {
   color-scheme: dark;
+  --color-scrim: rgba(0, 0, 0, 0.08);
 }
 
 :root[data-theme="light"] {
@@ -44,6 +45,7 @@
   --color-mint: #128f86;
   --color-alert: #b3261e;
   --color-link-ice: #2f5fa8;
+  --color-scrim: rgba(255, 255, 255, 0.55);
 }
 
 /* pins a section to the dark palette regardless of the active site theme —
@@ -63,6 +65,7 @@
   --color-mint: #80d5d2;
   --color-alert: #ffb4ab;
   --color-link-ice: #d2e4ff;
+  --color-scrim: rgba(0, 0, 0, 0.08);
 }
 
 html {
@@ -130,9 +133,11 @@ body {
     border-radius: 999px;
   }
 
-  /* dark glass (black 8% + heavy blur) used by hero heading + statements */
+  /* frosted scrim used by hero headings + statements over photos — tints
+     dark or light per theme via --color-scrim so overlaid text stays
+     readable whichever way the palette flips */
   .glass-dark {
-    background: rgba(0, 0, 0, 0.08);
+    background: var(--color-scrim);
     backdrop-filter: blur(10px);
   }
 }

@@ -195,7 +195,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-col pb-[60px]">
               <div
-                className="grid gap-[60px] px-7 py-4 sm:grid-cols-2 sm:px-[60px]"
+                className="theme-pin-dark grid gap-[60px] px-7 py-4 sm:grid-cols-2 sm:px-[60px]"
                 style={{
                   backgroundImage:
                     "radial-gradient(ellipse 130% 175% at 38% 50%, rgba(9,15,15,0) 0%, rgba(9,15,15,0) 44%, #090f0f 100%), url(/images/marquee-glow.jpg)",

@@ -165,7 +165,7 @@ export default function CompanyPage() {
           {/* 02 — team & talent */}
           <section
             id="team-talent"
-            className="relative min-h-[600px] scroll-mt-10 overflow-hidden rounded-[40px]"
+            className="theme-pin-dark relative min-h-[600px] scroll-mt-10 overflow-hidden rounded-[40px]"
           >
             <Image
               src="/images/team-bg.jpg"

@@ -37,7 +37,7 @@ export default function Home() {
     <>
       {/* scroll runway: one viewport per industry, plus a hold for the last */}
       <div ref={containerRef} style={{ height: `${(N + EXTRA_HOLD) * 100}vh` }}>
-        <div className="theme-pin-dark sticky top-0 h-screen overflow-hidden bg-ink">
+        <div className="sticky top-0 h-screen overflow-hidden bg-ink">
           {/* image card — a Link so it triggers the intercepted sheet route
               (and gets prefetched automatically) */}
           <Link
@@ -117,13 +117,13 @@ export default function Home() {
 
           {/* scroll hint */}
           <div
-            className="glass-dark pointer-events-none absolute bottom-40 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 transition-opacity duration-300 sm:bottom-24"
+            className="glass-dark pointer-events-none absolute bottom-40 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 text-foam transition-opacity duration-300 sm:bottom-24"
             style={{ opacity: scrolled ? 0 : 1 }}
             aria-hidden="true"
           >
             <span className="mono-label text-foam">Scroll</span>
             <span className="animate-bounce-y">
-              <ScrollArrow color="#dde4e3" />
+              <ScrollArrow />
             </span>
           </div>
 
