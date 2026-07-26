@@ -70,9 +70,8 @@ export default function ChallengeScene({
     const accent = hexToRgb(industry.sphere.from);
     let W = 0;
     let H = 0;
-    // the fade-to-background gradient below needs the page's actual ink
-    // color, which flips with the theme — re-read whenever data-theme changes
-    let inkRgb = hexToRgb(getComputedStyle(space).getPropertyValue("--color-ink").trim());
+    // fade-to-background gradient below reads the page's actual ink color
+    const inkRgb = hexToRgb(getComputedStyle(space).getPropertyValue("--color-ink").trim());
 
     const resize = () => {
       W = window.innerWidth;
@@ -205,20 +204,9 @@ export default function ChallengeScene({
     scrollTarget.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
 
-    // re-read --color-ink and repaint when the theme toggles
-    const themeObserver = new MutationObserver(() => {
-      inkRgb = hexToRgb(getComputedStyle(space).getPropertyValue("--color-ink").trim());
-      onScroll();
-    });
-    themeObserver.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
     return () => {
       scrollTarget.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
-      themeObserver.disconnect();
       if (raf) cancelAnimationFrame(raf);
     };
   }, [industry.sphere.from, root]);

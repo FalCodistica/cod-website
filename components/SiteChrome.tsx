@@ -5,36 +5,7 @@ import Link from "next/link";
 import { createContext, type ReactNode, useContext, useState } from "react";
 import { industries } from "@/lib/industries";
 import Logo from "./Logo";
-import { type ThemeChoice, useTheme } from "./ThemeProvider";
 import { CopyEmailChip, DotChevron, DotGrid, LinkedInButton } from "./ui";
-
-const themeOptions: { value: ThemeChoice; label: string }[] = [
-  { value: "light", label: "Light" },
-  { value: "dark", label: "Dark" },
-  { value: "system", label: "System" },
-];
-
-function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  return (
-    <fieldset className="glass-pill m-0 flex items-center gap-1 border-0 p-1">
-      <legend className="sr-only">Theme</legend>
-      {themeOptions.map((o) => (
-        <button
-          key={o.value}
-          type="button"
-          onClick={() => setTheme(o.value)}
-          aria-pressed={theme === o.value}
-          className={`h-8 flex-1 rounded-full text-xs font-medium transition-colors ${
-            theme === o.value ? "bg-foam text-coal" : "text-foam hover:bg-foam/15"
-          }`}
-        >
-          {o.label}
-        </button>
-      ))}
-    </fieldset>
-  );
-}
 
 const MenuContext = createContext<{ open: boolean; setOpen: (v: boolean) => void }>({
   open: false,
@@ -160,7 +131,7 @@ function MenuOverlay() {
                     className="group block overflow-hidden rounded-t-2xl"
                   >
                     <div
-                      className="theme-pin-dark relative flex h-[183px] items-center justify-center bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
+                      className="relative flex h-[183px] items-center justify-center bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
                       style={{ backgroundImage: "url(/images/texture-streaks.jpg)" }}
                     >
                       <span className="text-center text-lg font-medium leading-snug tracking-tight text-foam">
@@ -193,7 +164,6 @@ function MenuOverlay() {
                   <CopyEmailChip email="info@codistica.com" />
                   <LinkedInButton />
                 </div>
-                <ThemeToggle />
               </div>
             </div>
           </motion.div>

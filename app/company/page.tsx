@@ -18,7 +18,7 @@ export default function CompanyPage() {
       <div className="px-5 pb-30 pt-10">
         <main className="mx-auto flex w-full max-w-[1060px] flex-col gap-5">
           {/* hero */}
-          <section className="theme-pin-dark relative flex h-[540px] flex-col justify-between overflow-hidden rounded-[40px]">
+          <section className="relative flex h-[540px] flex-col justify-between overflow-hidden rounded-[40px]">
             <Image
               src="/images/texture-streaks.jpg"
               alt=""
@@ -84,7 +84,7 @@ export default function CompanyPage() {
 
             {/* challenge → infrastructure diagram */}
             <div
-              className="theme-pin-dark relative overflow-hidden rounded-full px-5 py-5"
+              className="relative overflow-hidden rounded-full px-5 py-5"
               style={{
                 background: "linear-gradient(105deg, #0e1514 0%, #334863 100%)",
               }}
@@ -165,7 +165,7 @@ export default function CompanyPage() {
           {/* 02 — team & talent */}
           <section
             id="team-talent"
-            className="theme-pin-dark relative min-h-[600px] scroll-mt-10 overflow-hidden rounded-[40px]"
+            className="relative min-h-[600px] scroll-mt-10 overflow-hidden rounded-[40px]"
           >
             <Image
               src="/images/team-bg.jpg"
