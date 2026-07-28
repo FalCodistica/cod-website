@@ -13,9 +13,9 @@ import {
 export default function Footer() {
   return (
     <footer className="flex flex-col gap-10 p-5 sm:p-10">
-      <div className="flex flex-col gap-12 lg:flex-row lg:items-center">
+      <div className="flex flex-col gap-12 lg:flex-row">
         {/* left: claim + actions + legal */}
-        <div className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col justify-between">
           <div className="flex flex-col gap-10">
             <p className="display text-snow">Powering the invisible</p>
             <div className="flex flex-wrap items-center gap-1">
@@ -23,7 +23,7 @@ export default function Footer() {
               <CopyEmailChip email="info@codistica.com" />
             </div>
           </div>
-          <div className="mt-14 flex flex-wrap items-center gap-2.5 text-xs font-medium text-mist">
+          <div className="flex flex-wrap items-center gap-2.5 pt-14 text-xs font-medium text-mist">
             <Link href="/privacy" className="py-2.5 transition-colors hover:text-foam">
               Privacy
             </Link>
