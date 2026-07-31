@@ -48,7 +48,7 @@ export const industries: Industry[] = [
     slug: "household-appliances",
     label: "household appliances",
     name: "Household appliances",
-    hero: "/images/hero-household-appliances.jpg",
+    hero: "/images/hero-household-appliances.png",
     sphere: { from: "#bee8b2", to: "#406333" },
   },
   {
