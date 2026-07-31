@@ -27,7 +27,7 @@ export const industries: Industry[] = [
     slug: "telecommunications",
     label: "telecommunications",
     name: "Telecommunications",
-    hero: "/images/hero-telecommunications.jpg",
+    hero: "/images/hero-telecommunications.png",
     sphere: { from: "#e8b2da", to: "#633358" },
   },
   {
