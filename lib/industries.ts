@@ -5,6 +5,15 @@ export type Industry = {
   /** menu / footer label */
   name: string;
   hero: string;
+  /** CSS object-position for the hero image, e.g. "50% 30%" — defaults to centered */
+  heroFocus?: string;
+  /**
+   * On narrow (mobile) viewports, caps the full-bleed hero band to `width * this ratio`
+   * instead of the full device height, letterboxing it against the dark background.
+   * Use for images whose important content spans wider than object-cover leaves visible
+   * in a tall viewport. Omit to keep the plain edge-to-edge full-bleed crop.
+   */
+  heroMobileMaxAspect?: number;
   sphere: { from: string; to: string };
 };
 
@@ -14,6 +23,7 @@ export const industries: Industry[] = [
     label: "vertical mobility",
     name: "Vertical mobility",
     hero: "/images/hero-vertical-mobility.jpg",
+    heroFocus: "40%",
     sphere: { from: "#b2c8e8", to: "#334863" },
   },
   {
@@ -42,6 +52,7 @@ export const industries: Industry[] = [
     label: "food & beverage",
     name: "Food & beverage",
     hero: "/images/hero-food-beverage.jpg",
+    heroFocus: '60%',
     sphere: { from: "#e8e5b2", to: "#635e33" },
   },
   {
@@ -49,6 +60,7 @@ export const industries: Industry[] = [
     label: "household appliances",
     name: "Household appliances",
     hero: "/images/hero-household-appliances.png",
+    heroFocus: "76%",
     sphere: { from: "#bee8b2", to: "#406333" },
   },
   {

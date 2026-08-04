@@ -220,18 +220,28 @@ body {
   animation: step-in 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-@keyframes bounce-y {
-  0%,
-  100% {
-    transform: translateY(0);
+@keyframes swipe-finger {
+  0% {
+    transform: translateY(6px);
+    opacity: 0;
   }
-  50% {
-    transform: translateY(8px);
+  25% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(-9px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-14px);
+    opacity: 0;
   }
 }
 
-.animate-bounce-y {
-  animation: bounce-y 1.6s ease-in-out infinite;
+.animate-swipe-finger {
+  animation: swipe-finger 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-origin: center;
 }
 
 ::selection {

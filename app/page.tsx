@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import Footer from "@/components/Footer";
 import { Header } from "@/components/SiteChrome";
 import { ScrollArrow, Sphere } from "@/components/ui";
+import { useScrollHint } from "@/components/useScrollHint";
 import { industries } from "@/lib/industries";
 
 const N = industries.length;
@@ -18,7 +19,7 @@ const RUNWAY_UNITS = N + EXTRA_HOLD;
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
+  const hintVisible = useScrollHint();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -28,7 +29,6 @@ export default function Home() {
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     const idx = Math.min(N - 1, Math.max(0, Math.floor(v * RUNWAY_UNITS)));
     if (idx !== active) setActive(idx);
-    if (v > 0.01 && !scrolled) setScrolled(true);
   });
 
   const current = industries[active];
@@ -60,6 +60,7 @@ export default function Home() {
                   fill
                   priority={active === 0}
                   className="object-cover"
+                  style={{ objectPosition: current.heroFocus ?? "50% 50%" }}
                   sizes="100vw"
                 />
               </motion.div>
@@ -117,14 +118,11 @@ export default function Home() {
 
           {/* scroll hint */}
           <div
-            className="glass-dark pointer-events-none absolute bottom-40 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 text-foam transition-opacity duration-300 sm:bottom-24"
-            style={{ opacity: scrolled ? 0 : 1 }}
+            className="pointer-events-none absolute bottom-40 left-1/2 z-10 -translate-x-1/2 text-foam transition-opacity duration-300 sm:bottom-24"
+            style={{ opacity: hintVisible ? 1 : 0 }}
             aria-hidden="true"
           >
-            <span className="mono-label text-foam">Scroll</span>
-            <span className="animate-bounce-y">
-              <ScrollArrow />
-            </span>
+            <ScrollArrow />
           </div>
 
           {/* mobile CTA */}

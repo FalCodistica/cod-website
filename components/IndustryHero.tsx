@@ -6,6 +6,7 @@ import type { Industry } from "@/lib/industries";
 import IndustrySwitcher from "./IndustrySwitcher";
 import { useScrollRoot } from "./ScrollRoot";
 import { DotGrid, EyebrowPill, ScrollArrow, Sphere } from "./ui";
+import { useScrollHint } from "./useScrollHint";
 
 const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
 
@@ -75,6 +76,7 @@ export default function IndustryHero({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const root = useScrollRoot();
+  const hintVisible = useScrollHint(root);
   const [switcherOpen, setSwitcherOpen] = useState(false);
   const [p, setP] = useState(0);
   const [vp, setVp] = useState({ w: 0, h: 0 });
@@ -126,7 +128,13 @@ export default function IndustryHero({
   } else if (shrunk) {
     geo = { top: cardTop, left: cardLeft, width: cardW, height: cardH, borderRadius: 24 };
   } else {
-    geo = { top: 0, left: 0, width: w, height: h, borderRadius: 0 };
+    // Some hero photos need less crop than object-cover leaves on tall mobile
+    // viewports; those opt in via heroMobileMaxAspect to cap the band's height
+    // (letterboxed against the matching dark background). Others stay full-bleed.
+    const cap = industry.heroMobileMaxAspect;
+    const bleedH = narrow && cap ? Math.min(h, Math.round(w * cap)) : h;
+    const bleedTop = narrow && cap ? Math.round((h - bleedH) / 2) : 0;
+    geo = { top: bleedTop, left: 0, width: w, height: bleedH, borderRadius: 0 };
   }
 
   const wordsA = detailA.split(" ");
@@ -150,6 +158,7 @@ export default function IndustryHero({
             fill
             priority
             className="object-cover"
+            style={{ objectPosition: industry.heroFocus ?? "50% 50%" }}
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/20" />
@@ -233,14 +242,11 @@ export default function IndustryHero({
 
         {/* scroll hint */}
         <div
-          className="glass-dark pointer-events-none absolute bottom-24 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2 rounded-full px-4 py-3 text-foam transition-opacity duration-300"
-          style={{ opacity: past ? 0 : 1 }}
+          className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 text-foam transition-opacity duration-300"
+          style={{ opacity: hintVisible ? 1 : 0 }}
           aria-hidden="true"
         >
-          <span className="mono-label text-foam">Scroll</span>
-          <span className="animate-bounce-y">
-            <ScrollArrow />
-          </span>
+          <ScrollArrow />
         </div>
       </div>
     </section>
