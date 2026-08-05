@@ -80,6 +80,12 @@ export default function IndustryHero({
   const [switcherOpen, setSwitcherOpen] = useState(false);
   const [p, setP] = useState(0);
   const [vp, setVp] = useState({ w: 0, h: 0 });
+  // staged thresholds with hysteresis: each has a lower (revert) and higher
+  // (trigger) bound instead of one shared line, so hovering right at the
+  // switch point — easy to do on a slow or reversing scroll — doesn't flicker
+  // back and forth between states.
+  const [past, setPast] = useState(false);
+  const [shrunk, setShrunk] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -89,7 +95,10 @@ export default function IndustryHero({
     const update = () => {
       raf = 0;
       const rect = el.getBoundingClientRect();
-      setP(clamp01(-rect.top / rect.height));
+      const next = clamp01(-rect.top / rect.height);
+      setP(next);
+      setPast((prev) => (prev ? next > 0.03 : next > 0.06));
+      setShrunk((prev) => (prev ? next > 0.22 : next > 0.28));
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -108,9 +117,7 @@ export default function IndustryHero({
     };
   }, [root]);
 
-  // staged thresholds (fluid, triggered) + scrubbed reveal
-  const past = p > 0.06; // title → statement
-  const shrunk = p > 0.28; // image → card + reveal
+  // scrubbed word-by-word reveal, still driven directly by scroll position
   const rp = clamp01((p - 0.33) / 0.4);
 
   const { w, h } = vp;
@@ -141,6 +148,13 @@ export default function IndustryHero({
   const wordsB = detailB.split(" ");
   const total = wordsA.length + wordsB.length;
 
+  // On mobile, a photo composed for a tall crop (opted into via heroPortrait)
+  // reads far better than a landscape shot cropped down to a sliver — chosen
+  // by breakpoint only, so it never swaps mid-scroll.
+  const usePortrait = narrow && !!industry.heroPortrait;
+  const heroSrc = usePortrait ? (industry.heroPortrait as string) : industry.hero;
+  const heroPosition = usePortrait ? "50% 50%" : (industry.heroFocus ?? "50% 50%");
+
   return (
     <section ref={ref} className="relative -mt-px h-[400vh]">
       <div className="sticky top-0 h-dvh overflow-hidden bg-ink">
@@ -153,12 +167,12 @@ export default function IndustryHero({
           }}
         >
           <Image
-            src={industry.hero}
+            src={heroSrc}
             alt={industry.name}
             fill
             priority
             className="object-cover"
-            style={{ objectPosition: industry.heroFocus ?? "50% 50%" }}
+            style={{ objectPosition: heroPosition }}
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/20" />

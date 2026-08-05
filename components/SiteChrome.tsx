@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
-import { createContext, type ReactNode, useContext, useState } from "react";
+import { createContext, type ReactNode, useContext, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { industries } from "@/lib/industries";
 import Logo from "./Logo";
 import { CopyEmailChip, DotChevron, DotGrid, LinkedInButton } from "./ui";
@@ -32,6 +33,40 @@ export function Header({
   sticky?: boolean;
 }) {
   const { open, setOpen } = useMenu();
+  // Framer's onTap can still fire right after a drag release lands on the
+  // same element; this flag lets that one tap be swallowed, then clears
+  // itself so the next genuine tap works normally.
+  const suppressTapRef = useRef(false);
+  // how far the button (anchored bottom-right, size-14 = 56px, 12px margin)
+  // is allowed to travel up and to the left without leaving the viewport
+  const [dragBounds, setDragBounds] = useState({ top: 0, left: 0, right: 0, bottom: 0 });
+  // portal target: some pages (e.g. the homepage hero) wrap the header in a
+  // `position: sticky` container, which always creates its own stacking
+  // context — the button's z-index would then only win against siblings
+  // inside that container, not page content rendered after it (like the
+  // footer). Portaling straight to <body> escapes that trap.
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const BUTTON = 56;
+    const MARGIN = 12;
+    const update = () => {
+      setDragBounds({
+        top: -(window.innerHeight - BUTTON - MARGIN * 2),
+        left: -(window.innerWidth - BUTTON - MARGIN * 2),
+        right: 0,
+        bottom: 0,
+      });
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   return (
     <header
       className={`${
@@ -39,14 +74,32 @@ export function Header({
       } inset-x-0 top-0 z-40 flex h-20 items-center justify-between px-5`}
     >
       <Logo className="max-sm:absolute max-sm:left-1/2 max-sm:top-1/2 max-sm:-translate-x-1/2 max-sm:-translate-y-1/2" />
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        aria-label="Open menu"
-        className="glass-pill absolute right-3 top-3 flex size-14 items-center justify-center text-foam transition-colors hover:bg-foam/15 sm:left-1/2 sm:right-auto sm:-translate-x-1/2"
-      >
-        <DotGrid size={20} />
-      </button>
+      {mounted &&
+        createPortal(
+          <motion.button
+            type="button"
+            onTap={() => {
+              if (suppressTapRef.current) return;
+              setOpen(!open);
+            }}
+            aria-label="Open menu"
+            drag
+            dragConstraints={dragBounds}
+            dragElastic={0.08}
+            dragMomentum={false}
+            onDragEnd={() => {
+              suppressTapRef.current = true;
+              setTimeout(() => {
+                suppressTapRef.current = false;
+              }, 0);
+            }}
+            whileDrag={{ scale: 1.05 }}
+            className="glass-pill fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom))] right-3 z-30 flex size-14 cursor-grab items-center justify-center text-foam transition-colors active:cursor-grabbing hover:bg-foam/15 sm:bottom-auto sm:left-1/2 sm:right-auto sm:top-3 sm:-translate-x-1/2"
+          >
+            <DotGrid size={20} />
+          </motion.button>,
+          document.body,
+        )}
     </header>
   );
 }

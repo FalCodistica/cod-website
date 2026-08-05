@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Footer from "@/components/Footer";
 import { Header } from "@/components/SiteChrome";
 import { ScrollArrow, Sphere } from "@/components/ui";
@@ -20,6 +20,14 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const hintVisible = useScrollHint();
+  const [narrow, setNarrow] = useState(false);
+
+  useEffect(() => {
+    const update = () => setNarrow(window.innerWidth < 640);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -32,6 +40,12 @@ export default function Home() {
   });
 
   const current = industries[active];
+  // same breakpoint-only choice as the industry detail hero: a photo composed
+  // for a tall crop reads far better on mobile than a landscape shot cropped
+  // down to a sliver.
+  const usePortrait = narrow && !!current.heroPortrait;
+  const heroSrc = usePortrait ? (current.heroPortrait as string) : current.hero;
+  const heroPosition = usePortrait ? "50% 50%" : (current.heroFocus ?? "50% 50%");
 
   return (
     <>
@@ -55,12 +69,12 @@ export default function Home() {
                 className="absolute inset-0"
               >
                 <Image
-                  src={current.hero}
+                  src={heroSrc}
                   alt={current.name}
                   fill
                   priority={active === 0}
                   className="object-cover"
-                  style={{ objectPosition: current.heroFocus ?? "50% 50%" }}
+                  style={{ objectPosition: heroPosition }}
                   sizes="100vw"
                 />
               </motion.div>
@@ -69,11 +83,17 @@ export default function Home() {
             <div className="hero-shadow pointer-events-none absolute inset-0 rounded-[40px]" />
           </Link>
 
-          {/* preload all heroes */}
+          {/* preload all heroes (both variants, so switching breakpoint mid-visit is instant) */}
           <div className="hidden">
             {industries.map((i) => (
               <Image key={i.slug} src={i.hero} alt="" width={16} height={9} />
             ))}
+            {industries
+              .filter((i) => i.heroPortrait)
+              .map((i) => (
+                // biome-ignore lint/style/noNonNullAssertion: filtered above
+                <Image key={`${i.slug}-portrait`} src={i.heroPortrait!} alt="" width={9} height={16} />
+              ))}
           </div>
 
           {/* heading pill */}

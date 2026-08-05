@@ -5,6 +5,13 @@ export type Industry = {
   /** menu / footer label */
   name: string;
   hero: string;
+  /**
+   * Alternate hero image used on narrow (mobile) viewports instead of `hero`,
+   * for a photo composed for a tall aspect ratio — full-bleed and shrunk-card
+   * alike — instead of cropping a landscape shot. Chosen by breakpoint only
+   * (not scroll state), so there's no swap mid-scroll. Omit to always use `hero`.
+   */
+  heroPortrait?: string;
   /** CSS object-position for the hero image, e.g. "50% 30%" — defaults to centered */
   heroFocus?: string;
   /**
@@ -60,7 +67,7 @@ export const industries: Industry[] = [
     label: "household appliances",
     name: "Household appliances",
     hero: "/images/hero-household-appliances.png",
-    heroFocus: "76%",
+    heroPortrait: "/images/household-appliances-portrait.png",
     sphere: { from: "#bee8b2", to: "#406333" },
   },
   {

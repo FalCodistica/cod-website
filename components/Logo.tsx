@@ -10,10 +10,10 @@ export default function Logo({ className = "" }: { className?: string }) {
       className={`inline-flex items-center ${className}`}
     >
       <Image
-        src="/codistica-logo.png"
+        src="/codi_logo.png"
         alt="Codistica"
-        width={1335}
-        height={264}
+        width={4794}
+        height={1043}
         priority
         className="h-8 w-auto select-none sm:h-10"
       />
