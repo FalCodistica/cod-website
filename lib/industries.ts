@@ -31,6 +31,7 @@ export const industries: Industry[] = [
     name: "Vertical mobility",
     hero: "/images/hero-vertical-mobility.jpg",
     heroFocus: "40%",
+    heroPortrait: "/images/hero-vertical-mobility-portrait.png",
     sphere: { from: "#b2c8e8", to: "#334863" },
   },
   {
@@ -38,6 +39,7 @@ export const industries: Industry[] = [
     label: "waste treatment",
     name: "Waste treatment",
     hero: "/images/hero-waste-treatment.jpg",
+    heroPortrait: "/images/hero-waste-treatment-portrait.png",
     sphere: { from: "#c9b2e8", to: "#463363" },
   },
   {
@@ -45,6 +47,7 @@ export const industries: Industry[] = [
     label: "telecommunications",
     name: "Telecommunications",
     hero: "/images/hero-telecommunications.png",
+    heroPortrait: "/images/hero-telecommunications-portrait.png",
     sphere: { from: "#e8b2da", to: "#633358" },
   },
   {
@@ -52,6 +55,7 @@ export const industries: Industry[] = [
     label: "fashion",
     name: "Fashion",
     hero: "/images/hero-fashion.jpg",
+    heroPortrait: "/images/hero-fashion-portrait.png",
     sphere: { from: "#e8b8b2", to: "#633633" },
   },
   {
@@ -59,7 +63,8 @@ export const industries: Industry[] = [
     label: "food & beverage",
     name: "Food & beverage",
     hero: "/images/hero-food-beverage.jpg",
-    heroFocus: '60%',
+    heroFocus: "60%",
+    heroPortrait: "/images/hero-food-beverage-portrait.png",
     sphere: { from: "#e8e5b2", to: "#635e33" },
   },
   {
@@ -67,7 +72,7 @@ export const industries: Industry[] = [
     label: "household appliances",
     name: "Household appliances",
     hero: "/images/hero-household-appliances.png",
-    heroPortrait: "/images/household-appliances-portrait.png",
+    heroPortrait: "/images/hero-household-appliances-portrait.png",
     sphere: { from: "#bee8b2", to: "#406333" },
   },
   {
@@ -75,6 +80,7 @@ export const industries: Industry[] = [
     label: "building automation",
     name: "Building automation",
     hero: "/images/hero-building-automation.jpg",
+    heroPortrait: "/images/hero-building-automation-portrait.png",
     sphere: { from: "#b2e8d3", to: "#33634e" },
   },
 ];

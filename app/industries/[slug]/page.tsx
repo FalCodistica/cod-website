@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import IndustryDetail from "@/components/IndustryDetail";
 import { industries } from "@/lib/industries";
 import { industryContent } from "@/lib/industry-content";
+import { pageMetadata } from "@/lib/site";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -15,10 +16,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const industry = industries.find((i) => i.slug === slug);
   if (!industry) return {};
-  return {
+  return pageMetadata({
+    // already reads as a full title, so it skips the "- Codistica" suffix
     title: `Codistica for ${industry.label}`,
-    description: industryContent[slug]?.statement,
-  };
+    description: industryContent[slug]?.statement ?? "",
+    path: `/industries/${slug}`,
+    absoluteTitle: true,
+  });
 }
 
 export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {

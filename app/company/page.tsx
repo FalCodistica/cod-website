@@ -4,12 +4,14 @@ import Footer from "@/components/Footer";
 import RuledField from "@/components/RuledField";
 import { Header } from "@/components/SiteChrome";
 import { FilledButton } from "@/components/ui";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Partnership & collaboration - Codistica",
+export const metadata: Metadata = pageMetadata({
+  title: "Partnership & collaboration",
   description:
     "Systems worth building. Together. Strategic development, team & talent, and investment partnerships at Codistica.",
-};
+  path: "/company",
+});
 
 export default function CompanyPage() {
   return (

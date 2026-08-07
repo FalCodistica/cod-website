@@ -10,6 +10,12 @@ import { useState } from "react";
  * the word currently being hovered. A horizontal gradient band lights the
  * equator so the wheel reads as a sphere. No rotation — words only
  * brighten on hover, as in Figma.
+ *
+ * Everything is sized in em off the container's own font size (10px at the
+ * 632px Figma width, shrinking with `cqw` below it), so the wheel scales as
+ * one piece. Sizing the type in fixed px instead would let the words run
+ * past the square on narrow screens, where they get clipped by the
+ * section's overflow-hidden.
  */
 
 const SPOKES: { label: string; angle: number; dots: string }[] = [
@@ -72,11 +78,11 @@ const SPOKES: { label: string; angle: number; dots: string }[] = [
 export default function WordSphere() {
   const [hovered, setHovered] = useState<string | null>(null);
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[632px] text-[10px]">
+    <div className="@container relative mx-auto aspect-square w-full max-w-[632px] text-[min(10px,1.5823cqw)]">
       {/* gradient equator band — fills the container width so the wheel reads
          as a sphere (matches Figma's full-width Rectangle 1295) */}
       <div
-        className="absolute left-1/2 top-1/2 h-[316px] w-[156%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className="absolute left-1/2 top-1/2 h-1/2 w-[156%] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
             "linear-gradient(90deg, var(--color-ink) 0%, var(--color-panel) 40%, var(--color-panel) 60%, var(--color-ink) 100%)",
@@ -85,9 +91,9 @@ export default function WordSphere() {
       />
 
       {/* hovered word, shown in the centre */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex w-[150px] -translate-x-1/2 -translate-y-1/2 justify-center">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex w-[15em] -translate-x-1/2 -translate-y-1/2 justify-center">
         <span
-          className="text-center text-lg font-medium leading-tight tracking-tight text-foam transition-opacity duration-200"
+          className="text-center text-[1.8em] font-medium leading-tight tracking-tight text-foam transition-opacity duration-200"
           style={{ opacity: hovered ? 1 : 0 }}
         >
           {hovered}
@@ -108,11 +114,13 @@ export default function WordSphere() {
             className="group absolute left-[52%] -translate-y-1/2 cursor-default whitespace-nowrap"
           >
             {dots && (
-              <span className="absolute right-full mr-2 font-mono tracking-[0.3em] text-foam/25 transition-colors group-hover:text-mint/70">
+              <span className="absolute right-full mr-[0.8em] font-mono tracking-[0.3em] text-foam/25 transition-colors group-hover:text-mint/70">
                 {dots}
               </span>
             )}
-            <span className="mono-label text-foam/55 transition-colors group-hover:text-foam">
+            {/* .mono-label spelled out as utilities: it hard-codes 10px, which
+               would break out of the em-based scaling above */}
+            <span className="font-mono font-medium uppercase leading-[1.5] tracking-[0.05em] text-foam/55 transition-colors group-hover:text-foam">
               {label}
             </span>
           </div>

@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import { Header } from "@/components/SiteChrome";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = { title: "Terms of use - Codistica" };
+export const metadata: Metadata = pageMetadata({
+  title: "Terms of use",
+  description: "Terms of use for the Codistica website.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

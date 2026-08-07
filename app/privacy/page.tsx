@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import { Header } from "@/components/SiteChrome";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata = { title: "Privacy - Codistica" };
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy",
+  description: "How Codistica handles data collected through this website.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

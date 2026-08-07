@@ -4,12 +4,14 @@ import Footer from "@/components/Footer";
 import { Header } from "@/components/SiteChrome";
 import { CopyEmailChip, FilledButton, LinkedInButton } from "@/components/ui";
 import WordSphere from "@/components/WordSphere";
+import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "How we think - Codistica",
+export const metadata: Metadata = pageMetadata({
+  title: "How we think",
   description:
     "Why, how, and what drives Codistica. The founder's belief in building the invisible layer of intelligent systems.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -71,7 +73,12 @@ export default function AboutPage() {
             <span className="mono-body absolute left-7 top-7 text-foam sm:left-[60px] sm:top-[60px]">
               What we do
             </span>
-            <WordSphere />
+            {/* the wheel scales to its own width, so on mobile it takes back
+               the section padding to stay as large (and legible) as possible,
+               dropped below the "What we do" label */}
+            <div className="-mx-7 mt-6 w-[calc(100%+3.5rem)] sm:mx-0 sm:mt-0 sm:w-full">
+              <WordSphere />
+            </div>
             <div className="grid w-full gap-[60px] sm:grid-cols-2">
               <h3 className="heading text-foam">
                 Every system.
@@ -189,32 +196,6 @@ export default function AboutPage() {
                 This is where Codistica works, designing the intelligence that powers what is
                 unseen, yet essential to the world around us.
               </p>
-            </div>
-            <div className="flex flex-col pb-[60px]">
-              <div
-                className="grid gap-[60px] px-7 py-4 sm:grid-cols-2 sm:px-[60px]"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(ellipse 130% 175% at 38% 50%, rgba(9,15,15,0) 0%, rgba(9,15,15,0) 44%, #090f0f 100%), url(/images/marquee-glow.jpg)",
-                  backgroundSize: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                <h3 className="mono-body py-4 text-foam">Connected with purpose</h3>
-                <h3 className="mono-body py-4 text-foam">Where we work</h3>
-              </div>
-              <div className="grid gap-[60px] px-7 sm:grid-cols-2 sm:px-[60px]">
-                <p className="text-sm font-medium leading-relaxed text-mist">
-                  When connected with purpose, these elements transform machines into living
-                  systems. Isolated components become ecosystems. Static infrastructure becomes
-                  responsive, observable, aware.
-                </p>
-                <p className="text-sm font-medium leading-relaxed text-mist">
-                  Codistica was built around curiosity, discipline, and a deep respect for this
-                  invisible layer. Our work focuses precisely there. In the intelligence that allows
-                  complex systems to operate with greater clarity, reliability, and awareness.
-                </p>
-              </div>
             </div>
           </section>
         </main>
