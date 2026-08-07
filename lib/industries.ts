@@ -31,6 +31,7 @@ export const industries: Industry[] = [
     name: "Vertical mobility",
     hero: "/images/hero-vertical-mobility.jpg",
     heroFocus: "40%",
+    heroPortrait: "/images/hero-vertical-mobility-portrait.png",
     sphere: { from: "#b2c8e8", to: "#334863" },
   },
   {
@@ -75,6 +76,7 @@ export const industries: Industry[] = [
     label: "building automation",
     name: "Building automation",
     hero: "/images/hero-building-automation.jpg",
+    heroPortrait: "/images/hero-building-automation-portrait.png",
     sphere: { from: "#b2e8d3", to: "#33634e" },
   },
 ];

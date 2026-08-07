@@ -15,7 +15,7 @@ export default function Logo({ className = "" }: { className?: string }) {
         width={4794}
         height={1043}
         priority
-        className="h-8 w-auto select-none sm:h-10"
+        className="h-10 w-auto select-none sm:h-10"
       />
     </Link>
   );
