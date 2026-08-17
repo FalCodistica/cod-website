@@ -22,7 +22,7 @@ export default function AboutPage() {
           {/* hero */}
           <section className="relative flex h-[540px] items-center justify-center overflow-hidden rounded-[40px]">
             <Image
-              src="/images/texture-streaks.jpg"
+              src="/images/texture-streaks.webp"
               alt=""
               fill
               priority

@@ -22,7 +22,7 @@ export default function CompanyPage() {
           {/* hero */}
           <section className="relative flex h-[540px] flex-col justify-between overflow-hidden rounded-[40px]">
             <Image
-              src="/images/texture-streaks.jpg"
+              src="/images/texture-streaks.webp"
               alt=""
               fill
               priority
@@ -170,7 +170,7 @@ export default function CompanyPage() {
             className="relative min-h-[600px] scroll-mt-10 overflow-hidden rounded-[40px]"
           >
             <Image
-              src="/images/team-bg.jpg"
+              src="/images/team-bg.webp"
               alt=""
               fill
               className="object-cover object-bottom"

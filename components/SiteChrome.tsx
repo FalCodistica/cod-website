@@ -302,7 +302,7 @@ function MenuOverlay() {
                   >
                     <div
                       className="relative flex h-[183px] items-center justify-center bg-cover bg-center transition-transform duration-500 group-hover:scale-[1.02]"
-                      style={{ backgroundImage: "url(/images/texture-streaks.jpg)" }}
+                      style={{ backgroundImage: "url(/images/texture-streaks.webp)" }}
                     >
                       <span className="text-center text-lg font-medium leading-snug tracking-tight text-foam">
                         Systems worth building.
