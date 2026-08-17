@@ -68,7 +68,7 @@ Parameters:
     Description: GitHub organization/owner that owns the repository.
   GitHubRepo:
     Type: String
-    Default: codistica-website
+    Default: cod-website
     Description: GitHub repository name (scopes the deploy role).
   CreateOIDCProvider:
     Type: String
