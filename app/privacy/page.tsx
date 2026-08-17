@@ -19,6 +19,11 @@ export default function PrivacyPage() {
           Privacy policy content to be provided. For any questions about how we handle data, contact
           us at info@codistica.com.
         </p>
+        <p className="text-base font-medium leading-relaxed text-mist">
+          We use Google Tag Manager to understand how visitors use this site. It only loads after
+          you accept cookies in the banner shown on your first visit — you can decline at any time,
+          and we won&apos;t set any analytics cookies.
+        </p>
       </main>
       <Footer />
     </>

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Analytics from "@/components/Analytics";
 import { SiteChrome } from "@/components/SiteChrome";
 import { SITE } from "@/lib/site";
 
@@ -72,6 +73,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${jetbrains.variable} antialiased`}>
       <body>
         <SiteChrome>{children}</SiteChrome>
+        <Analytics />
       </body>
     </html>
   );
