@@ -5,6 +5,7 @@ import { useState } from "react";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import FormShell from "@/components/forms/FormShell";
 import { ComboboxField, PillGroup, TextareaField, TextField } from "@/components/forms/fields";
+import HoneypotField from "@/components/forms/HoneypotField";
 import StepButton from "@/components/forms/StepButton";
 import Stepper from "@/components/forms/Stepper";
 import { submitStrategicCollaboration } from "@/lib/apiClient";
@@ -40,6 +41,7 @@ type FormData = {
   stage: string;
   support: string[];
   timeline: string;
+  website: string;
 };
 
 const initial: FormData = {
@@ -55,6 +57,7 @@ const initial: FormData = {
   stage: "",
   support: [],
   timeline: "",
+  website: "",
 };
 
 export default function StrategicCollaborationPage() {
@@ -120,6 +123,7 @@ export default function StrategicCollaborationPage() {
       <Stepper steps={steps} current={step} />
 
       <div className="flex w-full flex-col gap-10">
+        <HoneypotField value={data.website} onChange={(v) => set("website", v)} />
         <div key={step} className="step-in flex flex-col">
           {step === 0 && (
             <>

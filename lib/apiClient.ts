@@ -43,6 +43,8 @@ export function submitJoinTeam(
     role: string;
     country: string;
     opportunity: string;
+    /** honeypot - always empty for real visitors, see components/forms/HoneypotField.tsx */
+    website: string;
   },
   cv: { key: string; filename: string },
 ): Promise<ActionResult> {
@@ -62,6 +64,7 @@ export function submitStrategicCollaboration(input: {
   stage: string;
   support: string[];
   timeline: string;
+  website: string;
 }): Promise<ActionResult> {
   return post<ActionResult>("/apply/strategic-collaboration", input);
 }
@@ -76,6 +79,7 @@ export function submitStrategicConversation(input: {
   stage: string;
   involvement: string[];
   horizon: string;
+  website: string;
 }): Promise<ActionResult> {
   return post<ActionResult>("/apply/strategic-conversation", input);
 }

@@ -6,6 +6,7 @@ import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import Dropzone from "@/components/forms/Dropzone";
 import FormShell from "@/components/forms/FormShell";
 import { ComboboxField, PillGroup, TextField } from "@/components/forms/fields";
+import HoneypotField from "@/components/forms/HoneypotField";
 import StepButton from "@/components/forms/StepButton";
 import { submitJoinTeam } from "@/lib/apiClient";
 import { countries } from "@/lib/countries";
@@ -21,6 +22,7 @@ type FormData = {
   role: string;
   country: string;
   opportunity: string;
+  website: string;
 };
 
 const initial: FormData = {
@@ -31,6 +33,7 @@ const initial: FormData = {
   role: "",
   country: "",
   opportunity: "",
+  website: "",
 };
 
 export default function JoinTeamPage() {
@@ -90,6 +93,7 @@ export default function JoinTeamPage() {
       <h1 className="heading max-w-[640px] text-center text-foam">Join the team</h1>
 
       <div className="flex w-full flex-col gap-10">
+        <HoneypotField value={data.website} onChange={(v) => set("website", v)} />
         <div className="flex flex-col">
           <TextField
             label="Name"

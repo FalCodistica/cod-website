@@ -60,6 +60,9 @@ Parameters:
   CertificateArn:
     Type: String
     Description: ACM certificate ARN from the us-east-1 certificate stack.
+  WebAclArn:
+    Type: String
+    Description: WAF WebACL ARN (CLOUDFRONT scope) from the us-east-1 certificate stack - rate-limits /api/*.
 
   # ── GitHub OIDC ──
   GitHubOrg:
@@ -393,6 +396,7 @@ Resources:
         HttpVersion: http2and3
         IPV6Enabled: true
         PriceClass: !Ref PriceClass
+        WebACLId: !Ref WebAclArn
         Aliases: !If
           - WithWww
           - [!Ref DomainName, !Sub "www.${DomainName}"]

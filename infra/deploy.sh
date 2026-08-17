@@ -28,22 +28,30 @@ if [[ -z "${HOSTED_ZONE_ID}" ]]; then
   exit 1
 fi
 
-echo "==> [1/3] Certificate stack '${PROJECT_NAME}-cert' in us-east-1 ..."
+echo "==> [1/3] Certificate + WAF stack '${PROJECT_NAME}-cert' in us-east-1 ..."
 aws cloudformation deploy \
   --region us-east-1 \
   --stack-name "${PROJECT_NAME}-cert" \
   --template-file certificate.yml \
   --no-fail-on-empty-changeset \
   --parameter-overrides \
+      ProjectName="${PROJECT_NAME}" \
       DomainName="${DOMAIN_NAME}" \
       HostedZoneId="${HOSTED_ZONE_ID}" \
-      IncludeWww="${INCLUDE_WWW}"
+      IncludeWww="${INCLUDE_WWW}" \
+      ApiRateLimitPerFiveMin="${API_RATE_LIMIT_PER_5MIN}"
 
 CERT_ARN="$(aws cloudformation describe-stacks --region us-east-1 \
   --stack-name "${PROJECT_NAME}-cert" \
   --query "Stacks[0].Outputs[?OutputKey=='CertificateArn'].OutputValue" \
   --output text)"
 echo "    Certificate ARN: ${CERT_ARN}"
+
+WEB_ACL_ARN="$(aws cloudformation describe-stacks --region us-east-1 \
+  --stack-name "${PROJECT_NAME}-cert" \
+  --query "Stacks[0].Outputs[?OutputKey=='WebAclArn'].OutputValue" \
+  --output text)"
+echo "    WAF WebACL ARN: ${WEB_ACL_ARN}"
 
 echo "==> [2/3] Main stack '${PROJECT_NAME}' in ${AWS_REGION} ..."
 aws cloudformation deploy \
@@ -66,6 +74,7 @@ aws cloudformation deploy \
       IncludeWww="${INCLUDE_WWW}" \
       HostedZoneId="${HOSTED_ZONE_ID}" \
       CertificateArn="${CERT_ARN}" \
+      WebAclArn="${WEB_ACL_ARN}" \
       GitHubOrg="${GITHUB_ORG}" \
       GitHubRepo="${GITHUB_REPO}" \
       CreateOIDCProvider="${CREATE_OIDC_PROVIDER}" \
