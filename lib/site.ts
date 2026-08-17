@@ -6,7 +6,7 @@ import type { Metadata } from "next";
  * it here if the production domain differs.
  */
 export const SITE = {
-  url: "https://www.codistica.com",
+  url: "https://codistica.com",
   name: "Codistica",
   title: "Codistica - Powering the invisible",
   tagline: "Powering the invisible",
