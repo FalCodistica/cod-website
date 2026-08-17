@@ -2,8 +2,9 @@
 
 import { motion } from "motion/react";
 import { type DragEvent, useRef, useState } from "react";
+import { presignCvUpload } from "@/lib/apiClient";
 
-type Status = "idle" | "uploading" | "verifying" | "done";
+type Status = "idle" | "uploading" | "verifying" | "done" | "error";
 
 function UploadIcon() {
   return (
@@ -57,43 +58,66 @@ export default function Dropzone({
   required = true,
   file,
   onChange,
+  onUploaded,
 }: {
   label?: string;
   required?: boolean;
   file: File | null;
   onChange: (file: File | null) => void;
+  /** Called with the S3 object key once the real upload finishes, or null on removal/failure. */
+  onUploaded: (key: string | null) => void;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [progress, setProgress] = useState(0);
   const [dragging, setDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const xhrRef = useRef<XMLHttpRequest | null>(null);
 
-  function simulateUpload(f: File) {
-    onChange(f);
+  async function upload(f: File) {
     setStatus("uploading");
     setProgress(0);
-    let p = 0;
-    const interval = setInterval(() => {
-      p += 15 + Math.random() * 20;
-      if (p >= 100) {
-        p = 100;
-        clearInterval(interval);
+
+    const contentType = f.type || "application/octet-stream";
+    const presign = await presignCvUpload(f.name, contentType);
+    if (!presign.ok) {
+      setStatus("error");
+      return;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhrRef.current = xhr;
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable) setProgress((e.loaded / e.total) * 100);
+    };
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
         setProgress(100);
         setStatus("verifying");
-        setTimeout(() => setStatus("done"), 700);
+        setTimeout(() => {
+          setStatus("done");
+          onUploaded(presign.key);
+        }, 500);
       } else {
-        setProgress(p);
+        setStatus("error");
       }
-    }, 200);
+    };
+    xhr.onerror = () => setStatus("error");
+    xhr.open("PUT", presign.uploadUrl);
+    xhr.setRequestHeader("Content-Type", contentType);
+    xhr.send(f);
   }
 
   function handleFiles(files: FileList | null) {
     const f = files?.[0];
-    if (f) simulateUpload(f);
+    if (!f) return;
+    onChange(f);
+    void upload(f);
   }
 
   function remove() {
+    xhrRef.current?.abort();
     onChange(null);
+    onUploaded(null);
     setStatus("idle");
     setProgress(0);
     if (inputRef.current) inputRef.current.value = "";
@@ -151,6 +175,21 @@ export default function Dropzone({
               transition={{ duration: 0.2 }}
             />
           </div>
+        </div>
+      )}
+
+      {status === "error" && (
+        <div className="flex h-24 w-full flex-col items-center justify-center gap-2 rounded-2xl border border-red-400/40 px-8">
+          <span className="text-sm font-medium text-red-400">
+            Upload failed. Please try again.
+          </span>
+          <button
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            className="text-sm font-medium text-mist underline hover:text-foam"
+          >
+            Choose a file
+          </button>
         </div>
       )}
 

@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  ACM certificate for the Codistica website. MUST be deployed in us-east-1 -
+  CloudFront can only use certificates issued in us-east-1, regardless of where
+  the rest of the infrastructure lives. Kept as a separate stack so the main
+  stack can run in another region. Validation records are created
+  automatically in Route 53.
+
+Parameters:
+  DomainName:
+    Type: String
+    Description: Apex domain, e.g. codistica.com
+  HostedZoneId:
+    Type: String
+    Description: Route 53 hosted zone ID for DomainName (enables automatic DNS validation).
+  IncludeWww:
+    Type: String
+    AllowedValues: ["true", "false"]
+    Default: "true"
+    Description: Also cover www.<DomainName> on the certificate (needed for the www->apex redirect).
+
+Conditions:
+  WithWww: !Equals [!Ref IncludeWww, "true"]
+
+Resources:
+  Certificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: !Ref DomainName
+      ValidationMethod: DNS
+      SubjectAlternativeNames: !If
+        - WithWww
+        - [!Sub "www.${DomainName}"]
+        - !Ref AWS::NoValue
+      # ACM auto-creates the validation CNAMEs in the hosted zone - no manual step.
+      DomainValidationOptions: !If
+        - WithWww
+        - - DomainName: !Ref DomainName
+            HostedZoneId: !Ref HostedZoneId
+          - DomainName: !Sub "www.${DomainName}"
+            HostedZoneId: !Ref HostedZoneId
+        - - DomainName: !Ref DomainName
+            HostedZoneId: !Ref HostedZoneId
+
+Outputs:
+  CertificateArn:
+    Description: ACM certificate ARN - passed to the main stack's CertificateArn parameter.
+    Value: !Ref Certificate

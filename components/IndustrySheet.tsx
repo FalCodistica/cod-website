@@ -12,8 +12,7 @@ const EASE =
   "transform 0.5s cubic-bezier(0.32,0.72,0,1), border-radius 0.5s cubic-bezier(0.32,0.72,0,1)";
 
 /*
- * A real bottom sheet for an industry. It slides up from the bottom over
- * whatever page is behind it (the still-mounted Home when intercepted), rests
+ * A real bottom sheet for an industry. It slides up from the bottom, rests
  * with rounded top corners + a grabber, and:
  *   - expands to fullscreen (corners/grabber fade) once you scroll in
  *   - the grabber can be dragged down; past a threshold it dismisses the
@@ -88,7 +87,6 @@ export default function IndustrySheet({
     const finish = () => {
       if (done) return;
       done = true;
-      // clears the @sheet slot and reveals Home (kept mounted underneath);
       // scroll:false leaves Home's scroll position untouched.
       router.push("/", { scroll: false });
     };

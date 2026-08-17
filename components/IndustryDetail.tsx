@@ -8,12 +8,7 @@ import { DotChevron, EyebrowPill, FilledButton, Sphere } from "@/components/ui";
 import { industries } from "@/lib/industries";
 import { industryContent } from "@/lib/industry-content";
 
-/*
- * The industry bottom sheet + its scrollable content. Shared by two routes:
- *   - app/industries/[slug]/page.tsx        (direct visit / refresh: full page)
- *   - app/@sheet/(.)industries/[slug]/page.tsx (intercepted: overlays a
- *     still-mounted Home, so opening/closing never remounts the home tree)
- */
+/* The industry bottom sheet + its scrollable content, rendered by app/industries/[slug]/page.tsx. */
 export default function IndustryDetail({ slug }: { slug: string }) {
   const idx = industries.findIndex((i) => i.slug === slug);
   const industry = industries[idx];

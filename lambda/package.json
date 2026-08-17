@@ -1,0 +1,23 @@
+{
+  "name": "codistica-website-submissions",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "typecheck": "tsc --noEmit",
+    "package": "npm run build && cd dist && zip -q -r lambda.zip index.js && cd .."
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.700.0",
+    "@aws-sdk/client-secrets-manager": "^3.700.0",
+    "@aws-sdk/s3-request-presigner": "^3.700.0",
+    "@notionhq/client": "^5.23.2"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.145",
+    "@types/node": "^22",
+    "esbuild": "^0.24.0",
+    "typescript": "^5"
+  }
+}

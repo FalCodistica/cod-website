@@ -1,0 +1,109 @@
+name: Deploy to AWS
+
+# Deploys the site on every push to main - which includes a PR merge (a merge is
+# a push to main) and any direct push. Protect the branch to require PRs if you
+# want merges to be the only path.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build + deploy Lambda and static export
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write   # required to request the OIDC token for AWS
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Everything except the role ARN comes from infra/config.env - the single
+      # source of truth - so only AWS_DEPLOY_ROLE_ARN needs to be a repo Variable.
+      - name: Load config
+        id: cfg
+        run: |
+          set -a; source infra/config.env; set +a
+          {
+            echo "aws_region=${AWS_REGION}"
+            echo "bucket=${BUCKET_NAME}"
+            echo "project=${PROJECT_NAME}"
+            echo "lambda_function=${LAMBDA_FUNCTION_NAME}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Configure AWS credentials (OIDC - no stored keys)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ steps.cfg.outputs.aws_region }}
+
+      - name: Install site dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Install Lambda dependencies
+        working-directory: lambda
+        run: npm ci
+
+      - name: Build + zip Lambda bundle
+        working-directory: lambda
+        run: npm run package
+
+      - name: Resolve CloudFront distribution ID from the stack
+        id: cf
+        run: |
+          DIST_ID="$(aws cloudformation describe-stacks \
+            --region "${{ steps.cfg.outputs.aws_region }}" \
+            --stack-name "${{ steps.cfg.outputs.project }}" \
+            --query "Stacks[0].Outputs[?OutputKey=='DistributionId'].OutputValue" \
+            --output text)"
+          echo "dist_id=${DIST_ID}" >> "$GITHUB_OUTPUT"
+
+      - name: Update Lambda code
+        run: |
+          aws lambda update-function-code \
+            --function-name "${{ steps.cfg.outputs.lambda_function }}" \
+            --zip-file fileb://lambda/dist/lambda.zip >/dev/null
+          aws lambda wait function-updated \
+            --function-name "${{ steps.cfg.outputs.lambda_function }}"
+
+      - name: Upload static assets (long-lived cache)
+        run: |
+          aws s3 sync out/ "s3://${{ steps.cfg.outputs.bucket }}/" \
+            --delete \
+            --exclude "*.html" \
+            --cache-control "public, max-age=604800"
+
+      - name: Upload _next/static (hashed, immutable)
+        run: |
+          aws s3 sync out/_next/static/ "s3://${{ steps.cfg.outputs.bucket }}/_next/static/" \
+            --cache-control "public, max-age=31536000, immutable"
+
+      - name: Upload HTML pages (always revalidated)
+        run: |
+          aws s3 sync out/ "s3://${{ steps.cfg.outputs.bucket }}/" \
+            --delete \
+            --exclude "*" --include "*.html" \
+            --cache-control "no-cache" \
+            --content-type "text/html; charset=utf-8"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ steps.cf.outputs.dist_id }}" \
+            --paths "/*"

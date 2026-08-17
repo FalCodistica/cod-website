@@ -1,0 +1,556 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >
+  Codistica website hosting: private S3 bucket served through CloudFront
+  (Origin Access Control) over HTTPS, a form-submissions Lambda behind the
+  same distribution at /api/* (also OAC-restricted, so same-origin means no
+  CORS for the app's own calls), Route 53 alias records, and a GitHub OIDC
+  role for keyless CI/CD deploys. Deploy this in your target region. The TLS
+  certificate lives in a separate us-east-1 stack; pass its ARN via
+  CertificateArn. All resource names are parameters - see infra/config.env.
+
+Parameters:
+  # ── Naming ──
+  ProjectName:
+    Type: String
+    Default: codistica-website
+    Description: Tag/label applied to created resources.
+  BucketName:
+    Type: String
+    Description: Site S3 bucket name - must be globally unique across all AWS accounts.
+  CvUploadsBucketName:
+    Type: String
+    Description: CV-staging S3 bucket name - must be globally unique across all AWS accounts.
+  DeployRoleName:
+    Type: String
+    Default: codistica-website-deploy
+    Description: Name of the IAM role assumed by GitHub Actions.
+  OACName:
+    Type: String
+    Default: codistica-website-oac
+    Description: Name of the CloudFront Origin Access Control for the S3 origin.
+  LambdaOACName:
+    Type: String
+    Default: codistica-website-lambda-oac
+    Description: Name of the CloudFront Origin Access Control for the Lambda origin.
+  LambdaFunctionName:
+    Type: String
+    Default: codistica-website-submissions
+    Description: Name of the form-submissions Lambda function.
+  SecretName:
+    Type: String
+    Default: codistica-website/submissions
+    Description: Secrets Manager secret name holding the Lambda's Notion credentials.
+  CvRetentionDays:
+    Type: Number
+    Default: 3
+    Description: Days a CV stays in the staging bucket before S3 auto-expires it.
+
+  # ── Domain / TLS ──
+  DomainName:
+    Type: String
+    Description: Apex domain, e.g. codistica.com
+  IncludeWww:
+    Type: String
+    AllowedValues: ["true", "false"]
+    Default: "true"
+    Description: Also serve www.<DomainName>, 301-redirected to the apex (canonical is the apex).
+  HostedZoneId:
+    Type: String
+    Description: Route 53 hosted zone ID for DomainName (for the alias records).
+  CertificateArn:
+    Type: String
+    Description: ACM certificate ARN from the us-east-1 certificate stack.
+
+  # ── GitHub OIDC ──
+  GitHubOrg:
+    Type: String
+    Default: codistica
+    Description: GitHub organization/owner that owns the repository.
+  GitHubRepo:
+    Type: String
+    Default: codistica-website
+    Description: GitHub repository name (scopes the deploy role).
+  CreateOIDCProvider:
+    Type: String
+    AllowedValues: ["true", "false"]
+    Default: "false"
+    Description: >
+      Create the GitHub OIDC provider? It is an account-wide singleton - set
+      "false" if it already exists in the account.
+
+  # ── CloudFront ──
+  PriceClass:
+    Type: String
+    AllowedValues: [PriceClass_100, PriceClass_200, PriceClass_All]
+    Default: PriceClass_100
+    Description: CloudFront edge coverage / cost tier.
+
+Conditions:
+  WithWww: !Equals [!Ref IncludeWww, "true"]
+  ShouldCreateOIDC: !Equals [!Ref CreateOIDCProvider, "true"]
+
+Resources:
+  # ---------------------------------------------------------------- S3 bucket (site)
+  SiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketName
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  SiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SiteBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowCloudFrontServicePrincipalReadOnly
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: s3:GetObject
+            Resource: !Sub "${SiteBucket.Arn}/*"
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
+
+  # ------------------------------------------------------- S3 bucket (CV staging)
+  # Private, no bucket policy - presigned PUT URLs carry their own SigV4 auth.
+  # CORS is the one deliberate exception to "no cross-origin calls anywhere":
+  # inherent to uploading straight from the browser to S3, and the only way to
+  # avoid the 6-10MB payload ceilings a Lambda/API-Gateway proxy would hit.
+  CvUploadsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref CvUploadsBucketName
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      CorsConfiguration:
+        CorsRules:
+          - AllowedMethods: [PUT]
+            AllowedOrigins: !If
+              - WithWww
+              - [!Sub "https://${DomainName}", !Sub "https://www.${DomainName}"]
+              - [!Sub "https://${DomainName}"]
+            AllowedHeaders: ["*"]
+            MaxAge: 3000
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireCvUploads
+            Status: Enabled
+            ExpirationInDays: !Ref CvRetentionDays
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  # -------------------------------------------------------- CloudFront + OAC (S3)
+  OriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Ref OACName
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  # --------------------------------------------------- CloudFront OAC (Lambda)
+  # Same confused-deputy-safe pattern as the S3 OAC above, applied to the
+  # Function URL origin - only this distribution may invoke it.
+  LambdaOriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Ref LambdaOACName
+        OriginAccessControlOriginType: lambda
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  # Security headers applied to every response (HTTPS-only site).
+  SecurityHeadersPolicy:
+    Type: AWS::CloudFront::ResponseHeadersPolicy
+    Properties:
+      ResponseHeadersPolicyConfig:
+        Name: !Sub "${ProjectName}-security-headers"
+        SecurityHeadersConfig:
+          StrictTransportSecurity:
+            AccessControlMaxAgeSec: 31536000
+            IncludeSubdomains: false
+            Preload: false
+            Override: true
+          ContentTypeOptions:
+            Override: true
+          FrameOptions:
+            FrameOption: DENY
+            Override: true
+          ReferrerPolicy:
+            ReferrerPolicy: strict-origin-when-cross-origin
+            Override: true
+
+  # Viewer-request function, applied to BOTH cache behaviors:
+  #  1. /api/* requests pass through untouched (guarded first).
+  #  2. www.<domain> 301-redirects to the bare apex (single canonical host).
+  #  3. Extensionless paths get ".html" appended, matching the flat *.html
+  #     files `next build` with output:"export" emits (trailingSlash: false).
+  EdgeRoutingFunction:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: !Sub "${ProjectName}-edge-routing"
+      AutoPublish: true
+      FunctionConfig:
+        Comment: !Sub "www->apex redirect + .html rewrite for ${DomainName}"
+        Runtime: cloudfront-js-2.0
+      FunctionCode: !Sub |
+        function handler(event) {
+          var request = event.request;
+          var uri = request.uri;
+
+          if (uri.indexOf('/api/') === 0) {
+            return request;
+          }
+
+          var host = request.headers.host && request.headers.host.value;
+          if (host === 'www.${DomainName}') {
+            var qs = request.querystring ? Object.keys(request.querystring).length : 0;
+            var suffix = '';
+            if (qs > 0) {
+              var parts = [];
+              for (var k in request.querystring) {
+                parts.push(k + '=' + request.querystring[k].value);
+              }
+              suffix = '?' + parts.join('&');
+            }
+            return {
+              statusCode: 301,
+              statusDescription: 'Moved Permanently',
+              headers: { location: { value: 'https://${DomainName}' + uri + suffix } }
+            };
+          }
+
+          if (uri !== '/' && uri.charAt(uri.length - 1) !== '/') {
+            var lastSegment = uri.split('/').pop();
+            if (lastSegment.indexOf('.') === -1) {
+              request.uri = uri + '.html';
+            }
+          }
+
+          return request;
+        }
+
+  # ----------------------------------------------- Secrets (Notion credentials)
+  # Seeded with a placeholder - the real values are set via a one-time manual
+  # `aws secretsmanager put-secret-value` run locally after deploy, never via
+  # CloudFormation (so they're never a plaintext stack parameter or in git).
+  SubmissionsSecret:
+    Type: AWS::SecretsManager::Secret
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Name: !Ref SecretName
+      Description: >-
+        Notion credentials for the website's form-submission Lambda.
+        Placeholder on creation - populate manually, see infra/README.md.
+      GenerateSecretString:
+        SecretStringTemplate: '{"NOTION_API_KEY":"REPLACE_ME","NOTION_SUBMISSIONS_DATA_SOURCE_ID":"REPLACE_ME"}'
+        GenerateStringKey: "_unused"
+        ExcludePunctuation: true
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  # ------------------------------------------------- Lambda execution role
+  SubmissionsFunctionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "${ProjectName}-submissions-role"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: submissions-permissions
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: CvBucketAccess
+                Effect: Allow
+                Action:
+                  - s3:PutObject
+                  - s3:GetObject
+                Resource: !Sub "${CvUploadsBucket.Arn}/*"
+              - Sid: ReadSubmissionsSecret
+                Effect: Allow
+                Action: secretsmanager:GetSecretValue
+                Resource: !Ref SubmissionsSecret
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  # -------------------------------------------------------- Lambda function
+  # Code starts as a stub - CI overwrites it with the real esbuild bundle via
+  # `aws lambda update-function-code` right after this stack first deploys
+  # (same "bucket starts empty, the pipeline fills it" split as the site).
+  SubmissionsFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Ref LambdaFunctionName
+      Runtime: nodejs22.x
+      Handler: index.handler
+      Timeout: 15
+      MemorySize: 256
+      Role: !GetAtt SubmissionsFunctionRole.Arn
+      Environment:
+        Variables:
+          CV_BUCKET_NAME: !Ref CvUploadsBucket
+          SUBMISSIONS_SECRET_ARN: !Ref SubmissionsSecret
+      Code:
+        ZipFile: |
+          exports.handler = async () => ({
+            statusCode: 503,
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ ok: false, error: "Not deployed yet." }),
+          });
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+
+  SubmissionsFunctionUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      TargetFunctionArn: !GetAtt SubmissionsFunction.Arn
+      AuthType: AWS_IAM
+
+  # Only CloudFront (via OAC, scoped to this distribution) may invoke the URL.
+  SubmissionsFunctionUrlPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref SubmissionsFunction
+      Action: lambda:InvokeFunctionUrl
+      Principal: cloudfront.amazonaws.com
+      SourceArn: !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
+
+  Distribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+      DistributionConfig:
+        Enabled: true
+        Comment: !Sub "${ProjectName}"
+        DefaultRootObject: index.html
+        HttpVersion: http2and3
+        IPV6Enabled: true
+        PriceClass: !Ref PriceClass
+        Aliases: !If
+          - WithWww
+          - [!Ref DomainName, !Sub "www.${DomainName}"]
+          - [!Ref DomainName]
+        ViewerCertificate:
+          AcmCertificateArn: !Ref CertificateArn
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2021
+        Origins:
+          - Id: S3Origin
+            DomainName: !GetAtt SiteBucket.RegionalDomainName
+            OriginAccessControlId: !Ref OriginAccessControl
+            S3OriginConfig:
+              OriginAccessIdentity: ""
+          - Id: LambdaOrigin
+            DomainName: !Select [2, !Split ["/", !GetAtt SubmissionsFunctionUrl.FunctionUrl]]
+            OriginAccessControlId: !GetAtt LambdaOriginAccessControl.Id
+            CustomOriginConfig:
+              OriginProtocolPolicy: https-only
+              OriginSSLProtocols: [TLSv1.2]
+        DefaultCacheBehavior:
+          TargetOriginId: S3Origin
+          ViewerProtocolPolicy: redirect-to-https
+          Compress: true
+          # AWS managed "CachingOptimized"
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          ResponseHeadersPolicyId: !Ref SecurityHeadersPolicy
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt EdgeRoutingFunction.FunctionMetadata.FunctionARN
+        CacheBehaviors:
+          - PathPattern: /api/*
+            TargetOriginId: LambdaOrigin
+            ViewerProtocolPolicy: https-only
+            Compress: true
+            AllowedMethods: [GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE]
+            CachedMethods: [GET, HEAD]
+            # AWS managed "CachingDisabled" / "AllViewerExceptHostHeader" -
+            # verify these IDs with `aws cloudfront list-cache-policies
+            # --type managed` / `list-origin-request-policies --type managed`
+            # before first deploy (could not reach a live AWS session to
+            # confirm them from this environment).
+            CachePolicyId: 4135ea2d-6df8-44a3-9d13-cfeef4b1c8f5
+            OriginRequestPolicyId: b689b0a8-53d0-40ab-baf2-68738e2966ac
+            ResponseHeadersPolicyId: !Ref SecurityHeadersPolicy
+            FunctionAssociations:
+              - EventType: viewer-request
+                FunctionARN: !GetAtt EdgeRoutingFunction.FunctionMetadata.FunctionARN
+        # Multi-page static export (not a SPA) - unknown paths get a real
+        # 404 status with the actual 404 page, not a soft-404 on index.html.
+        CustomErrorResponses:
+          - ErrorCode: 403
+            ResponseCode: 404
+            ResponsePagePath: /404.html
+            ErrorCachingMinTTL: 60
+          - ErrorCode: 404
+            ResponseCode: 404
+            ResponsePagePath: /404.html
+            ErrorCachingMinTTL: 60
+
+  # ----------------------------------------------------------- Route 53 DNS
+  # Z2FDTNDATAQYW2 is CloudFront's fixed alias hosted-zone ID (global constant).
+  ApexDnsRecords:
+    Type: AWS::Route53::RecordSetGroup
+    Properties:
+      HostedZoneId: !Ref HostedZoneId
+      RecordSets:
+        - Name: !Ref DomainName
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt Distribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+            EvaluateTargetHealth: false
+        - Name: !Ref DomainName
+          Type: AAAA
+          AliasTarget:
+            DNSName: !GetAtt Distribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+            EvaluateTargetHealth: false
+
+  WwwDnsRecords:
+    Type: AWS::Route53::RecordSetGroup
+    Condition: WithWww
+    Properties:
+      HostedZoneId: !Ref HostedZoneId
+      RecordSets:
+        - Name: !Sub "www.${DomainName}"
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt Distribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+            EvaluateTargetHealth: false
+        - Name: !Sub "www.${DomainName}"
+          Type: AAAA
+          AliasTarget:
+            DNSName: !GetAtt Distribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+            EvaluateTargetHealth: false
+
+  # ------------------------------------------------------- GitHub OIDC + role
+  GitHubOIDCProvider:
+    Type: AWS::IAM::OIDCProvider
+    Condition: ShouldCreateOIDC
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList:
+        - sts.amazonaws.com
+      ThumbprintList:
+        - 6938fd4d98bab03faadb97b34396831e3780aea1
+
+  DeployRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Ref DeployRoleName
+      MaxSessionDuration: 3600
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: !If
+                - ShouldCreateOIDC
+                - !Ref GitHubOIDCProvider
+                - !Sub "arn:aws:iam::${AWS::AccountId}:oidc-provider/token.actions.githubusercontent.com"
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+              StringLike:
+                token.actions.githubusercontent.com:sub: !Sub "repo:${GitHubOrg}/${GitHubRepo}:*"
+      Policies:
+        - PolicyName: deploy-permissions
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: S3Sync
+                Effect: Allow
+                Action:
+                  - s3:ListBucket
+                  - s3:GetObject
+                  - s3:PutObject
+                  - s3:DeleteObject
+                Resource:
+                  - !GetAtt SiteBucket.Arn
+                  - !Sub "${SiteBucket.Arn}/*"
+              - Sid: CloudFrontInvalidate
+                Effect: Allow
+                Action: cloudfront:CreateInvalidation
+                Resource: !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${Distribution}"
+              - Sid: DeployLambdaCode
+                Effect: Allow
+                Action:
+                  - lambda:UpdateFunctionCode
+                  - lambda:GetFunction
+                Resource: !GetAtt SubmissionsFunction.Arn
+              - Sid: ReadOwnStackOutputs
+                Effect: Allow
+                Action: cloudformation:DescribeStacks
+                Resource: !Sub "arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${ProjectName}/*"
+
+Outputs:
+  BucketName:
+    Description: Site S3 bucket name - set as the S3_BUCKET repo variable.
+    Value: !Ref SiteBucket
+  CvUploadsBucketName:
+    Description: CV-staging S3 bucket name.
+    Value: !Ref CvUploadsBucket
+  DistributionId:
+    Description: CloudFront distribution ID - set as CLOUDFRONT_DISTRIBUTION_ID.
+    Value: !Ref Distribution
+  DistributionDomainName:
+    Description: Default CloudFront URL (works immediately, even before DNS propagates).
+    Value: !GetAtt Distribution.DomainName
+  DeployRoleArn:
+    Description: IAM role ARN - set as the AWS_DEPLOY_ROLE_ARN repo variable.
+    Value: !GetAtt DeployRole.Arn
+  SubmissionsFunctionName:
+    Description: Lambda function name - used by CI to push new code via update-function-code.
+    Value: !Ref SubmissionsFunction
+  SubmissionsSecretArn:
+    Description: Secrets Manager secret ARN - populate with real Notion credentials via `aws secretsmanager put-secret-value`.
+    Value: !Ref SubmissionsSecret
+  SiteURL:
+    Description: Public site URL once DNS has propagated.
+    Value: !Sub "https://${DomainName}"

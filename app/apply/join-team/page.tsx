@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { submitJoinTeam } from "@/app/apply/actions";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import Dropzone from "@/components/forms/Dropzone";
 import FormShell from "@/components/forms/FormShell";
 import { ComboboxField, PillGroup, TextField } from "@/components/forms/fields";
 import StepButton from "@/components/forms/StepButton";
+import { submitJoinTeam } from "@/lib/apiClient";
 import { countries } from "@/lib/countries";
 import { isValidEmail, isValidPhone, isValidUrl } from "@/lib/validation";
 
@@ -39,6 +39,7 @@ export default function JoinTeamPage() {
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<FormData>(initial);
   const [cv, setCv] = useState<File | null>(null);
+  const [cvKey, setCvKey] = useState<string | null>(null);
 
   const set = <K extends keyof FormData>(key: K, value: FormData[K]) =>
     setData((d) => ({ ...d, [key]: value }));
@@ -50,14 +51,14 @@ export default function JoinTeamPage() {
     (!data.linkedin || isValidUrl(data.linkedin)) &&
     data.role &&
     data.country &&
-    cv;
+    cvKey;
 
   async function handleSubmit() {
-    if (!canSubmit || !cv) return;
+    if (!canSubmit || !cvKey || !cv) return;
     setSubmitting(true);
     setError(null);
     try {
-      const result = await submitJoinTeam(data, cv);
+      const result = await submitJoinTeam(data, { key: cvKey, filename: cv.name });
       if (result.ok) {
         setSubmitted(true);
       } else {
@@ -137,7 +138,7 @@ export default function JoinTeamPage() {
             value={data.country}
             onChange={(v) => set("country", v)}
           />
-          <Dropzone file={cv} onChange={setCv} />
+          <Dropzone file={cv} onChange={setCv} onUploaded={setCvKey} />
           <PillGroup
             label="What type of opportunity are you looking for?"
             hint="Optional"

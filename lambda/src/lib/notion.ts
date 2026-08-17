@@ -1,8 +1,4 @@
-import { Client } from "@notionhq/client";
-
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
-
-const DATA_SOURCE_ID = process.env.NOTION_SUBMISSIONS_DATA_SOURCE_ID;
+import type { Client } from "@notionhq/client";
 
 export type FormType = "Join Team" | "Strategic Collaboration" | "Strategic Conversation";
 
@@ -26,7 +22,12 @@ function richText(value: string) {
   return { rich_text: [{ text: { content: value.slice(0, 2000) } }] };
 }
 
-export async function uploadFileToNotion(buffer: Buffer, filename: string, contentType: string) {
+export async function uploadFileToNotion(
+  notion: Client,
+  buffer: Buffer,
+  filename: string,
+  contentType: string,
+) {
   const upload = await notion.fileUploads.create({
     mode: "single_part",
     filename,
@@ -41,13 +42,13 @@ export async function uploadFileToNotion(buffer: Buffer, filename: string, conte
   return upload.id;
 }
 
-export async function createSubmissionRecord(record: SubmissionRecord) {
-  if (!DATA_SOURCE_ID) {
-    throw new Error("NOTION_SUBMISSIONS_DATA_SOURCE_ID is not configured");
-  }
-
+export async function createSubmissionRecord(
+  notion: Client,
+  dataSourceId: string,
+  record: SubmissionRecord,
+) {
   await notion.pages.create({
-    parent: { type: "data_source_id", data_source_id: DATA_SOURCE_ID },
+    parent: { type: "data_source_id", data_source_id: dataSourceId },
     properties: {
       Name: { title: [{ text: { content: record.name } }] },
       "Form Type": { select: { name: record.formType } },

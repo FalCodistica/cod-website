@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { submitStrategicCollaboration } from "@/app/apply/actions";
 import ConfirmationPanel from "@/components/forms/ConfirmationPanel";
 import FormShell from "@/components/forms/FormShell";
 import { ComboboxField, PillGroup, TextareaField, TextField } from "@/components/forms/fields";
 import StepButton from "@/components/forms/StepButton";
 import Stepper from "@/components/forms/Stepper";
+import { submitStrategicCollaboration } from "@/lib/apiClient";
 import { countries } from "@/lib/countries";
 import { isValidEmail, isValidPhone } from "@/lib/validation";
 
