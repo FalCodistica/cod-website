@@ -205,6 +205,29 @@ Resources:
           ReferrerPolicy:
             ReferrerPolicy: strict-origin-when-cross-origin
             Override: true
+          # 'unsafe-inline' on script-src/style-src is a deliberate, unavoidable
+          # trade-off for a static export: Next inlines the RSC hydration
+          # payload as <script> tags with no nonce (no per-request server to
+          # generate one on S3/CloudFront), and Motion sets inline style=""
+          # attributes for animations. connect-src carries the CV-uploads
+          # bucket because the presigned PUT in components/forms/Dropzone.tsx
+          # goes straight to S3's own origin, not through this distribution -
+          # without it the browser blocks the upload even though S3 CORS
+          # allows it.
+          ContentSecurityPolicy:
+            ContentSecurityPolicy: !Sub >-
+              default-src 'self';
+              script-src 'self' 'unsafe-inline';
+              style-src 'self' 'unsafe-inline';
+              img-src 'self';
+              font-src 'self';
+              connect-src 'self' https://${CvUploadsBucketName}.s3.${AWS::Region}.amazonaws.com;
+              object-src 'none';
+              frame-src 'none';
+              frame-ancestors 'none';
+              base-uri 'self';
+              form-action 'self'
+            Override: true
 
   # Viewer-request function, applied to BOTH cache behaviors:
   #  1. /api/* requests pass through untouched (guarded first).
