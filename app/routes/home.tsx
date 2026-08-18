@@ -1,11 +1,11 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "@/components/AppImage";
 import Link from "@/components/AppLink";
 import Footer from "@/components/Footer";
 import { Seo } from "@/components/Seo";
 import { Header } from "@/components/SiteChrome";
-import { ScrollArrow, Sphere } from "@/components/ui";
+import { ScrollArrow, Sphere, StepRail } from "@/components/ui";
 import { useScrollHint } from "@/components/useScrollHint";
 import { industries } from "@/lib/industries";
 import { SITE } from "@/lib/site";
@@ -16,11 +16,29 @@ const N = industries.length;
 const EXTRA_HOLD = 1;
 const RUNWAY_UNITS = N + EXTRA_HOLD;
 
+// Module-level, not React state: survives Home unmounting while the industry
+// sheet is open. The sheet is `position: fixed`, so the document collapses to
+// viewport height while it's showing and the browser clamps window.scrollY to
+// 0 - it can't come back on its own once Home remounts and the page is tall
+// again, so the scroll position has to be captured and restored by hand.
+let savedScrollY = 0;
+
 export default function HomeRoute() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const hintVisible = useScrollHint();
   const [narrow, setNarrow] = useState(false);
+
+  // restore before paint (no visible flash to the top), then keep saving as
+  // the user scrolls so the value is fresh whenever they leave for a sheet
+  useLayoutEffect(() => {
+    window.scrollTo(0, savedScrollY);
+    const onScroll = () => {
+      savedScrollY = window.scrollY;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const update = () => setNarrow(window.innerWidth < 640);
@@ -57,6 +75,7 @@ export default function HomeRoute() {
               (and gets prefetched automatically) */}
           <Link
             href={`/industries/${current.slug}`}
+            preventScrollReset
             aria-label={`Explore ${current.name}`}
             className="absolute inset-x-0 top-20 bottom-20 block cursor-pointer overflow-hidden rounded-[40px]"
           >
@@ -110,6 +129,7 @@ export default function HomeRoute() {
             </span>
             <Link
               href={`/industries/${current.slug}`}
+              preventScrollReset
               aria-label={`Explore ${current.name}`}
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
             >
@@ -137,8 +157,8 @@ export default function HomeRoute() {
           </h1>
 
           {/* step indicators */}
-          <StepRail side="left" active={active} />
-          <StepRail side="right" active={active} />
+          <StepRail side="left" active={active} total={N} />
+          <StepRail side="right" active={active} total={N} />
 
           {/* header on top */}
           <Header floating />
@@ -179,31 +199,5 @@ export default function HomeRoute() {
         <Footer />
       </div>
     </>
-  );
-}
-
-function StepRail({ side, active }: { side: "left" | "right"; active: number }) {
-  return (
-    <div
-      className={`absolute top-1/2 z-10 flex h-[97px] -translate-y-1/2 flex-col justify-between ${
-        side === "left" ? "left-0 items-start" : "right-0 items-end"
-      }`}
-    >
-      {industries.map((ind, i) => (
-        <span
-          key={ind.slug}
-          className="h-px w-4 transition-colors duration-500"
-          style={{
-            background:
-              i === active
-                ? "#ffffff"
-                : side === "left"
-                  ? "linear-gradient(to right, #ffffff 50%, transparent 50%)"
-                  : "linear-gradient(to left, #ffffff 50%, transparent 50%)",
-            opacity: i === active ? 1 : 0.6,
-          }}
-        />
-      ))}
-    </div>
   );
 }

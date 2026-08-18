@@ -253,3 +253,39 @@ export function EyebrowPill({ children }: { children: ReactNode }) {
     </div>
   );
 }
+
+/* left/right rail of step dots against the home hero, one per industry */
+export function StepRail({
+  side,
+  active,
+  total,
+}: {
+  side: "left" | "right";
+  active: number;
+  total: number;
+}) {
+  return (
+    <div
+      className={`absolute top-1/2 z-10 flex h-[97px] -translate-y-1/2 flex-col justify-between ${
+        side === "left" ? "left-0 items-start" : "right-0 items-end"
+      }`}
+    >
+      {Array.from({ length: total }, (_, i) => (
+        <span
+          // biome-ignore lint/suspicious/noArrayIndexKey: total is a fixed, never-reordered count
+          key={i}
+          className="h-px w-4 transition-colors duration-500"
+          style={{
+            background:
+              i === active
+                ? "#ffffff"
+                : side === "left"
+                  ? "linear-gradient(to right, #ffffff 50%, transparent 50%)"
+                  : "linear-gradient(to left, #ffffff 50%, transparent 50%)",
+            opacity: i === active ? 1 : 0.6,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
