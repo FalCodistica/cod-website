@@ -1,14 +1,14 @@
-"use client";
-
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Image from "@/components/AppImage";
+import Link from "@/components/AppLink";
 import Footer from "@/components/Footer";
+import { Seo } from "@/components/Seo";
 import { Header } from "@/components/SiteChrome";
 import { ScrollArrow, Sphere } from "@/components/ui";
 import { useScrollHint } from "@/components/useScrollHint";
 import { industries } from "@/lib/industries";
+import { SITE } from "@/lib/site";
 
 const N = industries.length;
 // the last industry gets one extra viewport-height of hold time, pinned and
@@ -16,7 +16,7 @@ const N = industries.length;
 const EXTRA_HOLD = 1;
 const RUNWAY_UNITS = N + EXTRA_HOLD;
 
-export default function Home() {
+export default function HomeRoute() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const hintVisible = useScrollHint();
@@ -49,6 +49,7 @@ export default function Home() {
 
   return (
     <>
+      <Seo title={SITE.title} description={SITE.description} path="/" absoluteTitle />
       {/* scroll runway: one viewport per industry, plus a hold for the last */}
       <div ref={containerRef} style={{ height: `${(N + EXTRA_HOLD) * 100}vh` }}>
         <div className="sticky top-0 h-screen overflow-hidden bg-ink">
@@ -91,13 +92,19 @@ export default function Home() {
             {industries
               .filter((i) => i.heroPortrait)
               .map((i) => (
-                // biome-ignore lint/style/noNonNullAssertion: filtered above
-                <Image key={`${i.slug}-portrait`} src={i.heroPortrait!} alt="" width={9} height={16} />
+                <Image
+                  key={`${i.slug}-portrait`}
+                  // biome-ignore lint/style/noNonNullAssertion: filtered above
+                  src={i.heroPortrait!}
+                  alt=""
+                  width={9}
+                  height={16}
+                />
               ))}
           </div>
 
           {/* heading pill */}
-          <div className="glass-dark absolute inset-x-2 top-[calc(50%+8px)] z-10 flex h-10 -translate-y-1/2 items-center justify-between rounded-full px-4 sm:inset-x-5 sm:h-[100px] sm:px-10">
+          <h1 className="glass-dark absolute inset-x-2 top-[calc(50%+8px)] z-10 flex h-10 -translate-y-1/2 items-center justify-between rounded-full px-4 sm:inset-x-5 sm:h-[100px] sm:px-10">
             <span className="pointer-events-none text-sm font-medium tracking-[-0.01em] text-snow sm:text-[clamp(28px,2.5vw,48px)] sm:tracking-[-0.03em]">
               Technology partner for
             </span>
@@ -127,7 +134,7 @@ export default function Home() {
                 </motion.span>
               </AnimatePresence>
             </span>
-          </div>
+          </h1>
 
           {/* step indicators */}
           <StepRail side="left" active={active} />

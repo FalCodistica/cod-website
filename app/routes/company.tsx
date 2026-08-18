@@ -1,21 +1,18 @@
-import type { Metadata } from "next";
-import Image from "next/image";
+import Image from "@/components/AppImage";
 import Footer from "@/components/Footer";
 import RuledField from "@/components/RuledField";
+import { Seo } from "@/components/Seo";
 import { Header } from "@/components/SiteChrome";
 import { FilledButton } from "@/components/ui";
-import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Partnership & collaboration",
-  description:
-    "Systems worth building. Together. Strategic development, team & talent, and investment partnerships at Codistica.",
-  path: "/company",
-});
-
-export default function CompanyPage() {
+export default function CompanyRoute() {
   return (
     <>
+      <Seo
+        title="Partnership & collaboration"
+        description="Systems worth building. Together. Strategic development, team & talent, and investment partnerships at Codistica."
+        path="/company"
+      />
       <Header sticky />
       <div className="px-5 pb-30 pt-10">
         <main className="mx-auto flex w-full max-w-[1060px] flex-col gap-5">

@@ -1,21 +1,18 @@
-import type { Metadata } from "next";
-import Image from "next/image";
+import Image from "@/components/AppImage";
 import Footer from "@/components/Footer";
+import { Seo } from "@/components/Seo";
 import { Header } from "@/components/SiteChrome";
 import { CopyEmailChip, FilledButton, LinkedInButton } from "@/components/ui";
 import WordSphere from "@/components/WordSphere";
-import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
-  title: "How we think",
-  description:
-    "Why, how, and what drives Codistica. The founder's belief in building the invisible layer of intelligent systems.",
-  path: "/about",
-});
-
-export default function AboutPage() {
+export default function AboutRoute() {
   return (
     <>
+      <Seo
+        title="How we think"
+        description="Why, how, and what drives Codistica. The founder's belief in building the invisible layer of intelligent systems."
+        path="/about"
+      />
       <Header sticky />
       <div className="px-5 pb-30 pt-10">
         <main className="mx-auto flex w-full max-w-[1060px] flex-col gap-5">

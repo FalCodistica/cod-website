@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import { FilledButton } from "@/components/ui";
 
 function CheckIcon() {

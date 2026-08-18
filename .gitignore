@@ -15,9 +15,15 @@ lambda/dist
 # testing
 /coverage
 
-# next.js
+# previous Next.js output
 /.next/
 /out/
+
+# React Router generated types
+/.react-router/
+
+# generated at build time from lib/industries.ts, see scripts/generate-sitemap.ts
+/public/sitemap.xml
 
 # production
 /build

@@ -1,7 +1,5 @@
-"use client";
-
-import Script from "next/script";
 import { useEffect, useState } from "react";
+import Link from "@/components/AppLink";
 import { CONSENT_STORAGE_KEY, type Consent, GTM_ID, readStoredConsent } from "@/lib/analytics";
 
 /**
@@ -17,6 +15,21 @@ export default function Analytics() {
     setConsent(readStoredConsent());
   }, []);
 
+  useEffect(() => {
+    if (consent !== "granted" || document.getElementById("gtm-script")) return;
+
+    const browserWindow = window as Window & { dataLayer?: unknown[] };
+    browserWindow.dataLayer ??= [];
+    const dataLayer = browserWindow.dataLayer;
+    dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+
+    const script = document.createElement("script");
+    script.id = "gtm-script";
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+    document.head.appendChild(script);
+  }, [consent]);
+
   function choose(value: Exclude<Consent, "unknown">) {
     window.localStorage.setItem(CONSENT_STORAGE_KEY, value);
     setConsent(value);
@@ -24,11 +37,6 @@ export default function Analytics() {
 
   return (
     <>
-      {consent === "granted" && (
-        <Script id="gtm" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;if(f.parentNode){f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','${GTM_ID}');`}
-        </Script>
-      )}
       {consent === "unknown" && (
         <div
           role="dialog"
@@ -37,10 +45,10 @@ export default function Analytics() {
         >
           <p className="text-sm font-medium leading-relaxed text-mist">
             We use cookies to understand how visitors use this site. We won&apos;t set analytics
-            cookies until you agree — see our{" "}
-            <a href="/privacy" className="text-foam underline underline-offset-2">
+            cookies until you agree - see our{" "}
+            <Link href="/privacy" className="text-foam underline underline-offset-2">
               privacy policy
-            </a>
+            </Link>
             .
           </p>
           <div className="flex items-center gap-2">

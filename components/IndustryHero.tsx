@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { Fragment, useEffect, useRef, useState } from "react";
+import Image from "@/components/AppImage";
 import type { Industry } from "@/lib/industries";
 import IndustrySwitcher from "./IndustrySwitcher";
 import { useScrollRoot } from "./ScrollRoot";

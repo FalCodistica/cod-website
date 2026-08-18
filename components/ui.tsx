@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
+import Link from "@/components/AppLink";
 
 /* Frosted-glass pill button, Inter 500 14px */
 export function FilledButton({

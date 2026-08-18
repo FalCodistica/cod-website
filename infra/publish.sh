@@ -21,9 +21,9 @@ else
 fi
 
 REPO_ROOT=".."
-SITE_OUT="${REPO_ROOT}/out"
+SITE_OUT="${REPO_ROOT}/build/client"
 
-echo "==> Building the Next.js static export ..."
+echo "==> Building the React Router static export ..."
 (cd "${REPO_ROOT}" && npm ci && npm run build)
 
 echo "==> Building the Lambda bundle ..."
@@ -47,8 +47,8 @@ aws s3 sync "${SITE_OUT}/" "s3://${BUCKET_NAME}/" \
   --exclude "*.html" \
   --cache-control "public, max-age=604800"
 
-echo "==> Overriding _next/static (hashed, immutable) ..."
-aws s3 sync "${SITE_OUT}/_next/static/" "s3://${BUCKET_NAME}/_next/static/" \
+echo "==> Overriding Vite assets (hashed, immutable) ..."
+aws s3 sync "${SITE_OUT}/assets/" "s3://${BUCKET_NAME}/assets/" \
   --region "${AWS_REGION}" \
   --cache-control "public, max-age=31536000, immutable"
 

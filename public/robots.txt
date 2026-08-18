@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://codistica.com/sitemap.xml
+Host: https://codistica.com

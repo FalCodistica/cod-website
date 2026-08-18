@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import Link from "@/components/AppLink";
 import ChallengeScene from "@/components/ChallengeScene";
 import IndustryAccordion from "@/components/IndustryAccordion";
 import IndustryHero from "@/components/IndustryHero";
@@ -13,7 +12,7 @@ export default function IndustryDetail({ slug }: { slug: string }) {
   const idx = industries.findIndex((i) => i.slug === slug);
   const industry = industries[idx];
   const content = industryContent[slug];
-  if (!industry || !content) notFound();
+  if (!industry || !content) return null;
   const next = industries[(idx + 1) % industries.length];
 
   return (

@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion, useMotionValue } from "motion/react";
-import Link from "next/link";
 import {
   createContext,
   type ReactNode,
@@ -12,6 +11,7 @@ import {
   useRef,
   useState,
 } from "react";
+import Link from "@/components/AppLink";
 import { industries } from "@/lib/industries";
 import Logo from "./Logo";
 import { CopyEmailChip, DotChevron, DotGrid, LinkedInButton } from "./ui";

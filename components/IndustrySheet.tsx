@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { type ReactNode, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
 import type { Industry } from "@/lib/industries";
 import { ScrollRootContext } from "./ScrollRoot";
 import { CloseDots } from "./ui";
@@ -30,7 +30,7 @@ export default function IndustrySheet({
   industry: Industry;
   children: ReactNode;
 }) {
-  const router = useRouter();
+  const navigate = useNavigate();
   const sheetRef = useRef<HTMLDivElement>(null);
   const [root, setRoot] = useState<HTMLElement | null>(null);
   const [expanded, setExpanded] = useState(false);
@@ -88,7 +88,7 @@ export default function IndustrySheet({
       if (done) return;
       done = true;
       // scroll:false leaves Home's scroll position untouched.
-      router.push("/", { scroll: false });
+      navigate("/", { preventScrollReset: true });
     };
     el.addEventListener("transitionend", (e) => e.propertyName === "transform" && finish(), {
       once: true,

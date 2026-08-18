@@ -180,9 +180,7 @@ export default function Dropzone({
 
       {status === "error" && (
         <div className="flex h-24 w-full flex-col items-center justify-center gap-2 rounded-2xl border border-red-400/40 px-8">
-          <span className="text-sm font-medium text-red-400">
-            Upload failed. Please try again.
-          </span>
+          <span className="text-sm font-medium text-red-400">Upload failed. Please try again.</span>
           <button
             type="button"
             onClick={() => inputRef.current?.click()}

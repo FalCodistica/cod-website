@@ -1,17 +1,15 @@
-import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import { Seo } from "@/components/Seo";
 import { Header } from "@/components/SiteChrome";
-import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Privacy",
-  description: "How Codistica handles data collected through this website.",
-  path: "/privacy",
-});
-
-export default function PrivacyPage() {
+export default function PrivacyRoute() {
   return (
     <>
+      <Seo
+        title="Privacy"
+        description="How Codistica handles data collected through this website."
+        path="/privacy"
+      />
       <Header />
       <main className="mx-auto flex min-h-[60vh] w-full max-w-[760px] flex-col gap-6 px-5 py-20">
         <h1 className="display text-snow">Privacy</h1>

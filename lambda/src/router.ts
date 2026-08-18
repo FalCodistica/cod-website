@@ -31,7 +31,9 @@ export async function route(
 
   let body: unknown = {};
   if (event.body) {
-    const raw = event.isBase64Encoded ? Buffer.from(event.body, "base64").toString("utf-8") : event.body;
+    const raw = event.isBase64Encoded
+      ? Buffer.from(event.body, "base64").toString("utf-8")
+      : event.body;
     try {
       body = JSON.parse(raw);
     } catch {

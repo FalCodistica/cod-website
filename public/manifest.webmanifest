@@ -1,0 +1,22 @@
+{
+  "name": "Codistica - Powering the invisible",
+  "short_name": "Codistica",
+  "description": "Technology partner connecting physical infrastructure with digital intelligence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0e1514",
+  "theme_color": "#0e1514",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

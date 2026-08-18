@@ -209,9 +209,9 @@ Resources:
             ReferrerPolicy: strict-origin-when-cross-origin
             Override: true
           # 'unsafe-inline' on script-src/style-src is a deliberate, unavoidable
-          # trade-off for a static export: Next inlines the RSC hydration
-          # payload as <script> tags with no nonce (no per-request server to
-          # generate one on S3/CloudFront), and Motion sets inline style=""
+          # trade-off for a static export: React Router emits an inline
+          # hydration payload with no per-request server available to generate
+          # a nonce, and Motion sets inline style=""
           # attributes for animations. connect-src carries the CV-uploads
           # bucket because the presigned PUT in components/forms/Dropzone.tsx
           # goes straight to S3's own origin, not through this distribution -
@@ -239,15 +239,15 @@ Resources:
   # Viewer-request function, applied to BOTH cache behaviors:
   #  1. /api/* requests pass through untouched (guarded first).
   #  2. www.<domain> 301-redirects to the bare apex (single canonical host).
-  #  3. Extensionless paths get ".html" appended, matching the flat *.html
-  #     files `next build` with output:"export" emits (trailingSlash: false).
+  # Client-side routes have no matching S3 object - CustomErrorResponses below
+  # falls back to /index.html so the SPA's own router can render them.
   EdgeRoutingFunction:
     Type: AWS::CloudFront::Function
     Properties:
       Name: !Sub "${ProjectName}-edge-routing"
       AutoPublish: true
       FunctionConfig:
-        Comment: !Sub "www->apex redirect + .html rewrite for ${DomainName}"
+        Comment: !Sub "www->apex redirect + index.html rewrite for ${DomainName}"
         Runtime: cloudfront-js-2.0
       FunctionCode: !Sub |
         function handler(event) {
@@ -274,13 +274,6 @@ Resources:
               statusDescription: 'Moved Permanently',
               headers: { location: { value: 'https://${DomainName}' + uri + suffix } }
             };
-          }
-
-          if (uri !== '/' && uri.charAt(uri.length - 1) !== '/') {
-            var lastSegment = uri.split('/').pop();
-            if (lastSegment.indexOf('.') === -1) {
-              request.uri = uri + '.html';
-            }
           }
 
           return request;
@@ -445,16 +438,18 @@ Resources:
             FunctionAssociations:
               - EventType: viewer-request
                 FunctionARN: !GetAtt EdgeRoutingFunction.FunctionMetadata.FunctionARN
-        # Multi-page static export (not a SPA) - unknown paths get a real
-        # 404 status with the actual 404 page, not a soft-404 on index.html.
+        # Pure SPA: only / exists as a real S3 object. Every other path (real
+        # client-side routes and genuine typos alike) 403/404s against S3 and
+        # falls back to the app shell at 200, which then renders the right
+        # thing client-side - including the not-found route for bad paths.
         CustomErrorResponses:
           - ErrorCode: 403
-            ResponseCode: 404
-            ResponsePagePath: /404.html
+            ResponseCode: 200
+            ResponsePagePath: /index.html
             ErrorCachingMinTTL: 60
           - ErrorCode: 404
-            ResponseCode: 404
-            ResponsePagePath: /404.html
+            ResponseCode: 200
+            ResponsePagePath: /index.html
             ErrorCachingMinTTL: 60
 
   # ----------------------------------------------------------- Route 53 DNS

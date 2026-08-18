@@ -48,7 +48,11 @@ export function submitJoinTeam(
   },
   cv: { key: string; filename: string },
 ): Promise<ActionResult> {
-  return post<ActionResult>("/apply/join-team", { ...input, cvKey: cv.key, cvFilename: cv.filename });
+  return post<ActionResult>("/apply/join-team", {
+    ...input,
+    cvKey: cv.key,
+    cvFilename: cv.filename,
+  });
 }
 
 export function submitStrategicCollaboration(input: {

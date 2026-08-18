@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import { industries } from "@/lib/industries";
 import { Sphere } from "./ui";
 

@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!design-reference", "!public"]
+    "includes": ["**", "!design-reference", "!public", "!build", "!.react-router"]
   },
   "formatter": {
     "enabled": true,
@@ -21,7 +21,6 @@
       "preset": "recommended"
     },
     "domains": {
-      "next": "recommended",
       "react": "recommended",
       "tailwind": "recommended"
     }

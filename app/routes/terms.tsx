@@ -1,17 +1,15 @@
-import type { Metadata } from "next";
 import Footer from "@/components/Footer";
+import { Seo } from "@/components/Seo";
 import { Header } from "@/components/SiteChrome";
-import { pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Terms of use",
-  description: "Terms of use for the Codistica website.",
-  path: "/terms",
-});
-
-export default function TermsPage() {
+export default function TermsRoute() {
   return (
     <>
+      <Seo
+        title="Terms of use"
+        description="Terms of use for the Codistica website."
+        path="/terms"
+      />
       <Header />
       <main className="mx-auto flex min-h-[60vh] w-full max-w-[760px] flex-col gap-6 px-5 py-20">
         <h1 className="display text-snow">Terms of use</h1>

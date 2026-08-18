@@ -23,6 +23,8 @@
 :root {
   color-scheme: dark;
   --color-scrim: rgba(0, 0, 0, 0.08);
+  --font-inter: "Inter Variable";
+  --font-jetbrains: "JetBrains Mono Variable";
 }
 
 html {
@@ -41,6 +43,23 @@ body {
      reveals whatever sits past the pinned section before springing back,
      which reads as an unwanted bounce right at the hero/footer handoff */
   overscroll-behavior-y: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override must win */
+    animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override must win */
+    animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: accessibility override must win */
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ——— shared visual primitives from Figma ——— */
