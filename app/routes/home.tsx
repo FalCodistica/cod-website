@@ -23,9 +23,22 @@ const RUNWAY_UNITS = N + EXTRA_HOLD;
 // again, so the scroll position has to be captured and restored by hand.
 let savedScrollY = 0;
 
+function indexFromProgress(progress: number) {
+  return Math.min(N - 1, Math.max(0, Math.floor(progress * RUNWAY_UNITS)));
+}
+
+// Mirrors the scrollYProgress math below, but from a raw scrollY - used only
+// to seed `active` for the very first render, so returning to a scrolled-past
+// industry doesn't flash "vertical mobility" before the scroll listener below
+// has a chance to correct it.
+function activeIndexForScrollY(scrollY: number) {
+  const vh = window.innerHeight || 1;
+  return indexFromProgress(scrollY / (vh * (RUNWAY_UNITS - 1)));
+}
+
 export default function HomeRoute() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(() => activeIndexForScrollY(savedScrollY));
   const hintVisible = useScrollHint();
   const [narrow, setNarrow] = useState(false);
 
@@ -53,7 +66,7 @@ export default function HomeRoute() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = Math.min(N - 1, Math.max(0, Math.floor(v * RUNWAY_UNITS)));
+    const idx = indexFromProgress(v);
     if (idx !== active) setActive(idx);
   });
 
